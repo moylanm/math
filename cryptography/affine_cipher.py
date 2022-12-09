@@ -58,16 +58,30 @@ class AffineCipher:
       
     return t
     
+def gcd(a: int, b:int = 26):
+  x, y = a, b
+  
+  while y != 0:
+    r = x % y
+    x = y
+    y = r
+  
+  return x
+    
 if __name__ == '__main__':
   parser = argparse.ArgumentParser()
   group = parser.add_mutually_exclusive_group()
   
   parser.add_argument('string', type=str, nargs='*', default=sys.stdin)
-  parser.add_argument('-k', '--key', type=int, nargs=2)
+  parser.add_argument('-k', '--key', type=int, nargs=2, metavar=('a', 'b'))
   group.add_argument('-d', '--decrypt', action='store_true')
   group.add_argument('-e', '--encrypt', action='store_true')
   
   args = parser.parse_args()
+  
+  if gcd(args.key[0]) != 1:
+    print('key value "a" ({}) must be coprime to 26.'.format(args.key[0]))
+    sys.exit()
   
   if not sys.stdin.isatty():
     args.string = args.string.read().replace('\n', '')
