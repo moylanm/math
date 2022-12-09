@@ -20,6 +20,9 @@ class ShiftCipher:
     self.modulus = modulus
     self.key = key
   
+  def set_key(self, new_key: int):
+    self.key = new_key
+  
   def encrypt(self, text: str):
     return self._run(operator.pos, text)
   
@@ -40,14 +43,19 @@ if __name__ == '__main__':
   group = parser.add_mutually_exclusive_group()
   
   parser.add_argument('string', type=str, nargs='*', default=sys.stdin)
-  parser.add_argument('-k', '--key', type=int, required=True)
+  parser.add_argument('-k', '--key', type=int)
   group.add_argument('-d', '--decrypt', action='store_true')
   group.add_argument('-e', '--encrypt', action='store_true')
+  parser.add_argument('-b', '--brute-force', action='store_true')
   
   args = parser.parse_args()
   
   if not args.encrypt and not args.decrypt:
     print('Must choose to encrypt or decrpyt.')
+    sys.exit()
+    
+  if not args.brute_force and not args.key:
+    print('Must choose to brute force or use key.')
     sys.exit()
     
   if not sys.stdin.isatty():
@@ -57,8 +65,14 @@ if __name__ == '__main__':
   else:
     print('Need string to work with.')
     sys.exit()
-    
-  cipher = ShiftCipher(args.key)
+
   action = 'encrypt' if args.encrypt else 'decrypt'
   
-  print(getattr(cipher, action)(args.string))
+  if args.brute_force:
+    cipher = ShiftCipher(0)
+    
+    for n in range(26):
+      print('{}: {}'.format(n, cipher.decrypt(args.string)))
+      cipher.set_key(n + 1)
+  else:
+    print(getattr(ShiftCipher(args.key), action)(args.string))
