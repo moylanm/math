@@ -44,9 +44,9 @@ if __name__ == '__main__':
   
   parser.add_argument('string', type=str, nargs='*', default=sys.stdin)
   parser.add_argument('-k', '--key', type=int)
+  parser.add_argument('-b', '--brute-force', action='store_true')
   group.add_argument('-d', '--decrypt', action='store_true')
   group.add_argument('-e', '--encrypt', action='store_true')
-  parser.add_argument('-b', '--brute-force', action='store_true')
   
   args = parser.parse_args()
   
@@ -65,14 +65,12 @@ if __name__ == '__main__':
   else:
     print('Need string to work with.')
     sys.exit()
-
-  action = 'encrypt' if args.encrypt else 'decrypt'
   
   if args.brute_force:
     cipher = ShiftCipher(0)
-    
     for n in range(26):
       print('{}: {}'.format(n, cipher.decrypt(args.string)))
       cipher.set_key(n + 1)
   else:
+    action = 'encrypt' if args.encrypt else 'decrypt'
     print(getattr(ShiftCipher(args.key), action)(args.string))
