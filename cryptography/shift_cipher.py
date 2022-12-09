@@ -1,6 +1,6 @@
 # coding: utf-8
 
-import argparse, sys, operator
+import sys, argparse, operator
 
 class ShiftCipher:
   
