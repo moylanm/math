@@ -16,8 +16,9 @@ class ShiftCipher:
     21: 'V', 22: 'W', 23: 'X', 24: 'Y', 25: 'Z'
   }
   
-  def __init__(self, key: int, modulus: int = 26) -> None:
-    self.modulus = modulus
+  MODULUS = 26
+  
+  def __init__(self, key: int) -> None:
     self.key = key
   
   def set_key(self, new_key: int):
@@ -34,7 +35,7 @@ class ShiftCipher:
     
     for i in range(len(translation)):
       if isinstance(translation[i], int):
-        translation[i] = self.NUM_TO_CHAR[(translation[i] + op(self.key)) % self.modulus]
+        translation[i] = self.NUM_TO_CHAR[(translation[i] + op(self.key)) % self.MODULUS]
          
     return ''.join(translation) # type: ignore
 
