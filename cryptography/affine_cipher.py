@@ -23,25 +23,21 @@ class AffineCipher:
     self.b = b
     
   def encrypt(self, text: str):
-    transformation = [self.CHAR_TO_NUM[c.upper()] if c.isalpha() else c for c in list(text)]
-    
-    for i in range(len(transformation)):
-      if isinstance(transformation[i], int):
-        transformation[i] = self.NUM_TO_CHAR[(self.a * transformation[i] + self.b) % self.MODULUS]  # type: ignore
-
-    return ''.join(transformation) # type: ignore
+    return self._run(lambda p: (self.a * p + self.b) % self.MODULUS, text)
   
   def decrypt(self, text: str):
-    a_inverse = self._inverse()
+    return self._run(lambda p: self._a_inverse() * (p - self.b) % self.MODULUS, text)
+
+  def _run(self, op, text: str):
     translation = [self.CHAR_TO_NUM[c.upper()] if c.isalpha() else c for c in list(text)]
     
     for i in range(len(translation)):
       if isinstance(translation[i], int):
-        translation[i] = self.NUM_TO_CHAR[a_inverse * (translation[i] - self.b) % self.MODULUS] # type: ignore
+        translation[i] = self.NUM_TO_CHAR[op(translation[i])]
 
     return ''.join(translation) # type: ignore
 
-  def _inverse(self):
+  def _a_inverse(self):
     '''
     Extended Euclidean Algorithm Adaptation
     Credit: https://en.wikipedia.org/wiki/Extended_Euclidean_algorithm
