@@ -25,17 +25,17 @@ class ShiftCipher:
     self.key = new_key
   
   def encrypt(self, text: str):
-    return self._run(operator.pos, text)
+    return self._run(operator.add, text)
   
   def decrypt(self, text: str):
-    return self._run(operator.neg, text)
+    return self._run(operator.sub, text)
   
   def _run(self, op, text: str):
     translation = [self.CHAR_TO_NUM[c.upper()] if c.isalpha() else c for c in list(text)]
     
     for i in range(len(translation)):
       if isinstance(translation[i], int):
-        translation[i] = self.NUM_TO_CHAR[(translation[i] + op(self.key)) % self.MODULUS]
+        translation[i] = self.NUM_TO_CHAR[(op(translation[i], self.key)) % self.MODULUS]
          
     return ''.join(translation) # type: ignore
 
