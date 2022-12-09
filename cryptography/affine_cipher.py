@@ -23,17 +23,17 @@ class AffineCipher:
     self.b = b
     
   def encrypt(self, text: str):
-    return self._run(lambda p: (self.a * p + self.b) % self.MODULUS, text)
+    return self._run(lambda p: (self.a * p + self.b), text)
   
   def decrypt(self, text: str):
-    return self._run(lambda p: self._a_inverse() * (p - self.b) % self.MODULUS, text)
+    return self._run(lambda p: self._a_inverse() * (p - self.b), text)
 
   def _run(self, op, text: str):
     translation = [self.CHAR_TO_NUM[c.upper()] if c.isalpha() else c for c in list(text)]
     
     for i in range(len(translation)):
       if isinstance(translation[i], int):
-        translation[i] = self.NUM_TO_CHAR[op(translation[i])]
+        translation[i] = self.NUM_TO_CHAR[op(translation[i]) % self.MODULUS]
 
     return ''.join(translation) # type: ignore
 
