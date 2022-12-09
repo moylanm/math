@@ -26,7 +26,8 @@ class AffineCipher:
     return self._run(lambda p: (self.a * p + self.b), text)
   
   def decrypt(self, text: str):
-    return self._run(lambda p: self._a_inverse() * (p - self.b), text)
+    a_inverse = self._a_inverse()
+    return self._run(lambda p: a_inverse * (p - self.b), text)
 
   def _run(self, op, text: str):
     translation = [self.CHAR_TO_NUM[c.upper()] if c.isalpha() else c for c in list(text)]
