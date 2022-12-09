@@ -30,7 +30,7 @@ class ShiftCipher:
     return self._run(operator.neg, text)
   
   def _run(self, op, text: str):
-    translation = [self.CHAR_TO_NUM[c.upper()] if c != ' ' else c for c in list(text)]
+    translation = [self.CHAR_TO_NUM[c.upper()] if c.isalpha() else c for c in list(text)]
     
     for i in range(len(translation)):
       if isinstance(translation[i], int):
