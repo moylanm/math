@@ -2,7 +2,7 @@
 
 import argparse, sys, operator
 
-class Cipher:
+class ShiftCipher:
   
   CHAR_TO_NUM = {
     'A': 0, 'B': 1, 'C': 2, 'D': 3, 'E': 4, 'F': 5, 'G': 6, 'H': 7, 'I': 8, 'J': 9, 'K': 10,
@@ -50,7 +50,7 @@ if __name__ == '__main__':
     print('Must choose to encrypt or decrpyt.')
     sys.exit()
     
-  cipher = Cipher(args.key)
+  cipher = ShiftCipher(args.key)
   action = 'encrypt' if args.encrypt else 'decrypt'
   
   print(getattr(cipher, action)(' '.join(args.string)))
