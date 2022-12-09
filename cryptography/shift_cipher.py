@@ -39,7 +39,7 @@ if __name__ == '__main__':
   parser = argparse.ArgumentParser()
   group = parser.add_mutually_exclusive_group()
   
-  parser.add_argument('string', type=str, nargs='+')
+  parser.add_argument('string', type=str, nargs='*', default=sys.stdin)
   parser.add_argument('-k', '--key', type=int, required=True)
   group.add_argument('-d', '--decrypt', action='store_true')
   group.add_argument('-e', '--encrypt', action='store_true')
@@ -50,7 +50,15 @@ if __name__ == '__main__':
     print('Must choose to encrypt or decrpyt.')
     sys.exit()
     
+  if not sys.stdin.isatty():
+    args.string = args.string.read().replace('\n', '')
+  elif isinstance(args.string, list):
+    args.string = ' '.join(args.string)
+  else:
+    print('Need string to work with.')
+    sys.exit()
+    
   cipher = ShiftCipher(args.key)
   action = 'encrypt' if args.encrypt else 'decrypt'
   
-  print(getattr(cipher, action)(' '.join(args.string)))
+  print(getattr(cipher, action)(args.string))
