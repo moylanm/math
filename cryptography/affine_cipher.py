@@ -55,7 +55,7 @@ class AffineCipher:
       r, new_r = new_r, r - quotient * new_r
       
     if r > 1:
-      raise Exception('a ({}) is not invertible'.format(a))
+      raise Exception('a ({}) is not invertible'.format(self.a))
     if t < 0:
       t = t + self.MODULUS
       
