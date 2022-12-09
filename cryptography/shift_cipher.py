@@ -50,14 +50,6 @@ if __name__ == '__main__':
   
   args = parser.parse_args()
   
-  if not args.encrypt and not args.decrypt:
-    print('Must choose to encrypt or decrpyt.')
-    sys.exit()
-    
-  if not args.brute_force and not args.key:
-    print('Must choose to brute force or use key.')
-    sys.exit()
-    
   if not sys.stdin.isatty():
     args.string = args.string.read().replace('\n', '')
   elif isinstance(args.string, list):
@@ -68,9 +60,21 @@ if __name__ == '__main__':
   
   if args.brute_force:
     cipher = ShiftCipher(0)
+    
     for n in range(26):
       print('{}: {}'.format(n, cipher.decrypt(args.string)))
       cipher.set_key(n + 1)
-  else:
-    action = 'encrypt' if args.encrypt else 'decrypt'
-    print(getattr(ShiftCipher(args.key), action)(args.string))
+    
+    sys.exit()
+  
+  if not args.encrypt and not args.decrypt:
+    print('Must choose to encrypt or decrpyt.')
+    sys.exit()
+    
+  if not args.key:
+    print('Must choose to brute force or use key.')
+    sys.exit()
+  
+  action = 'encrypt' if args.encrypt else 'decrypt'
+  
+  print(getattr(ShiftCipher(args.key), action)(args.string))
