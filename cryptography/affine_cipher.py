@@ -58,7 +58,7 @@ class AffineCipher:
       
     return t
     
-def gcd(a: int, b:int = 26):
+def gcd(a: int, b: int = 26):
   x, y = a, b
   
   while y != 0:
