@@ -40,7 +40,7 @@ class AffineCipher:
 
   def _a_inverse(self):
     '''
-    Extended Euclidean Algorithm Adaptation
+    Extended Euclidean algorithm adaptation
     Credit: https://en.wikipedia.org/wiki/Extended_Euclidean_algorithm
     '''
     t, new_t = 0, 1
