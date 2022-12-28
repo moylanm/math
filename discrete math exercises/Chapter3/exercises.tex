@@ -1,0 +1,595 @@
+\documentclass[11pt]{article}
+
+\usepackage{color, enumitem, graphicx, amsmath, amsthm, amssymb}
+\usepackage[margin=.5in]{geometry}
+\usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
+
+\usepackage[english]{babel} % English language/hyphenation
+
+\usepackage{sectsty} % Allows customizing section commands
+\allsectionsfont{\normalfont\scshape} % Make all sections centered, the default font and small caps
+
+\usepackage{fancyhdr} % Custom headers and footers
+\pagestyle{fancyplain} % Makes all pages in the document conform to the custom headers and footers
+\fancyhead{} % No page header - if you want one, create it in the same way as the footers below
+\fancyfoot[L]{} % Empty left footer
+\fancyfoot[C]{} % Empty center footer
+\fancyfoot[R]{\thepage} % Page numbering for right footer
+\renewcommand{\headrulewidth}{0pt} % Remove header underlines
+\renewcommand{\footrulewidth}{0pt} % Remove footer underlines
+\setlength{\headheight}{13.6pt} % Customize the height of the header
+
+\setlength\parindent{2em}
+
+\graphicspath{ {./} }
+
+\renewcommand\qedsymbol{$\blacksquare$}
+
+%-------------------------------------------------------------------------------
+%	TITLE SECTION
+%-------------------------------------------------------------------------------
+
+%\newcommand{\horrule}[1]{\rule{\linewidth}{#1}} % Create horizontal rule command with 1 argument of height
+
+\title{	
+	\normalfont \normalsize 
+	\textsc{Discrete Mathematics} \\
+	%\horrule{0.5pt} \\[0.4cm] % Thin top horizontal rule
+	\huge Algorithms \\
+	%\horrule{2pt} \\[0.5cm] % Thick bottom horizontal rule
+}
+
+\author{Myles Moylan} % Your name
+
+\date{} % Today's date or a custom date
+
+
+%-------------------------------------------------------------------------------
+%	WORK SECTION
+%-------------------------------------------------------------------------------
+
+\begin{document}
+	
+\maketitle
+
+\section*{\textbf{3.1 Algorithms}}
+\begin{enumerate}[label=\textbf{\arabic*.}]
+	\item Devise and algorithm that finds the sum of all the integers in a list (assuming the list is not empty).
+	
+	\textbf{procedure} \emph{summation}($a_1, a_2, \ldots, a_n$ : integers)
+	
+	$sum := a_1$
+	
+	\textbf{for} $i := 2$ \textbf{to} $n$
+	
+	\qquad $sum := sum + a_i$
+	
+	\textbf{return} $sum$ $\{ sum \text{ is the sum of all elements in the list} \}$
+	
+	\item Describe an algorithm that takes as input a list of $n$ integers and produces as output the largest difference obtained by subtracting an integer in the list from the one following it.
+	
+	\textbf{procedure} \emph{largest difference}($a_1, a_2, \ldots, a_n$ : integers)
+	
+	$d := 0$
+	
+	\textbf{for} $i := 1$ \textbf{to} $n - 1$
+	
+	\qquad $t := |a_{i + 1} - a_i|$
+	
+	\qquad \textbf{if} $d < t$ \textbf{then}
+	
+	\qquad\qquad $d := t$
+	
+	\textbf{return} $d$ $\{ d \text{ is the largest different in the list} \}$
+	
+	\item Describe an algorithm that takes as input a list of $n$ integers in nondecreasing order and produces the list of all values that occur more than once. (Recall that a list of integers is \textbf{nondecreasing} if each integer in the list is at least as large as the previous integer in the list.)
+	
+	\textbf{procedure} \emph{duplicates}($a_1, a_2, \ldots, a_n$ : integers in nondecreasing order)
+	
+	$k := 0\ \{ \text{this counts the duplicates} \}$
+	
+	$j := 2$
+	
+	\textbf{while} $j \leq n$
+
+	\qquad \textbf{if} $a_j = a_{j - 1}$ \textbf{then}
+	
+	\qquad\qquad $k := k + 1$
+	
+	\qquad\qquad $c_k := a_j$
+	
+	\qquad\qquad \textbf{while} $j \leq n \text{ and } a_j = c_k$
+	
+	\qquad\qquad\qquad $j := j + 1$
+	
+	\qquad $j := j + 1$
+	
+	$\{ c_1, c_2, \ldots, c_k \text{ is the desired list} \}$
+	
+	\item Describe an algorithm that takes as input a list of $n$ integers and finds the number of negative integers in the list.
+	
+	\textbf{procedure} \emph{count negatives}($a_1, a_2, \ldots, a_n$ : integers)
+	
+	$count := 0$
+	
+	\textbf{for} $i := 1$ \textbf{to} $n$
+	
+	\qquad \textbf{if} $a_i < 0$ \textbf{then}
+	
+	\qquad\qquad $count := count + 1$
+	
+	\textbf{return} $count$ $\{ count \text{ is the number of negative integers in the list}\}$
+	
+	\item Describe an algorithm that takes as input a list of $n$ integers and finds the location of the last even integer in the list or returns 0 if there are no even integers in the list.
+	
+	\textbf{procedure} \emph{last even location}($a_1, a_2, \ldots, a_n$ : integers)
+	
+	$loc := 0$
+	
+	\textbf{for} $i := 1$ \textbf{to} $n$
+	
+	\qquad \textbf{if} $a_i$ is even \textbf{then}
+	
+	\qquad\qquad $loc := i$
+	
+	\textbf{return} $loc$ $\{ loc \text{ is either the last even integer in the list or 0} \}$
+	
+	\item Describe an algorithm that takes as input a list of $n$ distinct integers and finds the location of the largest even integer in the list or returns 0 if there are no even integers in the list.
+	
+	\textbf{procedure} \emph{largest even integer}($a_1, a_2, \ldots, a_n$ : integers)
+	
+	$k := -\infty$
+	
+	\textbf{for} $i := 1$ \textbf{to} $n$
+	
+	\qquad \textbf{if} $a_i$ is even and $a_i > k$ \textbf{then}
+		
+	\qquad\qquad $k := i$
+	
+	\textbf{if} $k = -\infty$ \textbf{then}
+	
+	\qquad $k := 0$
+	
+	\textbf{return} $k$ $\{ k \text{ is either the largest even integer of the list or 0} \}$
+	
+	\item A \textbf{palindrome} is a string that reads the same forward and backward. Describe an algorithm for determining whether a string of $n$ characters is a palindrome.
+	
+	\textbf{procedure} \emph{palindrome check}($a_1, a_2, \ldots, a_n$ : string)
+	
+	$answer :=$ \textbf{true}
+	
+	\textbf{for} $i := 1$ \textbf{to} $\lfloor n / 2 \rfloor$
+	
+	\qquad \textbf{if} $a_i \ne a_{n + 1 - i}$ \textbf{then}
+	
+	\qquad\qquad $answer :=$ \textbf{false}
+	
+	\textbf{return} $answer$ $\{ answer \text{ is true if and only if string is a palindrome} \}$
+	
+	\item Describe an algorithm that interchanges the values of the variables $x$ and $y$, using only assignments. What is the minimum number of assignment statements needed to do this?
+	
+	Three assignment statements are necessary, and sufficient, to accomplish this task:
+	
+	$temp := x$ \\
+	$x := y$ \\
+	$y := temp$
+	
+	\item Devise an algorithm to compute $x^n$, where $x$ is a real number and $n$ is an integer. [\emph{Hint:} First give a procedure for computing $x^n$ when $n$ is nonnegative by successive multiplication by $x$, starting with 1. Then extend this procedure, and use the fact that $x^{-n} = 1 / x^n$ to compute $x^n$ when $n$ is negative.]
+
+	\textbf{procedure} \emph{compute exponent}($x$ : real number, $n$ : integer)
+	
+	$result := 1$
+	
+	\textbf{for} $i := 1$ \textbf{to} $|n|$
+	
+	\qquad $result := result \cdot x$
+	
+	\textbf{if} $n < 0$ \textbf{then}
+	
+	\qquad $result := 1 / result$
+	
+	\textbf{return} $result$ $\{ result \text{ is the exponent computed} \}$
+	
+	\item Describe an algorithm that uses only assignment statements that replaces the triple ($x, y, z$) with ($y, z, x$). what is the minimum number of assignment statements needed?
+	
+	Five assignment statements are necessary, and sufficient, to accomplish this task:
+	
+	$xtemp := x$ \\
+	$ztemp := z$ \\
+	$x := y$ \\
+	$z := xtemp$ \\
+	$y := ztemp$
+	
+	\item Describe an algorithm that inserts an integer $x$ in the appropriate position into the list $a_1, a_2, \ldots, a_n$ of integers that are in increasing order.
+	
+	\textbf{procedure} \emph{insert}($x, a_1, a_2, \ldots, a_n$ : integers)
+	
+	$a_{n + 1} := x + 1$ $\{ \text{tack } x + 1 \text{ onto the end of the list so the \textbf{while} loop will always terminate} \}$
+	
+	$i := 1$
+	
+	\textbf{while} $x > a_i$
+	
+	\qquad $i := i + 1$ $\{ \text{the loop ends when } i \text{ is the index for } x \}$
+	
+	\textbf{for} $j := 0$ \textbf{to} $n - i$ $\{ \text{shove the rest of the list to the right} \}$
+	
+	\qquad $a_{n - j + 1} := a_{n - j}$
+	
+	$a_i := x$
+	
+	$\{ x \text{ has been inserted into the correct spot in the list, now of length } n + 1 \}$
+	
+	\item Describe an algorithm for finding the smallest integer in a finite sequence of natural numbers.
+	
+	\textbf{procedure} \emph{smallest integer}($a_1, a_2, \ldots, a_n$ : natural numbers)
+	
+	$k := \infty$
+	
+	\textbf{for} $i := 1$ \textbf{to} $n$
+	
+	\qquad \textbf{if} $a_i < k$ \textbf{then}
+	
+	\qquad\qquad $k := a_i$
+	
+	\textbf{return} $k$ $\{ k \text{ is the smallest integer in the list} \}$
+	
+	\item Describe an algorithm that locates the first occurrence of the largest element in a finite list of integers, where the integers in the list are not necessarily distinct.
+	
+	\textbf{procedure} \emph{first largest}($a_1, a_2, \ldots, a_n$ : integers)
+	
+	$max := a_1$
+	
+	$location := 1$
+	
+	\textbf{for} $i := 2$ \textbf{to} $n$
+	
+	\qquad \textbf{if} $max < a_i$ \textbf{then}
+	
+	\qquad\qquad $max := a_i$
+	
+	\qquad\qquad $location := i$
+	
+	\textbf{return} $location$ $\{ location \text{ is the location of the first occurrence of the largest element in the list} \}$
+	
+	\item Describe an algorithm that locates the last occurrence of the smallest element in a finite list of integers, where the integers in the list are not necessarily distinct.
+	
+	\textbf{procedure} \emph{last smallest}($a_1, a_2, \ldots, a_n$ : integers)
+	
+	$min := a_1$
+	
+	$location := 1$
+	
+	\textbf{for} $i := 2$ \textbf{to} $n$
+	
+	\qquad \textbf{if} $min \geq a_i$ \textbf{then}
+	
+	\qquad\qquad $min := a_i$
+	
+	\qquad\qquad $location := i$
+	
+	\textbf{return} $location$ $\{ location \text{ is the location of the last occurrence of the smallest element in then list} \}$
+	
+	\item Describe an algorithm for finding both the largest and the smallest integers in a finite sequence of integers.
+	
+	\textbf{procedure} \emph{minmax}($a_1, a_2, \ldots, a_n$ : integers)
+	
+	$min := a_1$
+	
+	$max := a_1$
+	
+	\textbf{for} $i := 2$ \textbf{to} $n$
+	
+	\qquad \textbf{if} $max < a_i$ \textbf{then} $max := a_i$
+	
+	\qquad \textbf{if} $min > a_i$ \textbf{then} $min := a_i$
+	
+	$\{ min \text{ is the smallest integer in the list and } max \text{ is the largest integer in the list} \}$
+	
+	\item Describe an algorithm that puts the first three terms of a sequence of integers of arbitrary length in increasing order.
+	
+	\textbf{procedure} \emph{first three}($a_1, a_2, \ldots, a_n$ : integers)
+	
+	\textbf{if} $a_1 > a_2$ \textbf{then} interchange $a_1$ and $a_2$
+	
+	\textbf{if} $a_2 > a_3$ \textbf{then} interchange $a_2$ and $a_3$
+	
+	\textbf{if} $a_1 > a_2$ \textbf{then} interchange $a_1$ and $a_2$
+	
+	$\{ \text{the first three elements are now in nondecreasing order} \}$
+	
+	\item Describe an algorithm that determines whether a function from a finite set of integers to another finite set of integers is onto.
+	
+	\textbf{procedure} \emph{onto}($f$ : function, $a_1, a_2, \ldots, a_n, b_1, b_2, \ldots, b_m$ : integers)
+	
+	\textbf{for} $i := 1$ \textbf{to} $m$
+	
+	\qquad $hit(b_i) := 0$	$\{ \text{no one has been hit yet} \}$
+	
+	$count := 0$	$\{ \text{there have been no hits yet} \}$
+	
+	\textbf{for} $j := 1$ \textbf{to} $n$
+	
+	\qquad \textbf{if} $hit(f(a_j)) = 0$ \textbf{then}	$\{ \text{a new hit} \}$
+	
+	\qquad\qquad $hit(f(a_j)) := 1$
+	
+	\qquad\qquad $count := count + 1$
+	
+	\textbf{if} $count = m$ \textbf{then return true else return false}
+	
+	$\{ f \text{ is onto if and only if there have been } m \text{ hits} \}$
+\end{enumerate}
+
+\section*{\textbf{3.2 The Growth of Functions}}
+\begin{enumerate}[label=\textbf{\arabic*.}]
+	\item Determine whether each of these functions is $O(x)$.
+	
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item $f(x) = 10$
+		
+		Yes, since $|10| \leq |x|$ for all $x > 10$. The witnesses are $C = 1$ and $k = 10$.
+		
+		\item $f(x) = 3x + 7$
+		
+		Yes, since $|3x + 7| \leq |4x| = 4|x|$ for all $x > 7$. The witnesses are $C = 4$ and $k = 7$.
+		
+		\item $f(x) = x^2 + x + 1$
+		
+		No. There is not \emph{constant} $C$ such that $|x^2 + x + 1| \leq C|x|$ for all sufficiently large x. To see this, suppose this inequality held for all sufficiently large positive values of $x$. Then we would have $x^2 \leq Cx$, which would imply that $x \leq C$ for \emph{all} sufficiently large $x$, an obvious impossibility.
+		
+		\item $f(x) = 5 \log x$
+		
+		Yes. This follows from the fact that $\log x < x$ for all $x > 1$ (which in turn follows from the fact that $x < 2^x$). Therefore $|5 \log x| \leq 5|x|$ for all $x > 1$. The witnesses are $C = 5$ and $k = 1$.
+		
+		\item $f(x) = \lfloor x \rfloor$
+		
+		Yes. This follows from the fact that $\lfloor x \rfloor \leq x$. Thus $|\lfloor x \rfloor| \leq |x|$ for all $x > 0$. The witnesses are $C = 1$ and $k = 0$.
+		
+		\item $f(x) = \lceil x / 2 \rceil$
+		
+		Yes. This follows from the fact that $\lceil x / 2 \rceil \leq (x / 2) + 1$. Thus $|\lceil x / 2 \rceil| \leq |(x / 2) + 1| \leq |x|$ for all $x > 2$. The witnesses are $C = 1$ and $k = 2$.
+	\end{enumerate}
+
+	\item Use the definition of "$f(x)$ is $O(g(x))$" to show that $x^4 + 9x^3 + 4x + 7$ is $O(x^4)$.
+	
+	We need to put some bound on the lower order terms. If $x > 9$ then we have $x^4 + 9x^3 + 4x + 7 \leq x^4 + x^4 + x^4 + x^4 = 4x^4$. Therefore $x^4 + 9x^3 + 4x + 7$ is $O(x^4)$, taking witnesses $C = 4$ and $k = 9$.
+	
+	\item Find the least integer $n$ such that $f(x)$ is $O(x^n)$ for each of these functions.
+	
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item $f(x) = 2x^3 + x^2 \log x$
+		
+		Since $\log x$ grows more slowly than $x$, $x^2 \log x$ grows more slowly than $x^3$, so the first term dominates. Therefore this function is $O(x^3)$ but not $O(x^n)$ for any $n < 3$. More precisely, $2x^3 + x^2 \log x \leq 2x^3 + x^3 = 3x^3$ for all $x$, so we have witnesses $C = 3$ and $k = 0$.
+		
+		\item $f(x) = 3x^3 + (\log x)^4$
+		
+		We know that $\log x$ grows so much more slowly than $x$ that \emph{every} power of $\log x$ grows more slowly than $x$. Thus the first term dominates, and the best estimate is $O(x^3)$. More precisely, $(\log x)^4 < x^3$ for all $x > 1$, so $3x^3 + (\log x)^4 \leq 3x^3 + x^3 = 4x^3$ for all $x$, so we have witnesses $C = 4$ and $k = 1$.
+		
+		\item $f(x) = (x^4 + x^2 + 1) / (x^3 + 1)$
+		
+		By long division, we see that $f(x) = x\ + $ lower order terms. Therefore this function is $O(x)$, so $n = 1$. In fact, $f(x) = x + \frac{1}{x + 1} \leq 2x$ for all $x > 1$, so the witnesses can be taken to be $C = 2$ and $k = 1$.
+		
+		\item $f(x) = (x^4 + 5 \log x) / (x^4 + 1)$
+		
+		By long division, this quotient has the form $f(x) = 1\ + $ lower order terms. Therefore this function is $O(1)$ with $n = 0$. Since $5 \log x < x^4$ for $x > 1$, we have $f(x) \leq 2x^4 / x^4 = 2$, so we can take witnesses as $C = 2$ and $k = 1$.
+	\end{enumerate}
+
+	\item Show that $x^2 + 4x + 17$ is $O(x^3)$ but that $x^3$ is not $O(x^2 + 4x + 17)$.
+	
+	On the one hand we have $x^2 + 4x + 17 \leq x^2 + x^2 + x^2 = 3x^2 \leq 3x^3$ for all $a > 17$, so $x^2 + 4x + 17$ is $O(x^3)$, with witnesses $C = 3$ and $k = 17$. On the other hand, if $x^3$ were $O(x^2 + 4x + 17)$, then we would have $x^3 \leq C(x^2 + 4x + 17) \leq 3Cx^2$ for all sufficiently large $x$. But this says that $x < 3C$, which is impossible for the constant $C$ to satisfy for all large $x$. Therefore $x^3$ is not $O(x^2 + 4x + 17)$.
+	
+	\item Explain what it means for a function to be $O(1)$.
+	
+	A function $f$ is $O(1)$ if $|f(x)| \leq C$ for all sufficiently large $x$. In other words, $f$ is $O(1)$ if its absolute value is \textbf{bounded} for all $x > k$ (where $k$ is some constant).
+	
+	\item Determine whether each of the functions $2^{n + 1}$ and $2^{2n}$ is $O(2^n)$.
+	
+	Because $2^{n + 1} = 2 \cdot 2^n$, clearly it is $O(2^n)$ (take $C = 2$). To see that $2^{2n}$ is not $O(2^n)$, look at the ratio: $2^{2n} / 2^n = 2^n$. Because this is unbounded, there is no constant $C$ such that $2^{2n} \leq C \cdot 2^n$ for all sufficiently large $n$.
+	
+	\item Suppose that you have two different algorithms for solving a problem. To solve a problem of size $n$, the first algorithm uses exactly $n(\log n)$ operations and the second algorithm uses exactly $n^{3/2}$ operations. As $n$ grows, which algorithm uses fewer operations?
+	
+	Because $n \log n$ is $O(n^{3/2})$ but $n^{3/2}$ is not $O(n \log n)$, the first algorithm uses fewer operations for large $n$. In fact, if we solve $n \log n < n^{3/2}$, we get $n > 4$. So the first algorithm uses fewer operations for all $n > 4$.
+	
+	\item Give as good a big-$O$ estimate as possible fore each of these functions.
+	
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item $(n^2 + 8)(n + 1)$
+		
+		Here we see $n^2$ being multiplied by $n$; thus this function is $O(n^3)$.
+		
+		\item $(n \log n + n^2)(n^3 + 2)$
+		
+		Here, after factoring, we see that the entire function is $O(n^5)$.
+		
+		\item $(n! + 2^n)(n^3 + \log(n^2 + 1))$
+		
+		Fir the first factor we note that $2^n < n!$ for $n \geq 4$, so the significant term is $n!$. For the second factor, the significant term is $n^3$. Therefore this function is $O(n^3n!)$.
+	\end{enumerate}
+	
+	\item Give a big-$O$ estimate for each of these functions. For the function $g$ is your estimate that $f(x)$ is $O(g(x))$, use a simple function $g$ of the smallest order.
+	
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item $n \log(n^2 + 1) + n^2 \log n$
+		
+		First we note that $\log(n^2 + 1)$ and $\log n$ are in the same big-$O$ class, since $\log n^2 = 2 \log n$. Therefore the second term here dominates the first, and the simplest good answer would be $O(n^2 \log n)$.
+		
+		\item $(n \log n + 1)^2 + (\log n + 1)(n^2 + 1)$
+		
+		The first term is in the same big-$O$ class as $O(n^2(\log n)^2)$, while the second is in a slightly smaller class, $O(n^2 \log n)$. Therefore the answer is $O(n^2(\log n)^2)$.
+		
+		\item $n^{2^n} + n^{n^2}$
+		
+		The only issue here is whether $2^n$ or $n^2$ is the faster-growing, and clearly it is the former. Therefore the best big-$O$ estimate we can give is $O(n^{2^n})$.
+	\end{enumerate}
+
+	\item Show that $f(x)$ is $\Theta(g(x))$ if and only if $f(x)$ is $O(g(s))$ and $g(x)$ is $O(f(x))$.
+	
+	If $f(x)$ is $\Theta(g(x))$, then $|f(x)| \leq C_2|g(x)|$ and $|g(x)| \leq C_1^{-1}|f(x)|$ for all $x > k$. Thus $f(x)$ is $O(g(x))$ and $g(x)$ is $O(f(x))$. Conversely, suppose that $f(x)$ is $O(g(x))$ and $g(x)$ is $O(f(x))$. Then (with appropriate choice of variable names) we may assume that $|f(x)| \leq C_2|g(x)|$ and $|g(x)| \leq C|f(x)|$ for all $x > k$. (The $k$ here will be the larger of the two $k$'s involved in the hypotheses.) If $C > 0$ then we can take $C_1 = C^{-1}$ to obtain the desired inequalities in "$f(x)$ is $\Theta(g(x))$." If $C \leq 0$, then $g(x) = 0$ for all $x > k$, and hence by the first inequality $f(x) = 0$ for all $x > k$; thus we have $f(x) = g(x)$ for all $x > k$, and we can take $C_1 = C_2 = 1$.
+	
+	\item Explain what it means for a function to be $\Theta(1)$.
+	
+	Looking at the definition tells us that if $f(x)$ is $\Theta(1)$ then $|f(x)|$ has to be bounded between two positive constants. In other words, $f(x)$ can't get too large (either positive or negative), and it can't get too close to 0.
+\end{enumerate}
+
+\section*{\textbf{3.3 Complexity of Algorithms}}
+\begin{enumerate}[label=\textbf{\arabic*.}]
+	\item Give a big-$O$ estimate for the number of operations used in this segment of an algorithm.
+	
+	$t := 0$
+	
+	\textbf{for} $i := 1$ \textbf{to} 3
+	
+	\qquad \textbf{for} $j := 1$ \textbf{to} 4
+	
+	\qquad\qquad $t := t + ij$
+	
+	Since the statement $t := t + ij$ is only executed 12 times, the number of operations is $O(1)$.
+	
+	\item Give a big-$O$ estimate for the number of additions used in this segment of an algorithm.
+	
+	$t := 0$
+	
+	\textbf{for} $i := 1$ \textbf{to} $n$
+	
+	\qquad \textbf{for} $j := 1$ \textbf{to} $n$
+	
+	\qquad\qquad $t := t + i + j$
+	
+	The statement $t := t + i + j$ is executed here $n^2$ times, so the number of operations is $O(n^2)$.
+	
+	\item Give a big-$O$ estimate for the number of operations, where an operation is a comparison or a multiplication, used in this segment of an algorithm (ignoring comparisons uses to test the conditions in the \textbf{for} loops, where $a_1, a_2, \ldots, a_n$ are positive real numbers).
+	
+	$m := 0$
+	
+	\textbf{for} $i := 1$ \textbf{to} $n$
+	
+	\qquad \textbf{for} $j := i + 1$ \textbf{to} $n$
+	
+	\qquad\qquad $m := \text{max}(a_1a_j, m)$
+	
+	The nested loop indicates that the number of operations is $O(n^2)$.
+	
+	\item Give a big-$O$ estimate for the number of operations, where an operation is an addition or a multiplication, used in this segment of an algorithm (ignoring comparisons used ot test the conditions in the \textbf{while} loop).
+	
+	$i := 1$
+	
+	$t := 0$
+	
+	\textbf{while} $i \leq n$
+	
+	\qquad $t := t + i$
+	
+	\qquad $i := 2i$
+	
+	With $i$ doubled at every iteration starting at 1, and $n$ used as an upper bound for $i$, this \textbf{while} loop looks to be working on the order of $O(\log_2 n)$ executions.
+	
+	\item Suppose that an element is known to be among the first four elements in a list of 32 elements. Would a linear search or a binary search locate this element more rapidly?
+	
+	The linear search would find this element after at most 9 comparisons (4 to determine that we have not yet finished with the \textbf{while} loop, 4 more to determine if we have located the desired element yet, and 1 to set the value of $location$). Binary search will take $2 \log 32 + 2 - 2 \cdot 5 + 2 = 12$ comparisons. Thus, the linear search will be faster, in terms of comparisons.
+	
+	\item Give a big-$O$ estimate for the number of comparisons used by the algorithm that determines the number of 1s in a bit string by examining each bit of the string to determine whether it is a 1 bit.
+	
+	Since the algorithm simply scans one bit at a time it is clearly $O(n)$ with an $n$-length string of bits.
+	
+	\item \begin{enumerate}[label=\textbf{\alph*)}]
+		\item Suppose we have $n$ subsets $S_1, S_2, \ldots, S_n$ of the set $\{1, 2, \ldots, n\}$. Express a brute-force algorithm that determines whether there is a disjoint pair of these subsets. [\emph{Hint:} The algorithm should loop through the subsets; for each subset $S_i$, it should then loop through all other subsets; and for each of these other subsets $S_j$, it should loop through all elements $k$ in $S_i$ to determine whether $k$ also belongs to $S_j$.]
+		
+		\textbf{procedure} \emph{disjoint pair}($S_1, S_2, \ldots, S_n$ : subsets of $\{1, 2, \ldots, n\}$)
+		
+		$answer :=$ \textbf{false}
+		
+		\textbf{for} $i := 1$ \textbf{to} $n$
+		
+		\qquad \textbf{for} $j := i + 1$ \textbf{to} $n$
+		
+		\qquad\qquad $disjoint :=$ \textbf{true}
+		
+		\qquad\qquad \textbf{for} $k := 1$ \textbf{to} $n$
+		
+		\qquad\qquad\qquad \textbf{if} $k \in S_i$ and $k \in S_j$ \textbf{then} $disjoint :=$ \textbf{false}
+		
+		\qquad\qquad \textbf{if} $disjoint$ \textbf{then} $answer :=$ \textbf{true}
+		
+		\textbf{return} $answer$
+		
+		\item Give a big-$O$ estimate for the number of times the algorithm needs to determine whether an integer is in one of the subsets.
+		
+		The three nested loops imply that the elementhood test needs to be applied $O(n^3)$ times.
+	\end{enumerate}
+
+	\item The conventional algorithm for evaluating a polynomial $a_nx^n + a_{n - 1}x^{n - 1} + \cdots + a_1x + a_0$ at $x = c$ can be expressed in pseudocode by
+	
+	\textbf{procedure} \emph{polynomial}($c, a_0, a_1, \ldots, a_n$ : real numbers)
+	
+	$power := 1$
+	
+	$y := a_0$
+	
+	\textbf{for} $i := 1$ \textbf{to} $n$
+	
+	\qquad $power := power * c$
+	
+	\qquad $y := y + a_i * power$
+	
+	\textbf{return} $y$ $\{ y = a_nc^n + a_{n - 1}c^{n - 1} + \cdots + a_1c + a_0 \}$
+	
+	where the final value of $y$ is the value of the polynomial at $x = c$.
+	
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item Evaluate $3x^2 + x + 1$ at $x = 2$ by working through each step of the algorithm showing the values assigned at each assignment step.
+		
+		Here we have $n = 2$, $a_0 = 1$, $a_1 = 1$, $a_2 = 3$, and $c = 2$. Initially, we set $power$ equal to 1 and $y$ equal to 1. The first time through the \textbf{for} loop (with $i = 1$), $power$ becomes 2 and so $y$ becomes $1 + 1 \cdot 2 = 3$. The second and final time through the loop, $power$ becomes $2 \cdot 2 = 4$ and $y$ becomes $3 + 3 \cdot 4 = 15$. Thus the value of the polynomial at $x = 2$ is 15.
+		
+		\item Exactly how many multiplications and additions are used to evaluate a polynomial of degree $n$ at $x = c$? (Do not count additions used to increment the loop variable.)
+		
+		Each pass through the loop requires two multiplications and one addition. Therefore there are a total of $2n$ multiplications and $n$ additions in all.
+	\end{enumerate}
+
+	\item What is the largest $n$ for which one can solve within one second a problem using an algorithm that requires $f(n)$ bit operations, where each bit operation is carried out in $10^{-9}$ seconds, with these functions $f(n)$?
+	
+	Since each bit operation requires $10^{-9}$ seconds, we want to know for what value of $n$ there will be at most $10^9$ bit operations required. Thus we need to set the expression equal to $10^9$, solve for $n$, and round down if necessary.
+	
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item $\log n$
+		
+		Solving $\log_2 n = 10^9$, we get $n = 2^{10^9}$. By taking $\log_{10}$ of both sides, we find that this number is approximately equal to $10^{300,000,000}$.
+		
+		\item $n$
+		
+		Clearly, $n = 10^9$.
+		
+		\item $n \log n$
+		
+		Solving $n \log n = 10^9$ is not trivial. There is no good formula for solving such \textbf{transcendental} equations. An algorithm that works well with a calculator is to rewrite the equation as $n = 10^9 / \log n$, enter a random starting value, say $n = 2$, and repeatedly calculate a new value of $n$. After a number of iterations in this way, the numbers stabilize at approximately $39,620,077$, so that is the answer.
+		
+		\item $n^2$
+		
+		Solving $n^2 = 10^9$ gives $n = 10^{4.5}$, which is $31,622$ when rounding down.
+		
+		\item $2^n$
+		
+		Solving $2^n = 10^9$ gives $n = \log(10^9) \approx 29.9$. Rounding down gives the answer, 29.
+		
+		\item $n!$
+		
+		The quickest way to find the largest value of $n$ such that $n! \leq 10^9$ is simply to try a few values of $n$. We find that $12! \approx 4.8 \times 10^8$ while $13! \approx 6.2 \times 10^9$, so the answer is 12.
+	\end{enumerate}
+
+	\item How much time does an algorithm using $2^{50}$ operations need if each operation takes these amounts of time?
+	
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item $10^{-6}$ s
+		
+		$2^{50} \times 10^{-6} = 1,125,899,907 \text{ seconds} \approx 36 \text{ years}$
+		
+		\item $10^{-9}$ s
+		
+		$2^{50} \times 10^{-9} = 1,125,899.907 \text{ seconds } \approx 13 \text{ days}$
+		
+		\item $10^{-12}$ s
+		
+		$2^{50} \times 10^{-12} = 1,125.899907 \text{ seconds } \approx 19 \text{ minutes}$
+	\end{enumerate}
+\end{enumerate}
+\end{document}	

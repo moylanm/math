@@ -1,0 +1,208 @@
+\documentclass[11pt]{article}
+
+\usepackage{color, enumitem, graphicx, amsmath, amsthm, amssymb}
+\usepackage[margin=.5in]{geometry}
+\usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
+
+\usepackage[english]{babel} % English language/hyphenation
+
+\usepackage{sectsty} % Allows customizing section commands
+\allsectionsfont{\normalfont\scshape} % Make all sections centered, the default font and small caps
+
+\usepackage{fancyhdr} % Custom headers and footers
+\pagestyle{fancyplain} % Makes all pages in the document conform to the custom headers and footers
+\fancyhead{} % No page header - if you want one, create it in the same way as the footers below
+\fancyfoot[L]{} % Empty left footer
+\fancyfoot[C]{} % Empty center footer
+\fancyfoot[R]{\thepage} % Page numbering for right footer
+\renewcommand{\headrulewidth}{0pt} % Remove header underlines
+\renewcommand{\footrulewidth}{0pt} % Remove footer underlines
+\setlength{\headheight}{13.6pt} % Customize the height of the header
+
+\setlength\parindent{2em}
+
+\graphicspath{ {./} }
+
+\renewcommand\qedsymbol{$\blacksquare$}
+
+%-------------------------------------------------------------------------------
+%	TITLE SECTION
+%-------------------------------------------------------------------------------
+
+%\newcommand{\horrule}[1]{\rule{\linewidth}{#1}} % Create horizontal rule command with 1 argument of height
+
+\title{	
+	\normalfont \normalsize 
+	\textsc{Discrete Mathematics} \\
+	%\horrule{0.5pt} \\[0.4cm] % Thin top horizontal rule
+	\huge Counting \\
+	%\horrule{2pt} \\[0.5cm] % Thick bottom horizontal rule
+}
+
+\author{Myles Moylan} % Your name
+
+\date{} % Today's date or a custom date
+
+
+%-------------------------------------------------------------------------------
+%	WORK SECTION
+%-------------------------------------------------------------------------------
+
+\begin{document}
+	
+\maketitle
+
+\section*{\textbf{6.1 The Basics of Counting}}
+\begin{enumerate}[label=\textbf{\arabic*.}]
+	\item There are 18 mathematics majors and 325 computer science majors at a college.
+	
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item In how many ways can two representatives be picked so that one is a mathematics major and the other is a computer science major?
+		
+		By the product rule, $18 \cdot 325 = 5850$ way to pick the two representatives.
+		
+		\item In how many ways can one representative be picked who is either a mathematics major or a computer science major.
+		
+		By the sum rule, $18 + 325 = 343$ ways to pick the representative.
+	\end{enumerate}
+
+	\item An office building contains 27 floors and had 37 offices on each floor. How many offices are in the building?
+	
+	$27 \cdot 37 = 999$ offices in the building.
+	
+	\item A multiple-choice test contains 10 questions. There are four possible answers for each question.
+	
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item In how many ways can a student answer the questions on the test if the student answers every question?
+		
+		$10 \cdot 4 = 40$ ways to answer the questions on the test.
+		
+		\item In how many ways can a student answer the questions on the test if the student can leave answers blank?
+		
+		$10 \cdot (4 + 1) = 50$ ways to answer the questions if leaving blank answers is an option.
+	\end{enumerate}
+
+	\item A particular brand of shirt comes in 12 colors, has a male and a female version, and comes in three sizes for each sex. How many different types of this shirt are made?
+	
+	$(3 \cdot 12) + (3 \cdot 12) = 72$ different types of shirt.
+	
+	\item Six different airlines fly from New York to Denver and seven fly from Denver to San Francisco. How may different pairs of airlines can you choose on which to book a trip from New York to San Francisco via Denver, when you pick an airline for the flight to Denver and an airline for the continuation flight to San Francisco?
+	
+	$6 \cdot 7 = 42$ differently possible flight plans.
+	
+	\item There are four major auto routes from Boston to Detroit and six from Detroit to Las Angeles. How many major auto routes are there from Boston to Los Angeles via Detroit?
+	
+	$4 \cdot 6 = 24$ major auto routes from Boston To LA via Detroit.
+	
+	\item How many different three-letter initials can people have?
+	
+	$26 \cdot 26 \cdot 26 = 26^3 = 17576$ possible three-letter initials.
+	
+	\item How many different three-letter initials with none of the letters repeated can people have?
+	
+	$26 \cdot 25 \cdot 24 = 15600$ different possible three-letter initials without repeating letters.
+	
+	\item How many different three-letter initials are there that begin with an A?
+	
+	$1 \cdot 26 \cdot 26 = 26^2 = 676$ possible three-letter initials beginning with A.
+	
+	\item How many bit strings are there of length eight?
+	
+	$2 \cdot 2 \cdot 2 \cdot 2 \cdot 2 \cdot 2 \cdot 2 \cdot 2 = 2^8 = 256$ possible bit strings of length eight.
+	
+	\item How many bit strings of length ten both begin and end with a 1?
+	
+	$1 \cdot 2 \cdot 2 \cdot 2 \cdot 2 \cdot 2 \cdot 2 \cdot 2 \cdot 2 \cdot 1 = 2^8 = 256$ possible strings of length ten that begin and end with a 1.
+	
+	\item How many bit strings are there of length six or less, not counting the empty string?
+	
+	$2^6 + 2^5 + 2^4 + 2^3 + 2^2 + 2^1 = 126$ different bit strings of length six or less, not counting the empty string.
+	
+	\item How many bit strings of length not exceeding $n$, where $n$ is a positive integer, consist entirely of 1s, not counting the empty string?
+	
+	Since the string is given to consist entirely of 1's, there is nothing to choose except the length. Since there are $n + 1$ possible lengths not exceeding $n$ (if we include the empty string, of length 0), the answer is simply $n + 1$. Note that the empty string consists---vacuously---entirely of 1's.
+	
+	\item How many bit strings of length $n$, where $n$ is a positive integers, start and end with 1s?
+	
+	$2^{n - 2}$ different bit strings of length $n$ which start and end with 1s.
+	
+	\item How many strings are there of lowercase letters of length four or less, not counting the empty string?
+	
+	By the sum rule we can count the number of strings of length 4 or less by counting the number of strings of length $i$, for $0 \leq i \leq 4$, and then adding the results.
+	
+	$$\sum_{i=0}^{4} 26^i = 1 + 26 + 676 + 17576 + 456976 = 475255$$
+	
+	\item How many strings are there of four lowercase letters that have the letter $x$ in them?
+	
+	Here, for example, we use the product rule to count the number of possible strings: $26 \cdot 26 \cdot 26 \cdot 1$, where the 1 is the location of the $x$. And since the $x$ can be in any of four places we multiply the product by 4.
+	
+	$26^3 \cdot 4 = 70304$ possible strings of four lowercase letters that have the letter $x$ in them.
+	
+	\item How many strings of five ASCII characters contain the character @ ("at" sign) at least once? [\emph{Note:} There are 128 different ASCII characters.]
+	
+	An easy way to count this is to find the total number of ASCII strings of length five and then subtract off the number of such strings that do not contain the @ character. Since there are 128 characters to choose from in each location in the string, the answer is $128^5 - 127^5 = 34359738368 - 33038369407 = 1321368961$.
+	
+	\item How many 6-element RNA sequences
+	
+	Recall that an RNA sequence is a sequence of letters, each of which is one of A, C, G, or U. Thus by the product rule there are $4^6$ RNA sequences of length six if we impose no restrictions.
+	
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item do not contain U?
+		
+		If U is excluded, then each position can be chosen from among three letters, rather than four. Therefore the answer is $3^6 = 729$.
+		
+		\item end with GU?
+		
+		If the last two letters are specified, then we get to choose only four letters, rather than six, so the answer is $4^4 = 256$
+		
+		\item start with C?
+		
+		If the first letter is specified, then we get to choose only five letters, rather than six, so the answer is $4^5 = 1024$.
+		
+		\item contain only A or U?
+		
+		If only A or U is allowed in each position, then there are just two choices at each of six stages, so the answer is $2^6 = 64$.
+	\end{enumerate}
+
+	\item How many positive integers between 50 and 100
+	
+	Because neither 100 nor 50 is divisible by either 7 or 11, whether the ranges are meant to be inclusive or exclusive of their endpoints is moot.
+	
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item are divisible by 7? Which integers are these?
+		
+		There are $\lfloor 100 / 7 \rfloor = 14$ integers less than 100 that are divisible by 7, and $\lfloor 50 / 7 \rfloor = 7$ of them are less than 50 as well. This leaves $14 - 7 = 7$ numbers between 50 and 100 that are divisible by 7. They are 56, 63, 70, 77, 84, 91, and 98.
+		
+		\item are divisible by 11? Which integers are these?
+		
+		There are $\lfloor 100 / 11 \rfloor = 9$ integers less than 100 that are divisible by 11, and $\lfloor 50 / 11 \rfloor = 4$ of them are less than 50 as well. This leaves $9 - 4 = 5$ numbers between 50 and 100 that are divisible by 11. They are 55, 66, 77, 88, and 99.
+		
+		\item are divisible by both 7 and 11? Which integers are these?
+		
+		A number is divisible by both 7 and 11 if and only if it is divisible by their least common multiple, which is 77. There is only one such number between 50 and 100, namely 77.
+	\end{enumerate}
+
+	\item How many strings of three decimal digits
+	
+	This problem involves 1000 possible strings, since there is a choice of 10 digits for each of the three positions in the string.
+	
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item do not contain the same digit three times?
+		
+		This is most easily done by subtracting from the total number of strings the number of strings that violate the condition. There are 10 strings that consist of the same digit three times (000, 111, $\ldots$, 999). Therefore there are $1000 - 10 = 990$ strings that do not.
+		
+		\item begin with an odd digit?
+		
+		If we must begin our string with an odd digit, then we have only 5 choices for this digit. We still have 10 choices for the remaining digits. Therefore there are $5 \cdot 10 \cdot 10 = 500$ such strings.
+		
+		\item have exactly two digits that are 4s?
+		
+		Here we need to choose the position of the digits that is not a 4 (3 ways) and choose that digit (9 ways). Therefore there are $3 \cdot 9 = 27$ such strings.
+	\end{enumerate}
+\end{enumerate}
+
+\section*{\textbf{6.2 The Pigeonhole Principle}}
+\begin{enumerate}[label=\textbf{\arabic*.}]
+	\item 
+\end{enumerate}
+\end{document}

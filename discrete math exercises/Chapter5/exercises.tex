@@ -1,0 +1,647 @@
+\documentclass[11pt]{article}
+
+\usepackage{color, enumitem, graphicx, amsmath, amsthm, amssymb}
+\usepackage[margin=.5in]{geometry}
+\usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
+
+\usepackage[english]{babel} % English language/hyphenation
+
+\usepackage{sectsty} % Allows customizing section commands
+\allsectionsfont{\normalfont\scshape} % Make all sections centered, the default font and small caps
+
+\usepackage{fancyhdr} % Custom headers and footers
+\pagestyle{fancyplain} % Makes all pages in the document conform to the custom headers and footers
+\fancyhead{} % No page header - if you want one, create it in the same way as the footers below
+\fancyfoot[L]{} % Empty left footer
+\fancyfoot[C]{} % Empty center footer
+\fancyfoot[R]{\thepage} % Page numbering for right footer
+\renewcommand{\headrulewidth}{0pt} % Remove header underlines
+\renewcommand{\footrulewidth}{0pt} % Remove footer underlines
+\setlength{\headheight}{13.6pt} % Customize the height of the header
+
+\setlength\parindent{2em}
+
+\graphicspath{ {./} }
+
+\renewcommand\qedsymbol{$\blacksquare$}
+
+%-------------------------------------------------------------------------------
+%	TITLE SECTION
+%-------------------------------------------------------------------------------
+
+%\newcommand{\horrule}[1]{\rule{\linewidth}{#1}} % Create horizontal rule command with 1 argument of height
+
+\title{	
+	\normalfont \normalsize 
+	\textsc{Discrete Mathematics} \\
+	%\horrule{0.5pt} \\[0.4cm] % Thin top horizontal rule
+	\huge Induction and Recursion \\
+	%\horrule{2pt} \\[0.5cm] % Thick bottom horizontal rule
+}
+
+\author{Myles Moylan} % Your name
+
+\date{} % Today's date or a custom date
+
+
+%-------------------------------------------------------------------------------
+%	WORK SECTION
+%-------------------------------------------------------------------------------
+
+\begin{document}
+	
+\maketitle
+
+\section*{\textbf{5.1 Mathematical Induction}}
+\begin{enumerate}[label=\textbf{\arabic*.}]
+	\item There are infinitely many stations on a train route. Suppose that the train stops at the first station and suppose that if the train stops at a station, then it stops at the next station. Show that the train stops at all stations.
+	
+	Let $P(n)$ be the statement that the train stops at station $n$. We want to prove that $P(n)$ is true for all positive integers $n$. For the basis step, we are told that $P(1)$ is true. For the inductive step, we are told that $P(k)$ implies $P(k + 1)$ for each $k \geq 1$. Therefore by the principle of mathematical induction, $P(n)$ is true for all positive integers $n$.
+	
+	\item Let $P(n)$ be the statement that $1^2 + 2^2 + \cdots + n^2 = n(n + 1)(2n + 1) / 6$ for the positive integer $n$.
+	
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item What is the statement $P(1)$?
+		
+		$P(1) = 1^2 = \frac{1(1 + 1)(2 \cdot 1 + 1)}{6} = \frac{1 \cdot 2 \cdot 3}{6}$
+		
+		\item Show that $P(1)$ is true, completing the basis step of a proof that $P(n)$ is true for all positive integers $n$.
+		
+		$P(1) = 1^2 = 1 = \frac{1 \cdot 2 \cdot 3}{6}$
+		
+		\item What is the inductive hypothesis of a proof that $P(n)$ is true for all positive integers $n$?
+		
+		The inductive hypothesis is the statement: $$1^2 + 2^2 + \cdots + k^2 = \frac{k(k + 1)(2k + 1)}{6}.$$
+		
+		\item What do you need to prove in the inductive step of a proof that $P(n)$ is true for all positive integers $n$?
+		
+		For the inductive step, we want to show for each $k \geq 1$ that $P(k)$ implies $P(k + 1)$. We want to show that assuming the inductive hypothesis we can show: $$1^2 + 2^2 + \cdots + k^2 + (k + 1)^2 = \frac{(k + 1)(k + 2)(2k + 3)}{6}.$$
+		
+		\item Complete the inductive step of a proof that $P(n)$ is true for all positive integers $n$, identifying where you use the inductive hypothesis.
+		
+		The left-hand side of the equation in part (d) equals, by the inductive hypothesis, $k(k + 1)(k + 2)(2k + 3) / 6 + (k + 1)^2$. We need only do a bit of algebraic manipulation to get this expression into the desired form: factor out $(k + 1) / 6$ and then factor the rest:
+		
+		$$(1^2 + 2^2 + \cdots + k^2) + (k + 1)^2 = \frac{k(k + 1)(2k + 1)}{6} + (k + 1)^2 \text{ (by the inductive hypothesis) }$$
+		
+		$$\hspace{3.9cm} = \frac{k + 1}{6}(k(2k + 1) + 6(k + 1)) = \frac{k + 1}{6}(2k^2 + 2k + 6)$$
+		
+		$$\hspace{3.3cm} = \frac{k + 1}{6}(k + 2)(2k + 3) = \frac{(k + 1)(k + 2)(2k + 3)}{6}.$$
+		
+		\item Explain why these steps show that this formula is true whenever $n$ is a positive integer.
+		
+		We have completed both the basis step and the inductive step, so by the principle of mathematical induction, the statement is true for every positive integer $n$.
+	\end{enumerate}
+
+	\pagebreak
+	\item Prove that $1^2 + 3^2 + 5^2 + \cdots + (2n + 1)^2 = (n + 1)(2n + 1)(2n + 3) / 3$ whenever $n$ is a nonnegative integer.
+	
+	The basis step, $n = 0$, is true, since $1^2 = 1 \cdot 1 \cdot 3 / 3$. For the inductive step assume the inductive hypothesis that: $$1^2 + 3^2 + 5^2 + \cdots + (2k + 1)^2 = \frac{(k + 1)(2k + 1)(2k + 3)}{3}.$$
+	
+	We want to show that: $$1^2 + 3^2 + 5^2 + \cdots + (2k + 1)^2 + (2k + 3)^2 = \frac{(k + 2)(2k + 3)(2k + 5)}{3}$$
+	
+	(the right-hand side is the same formula with $k + 1$ plugged in for $n$). Now the left-hand side equals, by the inductive hypothesis, $(k + 1)(2k + 1)(2k + 3) / 3 + (2k + 3)^2$. We need then do a bit of algebraic manipulation to get this expression into the desired form: factor out $(2k + 3) / 3$ and then factor out the rest:
+	
+	$$(1^2 + 3^2 + 5^2 + \cdots + (2k + 1)^2) + (2k + 3)^2 = \frac{(k + 1)(2k + 1)(2k + 3)}{3} + (2k + 3)^2 \text{ (by the inductive hypothesis) }$$
+	
+	$$\hspace{5.9cm} = \frac{2k + 3}{3}((k + 1)(2k + 1) + 3(2k + 3)) = \frac{2k + 3}{3}(2k^2 + 9k + 10)$$
+	
+	$$\hspace{4.2cm} = \frac{2k + 3}{3}((k + 2)(2k + 5)) = \frac{(k + 2)(2k + 3)(2k + 5)}{3}.$$
+	
+	\item Prove that $3 + 3 \cdot 5 + 3 \cdot 5^2 + \cdots + 3 \cdot 5^n = 3(5^{n + 1} - 1) / 4$ whenever $n$ is a nonnegative integer.
+	
+	Let $P(n)$ be the proposition $3 + 3 \cdot 5 + 3 \cdot 5^2 + \cdots + 3 \cdot 5^n = 3(5^{n + 1} - 1) / 4$. To prove that this is true for all nonnegative integers $n$, we proceed by mathematical induction. First we verify $P(0)$, namely that $3 = 3(5 - 1) / 4$, which is true. Next we assume that $P(k)$ is true and try to derive $P(k + 1)$. Now $P(k + 1)$ is the formula: $$3 + 3 \cdot 5 + 3 \cdot 5^2 + \cdots + 3 \cdot 5^k + 3 \cdot 5^{k + 1} = \frac{3(5^{k + 2} - 1)}{4}.$$
+	
+	All but the last term of the left-hand side of this equation is exactly the left-hand side of $P(k)$, so by the inductive hypothesis, it equals $3(5^{k + 1} - 1) / 4$. Thus we have:
+	
+	$$\hspace{-3cm} 3 + 3 \cdot 5 + 3 \cdot 5^2 + \cdots + 3 \cdot 5^k + 3 \cdot 5^{k + 1} = \frac{3(5^{k + 1} - 1)}{4} + 3 \cdot 5^{k + 1}$$
+	
+	$$\hspace{5.4cm} = 5^{k + 1}(\frac{3}{4} + 3) - \frac{3}{4} = 5^{k + 1} \cdot \frac{15}{4} - \frac{3}{4}$$
+	
+	$$\hspace{4.6cm} = 5^{k + 2} \cdot \frac{3}{4} - \frac{3}{4} = \frac{3(5^{k + 2} - 1)}{4}.$$
+	
+	\item \begin{enumerate}[label=\textbf{\alph*)}]
+		\item Find the formula for:
+		
+		$$\hspace{-8cm}\frac{1}{2} + \frac{1}{4} + \frac{1}{8} + \cdots + \frac{1}{2^n}$$
+		
+		by examining the values of this expression for small values of $n$.
+		
+		Compute the values of this sum for $n \leq 4$. For $n = 1$ the sum is $\frac{1}{2}$. For $n = 2$ the sum is $\frac{1}{2} + \frac{1}{4} = \frac{3}{4}$. For $n = 3$ the sum is $\frac{1}{2} + \frac{1}{4} + \frac{1}{8} = \frac{7}{8}$. And for $n = 4$ the sum is $\frac{15}{16}$. From the pattern we can find the formula $(2^n - 1)/2^n$.
+		
+		\item Prove the formula you conjectured in part (a).
+		
+		Since we've already verified that the formula is true for the base case, let us assume it for $k$ and try to prove it for $k + 1$. We let $P(n)$ be the statement that
+		
+		$$\frac{1}{2} + \frac{1}{4} + \frac{1}{8} + \cdots + \frac{1}{2^n} = \frac{2^{k + 1} - 1}{2^{k + 1}}$$
+		
+		and try to prove that $P(n)$ is true for all $n$. We have already verified $P(1)$. We now assume the inductive hypothesis $P(k)$, which is the equation displayed above with $k$ substituted for $n$, and must derive $P(k + 1)$, which is the equation
+		
+		$$\frac{1}{2} + \frac{1}{4} + \frac{1}{8} + \cdots + \frac{1}{2^k} + \frac{1}{2^{k + 1}} = \frac{2^{k + 1} - 1}{2^{k + 1}}$$
+		
+		We can add $1 / 2^{k + 1}$ to both sides of the inductive hypothesis and see whether the algebra works out. We obtain
+		
+		$$(\frac{1}{2} + \frac{1}{4} + \frac{1}{8} + \cdots + \frac{1}{2^k}) + \frac{1}{2^{k + 1}} = \frac{2^k - 1}{2^k} + \frac{1}{2^{k + 1}} = \frac{2 \cdot 2^k - 2 \cdot 1 + 1}{2^{k + 1}} = \frac{2^{k + 1} - 1}{2^{k + 1}}$$
+		
+		as desired.
+	\end{enumerate}
+
+	\item Prove that $1^2 - 2^2 + 3^2 - \cdots + (-1)^{n - 1}n^2 = (-1)^{n - 1}n(n + 1) / 2$ whenever $n$ is a positive integer.
+	
+	The base case of the statement $P(n)$ : $1^2 - 2^2 + 3^2 - \cdots + (-1)^{n - 1}n^2 = (-1)^{n - 1}n(n + 1) / 2$, when $n = 1$, is $1^2 = (-1)^0 \cdot 1 \cdot 2 / 2$, which is true. Assume the inductive hypothesis $P(k)$, and try to derive $P(k + 1)$:
+	
+	$$1^2 - 2^2 + 3^2 - \cdots + (-1)^{k - 1}k^2 + (-1)^k(k + 1)^2 = (-1)^k\frac{(k + 1)(k + 2)}{2}.$$
+	
+	Starting with the left-hand side of $P(k + 1)$, we have
+
+	\vspace{-0.8em}
+
+	$$(1^2 - 2^2 + 3^2 - \cdots + (-1)^{k - 1}k^2) + (-1)^k(k + 1)^2 = (-1)^{k - 1}\frac{k(k + 1)}{2} + (-1)^k(k + 1)^2 \text{ (by the inductive hypothesis) }$$
+	
+	$$\hspace{1.9cm} = (-1)^k(k + 1)((-k / 2) + k + 1)$$
+	
+	$$\hspace{4.3cm} = (-1)^k(k + 1)(\frac{k}{2} + 1) = (-1)^k\frac{(k + 1)(k + 2)}{2},$$
+	
+	the right-hand side of $P(k + 1)$.
+	
+	\item Prove that for every positive integer $n$, $1 \cdot 2 + 2 \cdot 3 + \cdots + n(n + 1) = n(n + 1)(n + 2) / 3$.
+	
+	The base case of the statement $P(n)$ : $1 \cdot 2 + 2 \cdot 3 + \cdots + n(n + 1) = n(n + 1)(n + 2) / 3$, when $n = 1$, is $1 \cdot 2 = 1 \cdot 2 \cdot 3 / 3$, which is true. We assume the inductive hypothesis $P(k)$, and try to derive $P(k + 1)$:
+	
+	$$1 \cdot 2 + 2 \cdot 3 + \cdots + k(k + 1) + (k + 1)(k + 2) = \frac{(k + 1)(k + 2)(k + 3)}{3}$$
+	
+	Starting with the left-hand side of $P(k + 1)$, we have
+	
+	$$(1 \cdot 2 + 2 \cdot 3 + \cdots + k(k + 1)) + (k + 1)(k + 2) = \frac{k(k + 1)(k + 2)}{3} + (k + 1)(k + 2) \text{ (by the inductive hypothesis) }$$
+	
+	$$\hspace{4.6cm} = (k + 1)(k + 2)(\frac{k}{3} + 1) = \frac{(k + 1)(k + 2)(k + 3)}{3},$$
+	
+	the right-hand side of $P(k + 1)$.
+\end{enumerate}
+
+\section*{\textbf{5.2 Strong Induction and Well-Ordering}}
+\begin{enumerate}[label=\textbf{\arabic*.}]
+	\item Use strong induction to show that if you can run one mile or two miles, and if you can always run two more miles once you run a specified number of miles, then you can run any number of miles.
+	
+	Let $P(n)$ be the statement that you can run $n$ miles. We want to prove that $P(n)$ is true for all positive integers $n$. For the basis step we note that the given conditions tell us that $P(1)$ and $P(2)$ are true. For the inductive step, fix $k \geq 2$ and assume that $P(j)$ is true for all $j \leq k$. We want to show that $P(k + 1)$ is true. Since $k \geq 2$, $k - 1$ is a positive integer less than or equal to $k$, so by the inductive hypothesis, we know that $P(k - 1)$ is true. That is, we know that you can run $k - 1$ miles. We were told that "you can always run two more miles once you have run a specified number of miles,: so we know that you can run $(k - 1) + 2 = k + 1$ miles. This is $P(k + 1)$.
+	
+	\item Let $P(n)$ be the statement that a postage of $n$ cents can be formed using just 3-cent stamps and 5-cent stamps. The parts of this exercise outline a strong induction proof that $P(n)$ is true for all integers $n \geq 8$.
+	
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item Show that the statements $P(8)$, $P(9)$, and $P(10)$ are true, completing the basis step of a proof by strong induction that $P(n)$ is true for all integers $n \geq 8$.
+		
+		$P(8)$ is true, because we can form 8 cents of postage with one 3-cent stamp and one 5-cent stamp. $P(9)$ is true, because we can form 9 cents of postage with three 3-cent stamps. $P(10)$ is true, because we can form 10 cents of postage with two 5-cent stamps.
+		
+		\item What is the inductive hypothesis of a proof by strong induction that $P(n)$ is true for all integers $n \geq 8$.
+		
+		The inductive hypothesis is the statement that using just 3-cent and 5-cent stamps we can for $j$ cents postage for all $j$ with $8 \leq j \leq k$, where we assume that $k \geq 10$.
+		
+		\item What do you need to prove in the inductive step of a proof by strong induction that $P(n)$ is true for all integers $n \geq 8$.
+		
+		In the inductive step we must show, assuming the inductive hypothesis, that we can form $k + 1$ cents postage using just 3-cent and 5-cent stamps.
+		
+		\item Complete the inductive step for $k \geq 10$.
+		
+		We want to form $k + 1$ cents of postage. Since $k \geq 10$, we know that $P(k - 2)$ is true, that is, that we can form $k - 2$ cents of postage. Put one more 3-cent stamp on the envelope, and we have formed $k + 1$ cents of postage, as desired.
+		
+		\item Explain why these steps show that $P(n)$ is true whenever $n \geq 8$.
+		
+		We have completed both the basis step and the inductive step, so by the principle of strong induction, the statement is true for every integer $n \geq 8$.
+	\end{enumerate}
+
+	\item Which amounts of money can be formed using just two-dollar bills and five-dollar bills? Prove your answer using strong induction.
+	
+	We can form the following amounts of money as indicated: $2 = 2$, $4 = 2 + 2$, $5 = 5$, $6 = 2 + 2 + 2$. By having considered all the combinations, we know that the gaps in this list (\$ 1 and \$ 3) cannot be filled. We claim that we can form all amounts of money greater than or equal to 5 dollars. Let $P(n)$ be the statement that we can form $n$ dollars using just 2-dollar and 5-dollar bills. We want to prove that $P(n)$ is true for all $n \geq 5$. We already observed that the basis step is true for $n = 5$ and 6. Assume the inductive hypothesis, that $P(j)$ is true for all $j$ with $5 \leq j \leq k$, where $k$ is a fixed integer greater than or equal to 6. We want to show that $P(k + 1)$ is true. Because $k - 1 \geq 5$, we know that $P(k - 1)$ is true, that is, that we can form $k - 1$ dollars. Add another 2-dollar bill, and we have formed $k + 1$ dollars, as desired.
+	
+	\item Use strong induction to prove that $\sqrt{2}$ is irrational. [\emph{Hint:} Let $P(n)$ be the statement that $\sqrt{2} \ne n / b$ for any positive integer $b$.]
+	
+	Following the hint, we let $P(n)$ be the statement that there is no positive integer $b$ such that $\sqrt{2} = n / b$. For the basis step, $P(1)$ is true because $\sqrt{2} > 1 \geq 1 / b$ for all positive integers $b$. For the inductive step, assume that $P(j)$ is true for all $j \leq k$, where $k$ is an arbitrary positive integer; we must prove that $P(k + 1)$ is true. So assume the contrary, that $\sqrt{2} = (k + 1) / b$ for some positive integer $b$. Squaring both sides and clearing fractions, we have $2b^2 = (k + 1)^2$. This tells us that $(k + 1)^2$ is even, and so $k + 1$ is even as well (the square of an odd number is odd). Therefore we can write $k + 1 = 2t$ for some positive integer $t$. Substituting, we have $2b^2 = 4t^2$, so $b^2 = 2t^2$. By the same reasoning as before, $b$ is even, so $b = 2s$ for some positive integer $s$. Then we have $\sqrt{2} = (k + 1) / b = (2t) / (2s) = t / s$. But $t \leq k$, so this contradicts the inductive hypothesis, and our proof of the inductive step is complete.
+	
+	\item Consider this variation of the game of Nim. The game begins with $n$ matches. Two players take turns removing matches, one, two, or three at a time. The player removing the last match loses. Use strong induction to show that if each player plays the best strategy possible, the first player wins if $n = 4j$, $4j + 2$, or $4j + 3$ for some nonnegative integer $j$ and the second player wins in the remaining case when $n = 4j + 1$ for some nonnegative integer $j$.
+	
+	There are four base cases. If $n = 1 = 4 \cdot 0 + 1$, then clearly the first player is doomed, so the second player wins. If there are two, three, or four matches ($n = 4 \cdot 0 + 2$, $n = 4 \cdot 0 + 3$, or $n = 4 \cdot 1$, then the first player can win by removing all but one match. Now assume the strong inductive hypothesis, that in games with $k$ or fewer matches, the first player can win if $k \equiv 0, 2, \text{ or } 3 \pmod{4}$ and the second player can win if $k \equiv 1 \pmod{4}$. Suppose we have a game with $k + 1$ matches, with $k \geq 4$. If $k + 1 \equiv 0 \pmod{4}$, then the first player can remove three matches, leaving $k - 2$ matches for the other player. Since $k - 2 \equiv 1 \pmod{4}$, by the inductive hypothesis, this is a game that the second player at that point (who is the first player in our game) can win. Similarly, if $k + 1 \equiv 2 \pmod{4}$, then the first player can remove one match, leaving $k$ matches for the other player. Since $k \equiv 1 \pmod{4}$, by the inductive hypothesis, this is a game that the second player at that point (who is the first player in our game) can win. And if $k + 1 \equiv 3 \pmod{4}$, then the first player can remove two matches, leaving $k - 1$ matches for the other player. Since $k - 1 \equiv 1 \pmod{4}$, by the inductive hypothesis, this is again a game that the second player at that point (who is the first player in our game) can win. Finally, if $k + 1 \equiv 1 \pmod{4}$, then the first player must leave $k$, $k - 1$, or $k - 2$ matches for the other player. Since $k \equiv 0 \pmod{4}$, $k - 1 \equiv 3 \pmod{4}$, and $k - 2 \equiv 2 \pmod{4}$, by the inductive hypothesis, this is a game that the first player at that point (who is the second player in our game) can win. Thus the first player in our game is doomed, and the proof is complete.
+	
+	\item Use strong induction to show that if a simple polygon with at least four sides is triangulated, then at least two of the triangles in the triangulation have two sides that border the exterior of the polygon.
+	
+	Let $P(n)$ be the statement that if a simple polygon with $n$ sides is triangulated, then at least two of the triangles in the triangulation have two sides that border the exterior of the polygon. We will prove $\forall n \geq 4P(n)$. The statement is clearly true for $n = 4$, because there is only one diagonal, leaving two triangles with the desired property. Fix $k \geq 4$ ans assume that $P(j)$ is true for all $j$ with $4 \leq j \leq k$. Consider a polygon with $k + 1$ sides, and some triangulation of it. Pick one of the diagonals in this triangulation. First suppose that this diagonal divides the polygon into one triangle and one polygon with $k$ sides. Then the triangle has two sides that border the exterior. Furthermore, the $k$-gon has, by the inductive hypothesis, two triangles that have two sides that border the exterior of that $k$-gon, and only one of these triangles can fail to be a triangle that has two sides that border the exterior of the original polygon. The only other case is that this diagonal divides the polygon into two polygons with $j$ sides and $k + 3 - j$ sides for some $j$ with $4 \leq j \leq k - 1$. By the inductive hypothesis, each of these two polygons has two triangles that have two sides that border their exterior, and in each case only one of these triangles can faile to be a triangle that has two sides that border the exterior of the original polygon.
+	
+	\item Let $E(n)$ be the statement that in a triangulation of a simple polygon with $n$ sides, at least one of the triangles in the triangulation has two sides bordering the exterior of the polygon.
+	
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item Explain where a proof using strong induction that $E(n)$ is true for all integers $n \geq 4$ runs into difficulties.
+		
+		When we try to prove the inductive step and find a triangle in each subpolygon with at least two sides bordering the exterior, it may happen in each case that the triangle we are guaranteed in fact borders the diagonal (which is part of the boundary of that polygon). This leaves us with no triangles guaranteed to touch the boundary of the \emph{original} polygon.
+		
+		\item Show that we can prove that $E(n)$ is true for all integers $n \geq 4$ by proving by strong induction the stronger statement $T(n)$ for all integers $n \geq 4$, which states that in every triangulation of a simple polygon, at least two of the triangles in the triangulation have two sides bordering the exterior of the polygon.
+		
+		We proved $\forall n \geq 4T(n)$ in Exercise 6. Since we can always find two triangles that satisfy the property, perforce, at least one triangle does. Thus we have proved $\forall n \geq 4E(n)$.
+	\end{enumerate}
+
+	\item Suppose that $P(n)$ is a propositional function. Determine for which positive integers $n$ the statement $P(n)$ must be true, and justify your answer, if
+	
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item $P(1)$ is true; for all positive integers $n$, if $P(n)$ is true, then $P(n + 2)$ is true.
+		
+		The inductive step here allows us to conclude that $P(3)$, $P(5)$, $\ldots$ are all true, but we can conclude nothing about $P(2)$, $P(4)$, $\ldots$.
+		
+		\item $P(1)$ and $P(2)$ are true; for all positive integers $n$, if $P(n)$ and $P(n + 1)$ are true, then $P(n + 2)$ is true.
+		
+		We can conclude that $P(n)$ is true for all positive integers $n$, using strong induction.
+		
+		\item $P(1)$ is true; for all positive integers $n$, if $P(n)$ is true, then $P(2n)$ is true.
+		
+		The inductive step here allows us to conclude that $P(2)$, $P(4)$, $P(8)$, $P(16)$, $\ldots$ are all true, but we can conclude nothing about $P(n)$ when $n$ is not a power of 2.
+		
+		\item $P(1)$ is true; for all positive integers $n$, if $P(n)$ is true, then $P(n + 1)$ is true.
+		
+		This is mathematical induction; we can conclude that $P(n)$ is true for all positive integers $n$.
+	\end{enumerate}
+
+	\item Show that if the statement $P(n)$ is true for infinitely many positive integers $n$ and $P(n + 1) \implies P(n)$ is true for all positive integers $n$, then $P(n)$ is true for all positive integers $n$
+	
+	Suppose, for a proof by contradiction, that there is some positive integer $n$ such that $P(n)$ is not true. Let $m$ be the smallest positive integer greater than $n$ for which $P(m)$ is true; we know that such an $m$ exists because $P(m)$ is true for infinitely many values of $m$, and therefore true for more than just $1, 2, \ldots, n - 1$. But we are given that $P(m) \implies P(m - 1)$, so $P(m - 1)$ is true. Thus $m - 1$ cannot be greater than $n$, so $m - 1 = n$ and $P(n)$ is in fact true. This contradiction shows that $P(n)$ is true for all $n$.
+\end{enumerate}
+
+\section*{\textbf{5.3 Recursive Definitions and Structural Induction}}
+\begin{enumerate}[label=\textbf{\arabic*.}]
+	\item Find $f(1), f(2), f(3), \text{ and } f(4)$ if $f(n)$ is defined recursively by $f(0) = 1$ and for $n = 0, 1, 2, \ldots$
+	
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item $f(n + 1) = f(n) + 2$.
+		
+		$f(1) = f(0) + 2 = 1 + 2 = 3$ \\
+		$f(2) = f(1) + 2 = 3 + 2 = 5$ \\
+		$f(3) = f(2) + 2 = 5 + 2 = 7$ \\
+		$f(4) = f(3) + 2 = 7 + 2 = 9$
+		
+		\item $f(n + 1) = 3f(n)$.
+		
+		$f(1) = 3f(0) = 3 \cdot 1 = 3$ \\
+		$f(2) = 3f(1) = 3 \cdot 3 = 9$ \\
+		$f(3) = 3f(2) = 3 \cdot 9 = 27$ \\
+		$f(4) = 3f(3) = 3 \cdot 27 = 81$
+		
+		\item $f(n + 1) = 2^{f(n)}$.
+		
+		$f(1) = 2^{f(0)} = 2^1 = 2$ \\
+		$f(2) = 2^{f(1)} = 2^2 = 4$ \\
+		$f(3) = 2^{f(2)} = 2^4 = 16$ \\
+		$f(4) = 2^{f(3)} = 2^{16} = 65536$
+		
+		\item $f(n + 1) = f(n)^2 + f(n) + 1$.
+		
+		$f(1) = f(0)^2 + f(0) + 1 = 1^2 + 1 + 1 = 3$ \\
+		$f(2) = f(1)^2 + f(1) + 1 = 3^2 + 3 + 1 = 13$ \\
+		$f(3) = f(2)^2 + f(2) + 1 = 13^2 + 13 + 1 = 183$ \\
+		$f(4) = f(3)^2 + f(3) + 1 = 183^2 + 183 + 1 = 33673$
+	\end{enumerate}
+
+	\item Find $f(1), f(2), f(3), f(4), \text{ and } f(5)$ if $f(n)$ is defined recursively by $f(0) = 3$ and for $n = 0, 1, 2, \ldots$
+	
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item $f(n + 1) = -2f(n)$.
+		
+		$f(1) = -2f(0) = -2 \cdot 3 = -6$ \\
+		$f(2) = -2f(1) = -2 \cdot -6 = 12$ \\
+		$f(3) = -2f(2) = -2 \cdot 12 = -24$ \\
+		$f(4) = -2f(3) = -2 \cdot -24 = 48$ \\
+		$f(5) = -2f(4) = -2 \cdot 48 = -96$ 
+		
+		\item $f(n + 1) = 2f(n) + 7$.
+		
+		$f(1) = 2f(0) + 7 = 2 \cdot 3 + 7 = 13$ \\
+		$f(2) = 2f(1) + 7 = 2 \cdot 13 + 7 = 33$ \\
+		$f(3) = 2f(2) + 7 = 2 \cdot 33 + 7 = 73$ \\
+		$f(4) = 2f(3) + 7 = 2 \cdot 73 + 7 = 153$ \\
+		$f(5) = 2f(4) + 7 = 2 \cdot 153 + 7 = 313$
+		
+		\item $f(n + 1) = f(n)^2 - 2f(n) - 2$.
+		
+		$f(1) = f(0)^2 - 2f(0) - 2 = 3^2 - 2(3) - 2 = -7$ \\
+		$f(2) = f(1)^2 - 2f(1) - 2 = -7^2 - 2(-7) - 2 = -9$ \\
+		$f(3) = f(2)^2 - 2f(2) - 2 = -9^2 - 2(-9) - 2 = -27$ \\
+		$f(4) = f(3)^2 - 2f(3) - 2 = -27^2 - 2(-27) - 2 = -45$ \\
+		$f(5) = f(4)^2 - 2f(4) - 2 = -45^2 - 2(-45) - 2 = -119$
+		
+		\item $f(n + 1) = 3^{f(n) / 3}$.
+		
+		$f(1) = 3^{f(0) / 3} = 3^{3 / 3} = 3$ \\
+		$f(2) = 3^{f(1) / 3} = 3^{3 / 3} = 3$ \\
+		$f(3) = 3^{f(2) / 3} = 3^{3 / 3} = 3$ \\
+		$f(4) = 3^{f(3) / 3} = 3^{3 / 3} = 3$ \\
+		$f(5) = 3^{f(4) / 3} = 3^{3 / 3} = 3$
+	\end{enumerate}
+
+	\item Find $f(2), f(3), f(4), \text{ and } f(5)$ if $f$ is defined recursively by $f(0) = -1$, $f(1) = 2$, and for $n = 1, 2, \ldots$
+	
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item $f(n + 1) = f(n) + 3f(n - 1)$.
+		
+		$f(2) = f(1) + 3f(0) = 2 + 3(-1) = -1$ \\
+		$f(3) = f(2) + 3f(1) = -1 + 3(2) = 5$ \\
+		$f(4) = f(3) + 3f(2) = 5 + 3(-1) = 2$ \\
+		$f(5) = f(4) + 3f(3) = 2 + 3(5) = 17$
+		
+		\item $f(n + 1) = f(n)^2f(n - 1)$.
+		
+		$f(2) = f(1)^2f(0) = 2^2 \cdot (-1) = -4$ \\
+		$f(3) = f(2)^2f(1) = -4^2 \cdot 2 = 32$ \\
+		$f(4) = f(3)^2f(2) = 32^2 \cdot (-4) = -4096$ \\
+		$f(5) = f(4)^2f(3) = -4096^2 \cdot (32) = 536870912$
+		
+		\item $f(n + 1) = 3f(n)^2 - 4f(n - 1)^2$.
+		
+		$f(2) = 3f(1)^2 - 4f(0)^2 = 3 \cdot 2^2 - 4 \cdot (-1)^2 = 8$ \\
+		$f(3) = 3f(2)^2 - 4f(1)^2 = 3 \cdot 8^2 - 4 \cdot 2^2 = 176$ \\
+		$f(4) = 3f(3)^2 - 4f(2)^2 = 3 \cdot 176^2 - 4 \cdot 8^2 = 92672$ \\
+		$f(5) = 3f(4)^2 - 4f(3)^2 = 3 \cdot 92672^2 - 4 \cdot 176^2 = 25764174848$
+		
+		\item $f(n + 1) = f(n - 1) / f(n)$.
+		
+		$f(2) = f(0) / f(1) = -1 / 2 = -1 / 2$ \\
+		$f(3) = f(1) / f(2) = 2 / (-\frac{1}{2}) = -4$ \\
+		$f(4) = f(2) / f(3) = (-\frac{1}{2}) / (-4) = 1 / 8$ \\
+		$f(5) = f(3) / f(4) = (-4) /\frac{1}{8} = -32$
+	\end{enumerate}
+
+	\pagebreak
+	\item Find $f(2), f(3), f(4), \text{ and } f(5)$ if $f$ is defined recursively by $f(0) = f(1) = 1$ and for $n = 1, 2, \ldots$
+	
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item $f(n + 1) = f(n) - f(n - 1)$.
+		
+		$f(2) = f(1) - f(0) = 1 - 1 = 0$ \\
+		$f(3) = f(2) - f(1) = 0 - 1 = -1$ \\
+		$f(4) = f(3) - f(2) = -1 - 0 = -1$ \\
+		$f(5) = f(4) - f(3) = -1 - (-1) = 0$
+		
+		\item $f(n + 1) = f(n)f(n - 1)$.
+		
+		$f(2) = f(1)f(0) = 1 \cdot 1 = 1$ \\
+		$f(3) = f(2)f(1) = 1 \cdot 1 = 1$ \\
+		$f(4) = f(3)f(2) = 1 \cdot 1 = 1$ \\
+		$f(5) = f(4)f(3) = 1 \cdot 1 = 1$
+		
+		\item $f(n + 1) = f(n)^2 + f(n - 1)^3$.
+		
+		$f(2) = f(1)^2 + f(0)^3 = 1^2 + 1^3 = 2$ \\
+		$f(3) = f(2)^2 + f(1)^3 = 2^2 + 1^3 = 5$ \\
+		$f(4) = f(3)^2 + f(2)^3 = 5^2 + 2^3 = 33$ \\
+		$f(5) = f(4)^2 + f(3)^3 = 33^2 + 5^3 = 1214$
+		
+		\item $f(n + 1) = f(n) / f(n - 1)$.
+		
+		$f(2) = f(1) / f(0) = 1 / 1 = 1$ \\
+		$f(3) = f(2) / f(1) = 1 / 1 = 1$ \\
+		$f(4) = f(3) / f(2) = 1 / 1 = 1$ \\
+		$f(5) = f(4) / f(3) = 1 / 1 = 1$
+	\end{enumerate}
+
+	\item Determine whether each of these proposed definitions is a valid recursive definition of a function $f$ from the set of nonnegative integers to the set of integers. If $f$ is well defined, find a formula for $f(n)$ when $n$ is a nonnegative integers and prove that your formula is valid.
+	
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item $f(0) = 0, f(n) = 2f(n - 2) \text{ for } n \geq 1$
+		
+		This is not valid, since letting $n = 1$ we would have $f(1) = 2f(-1)$, but $f(-1)$ is not defined.
+		
+		\item $f(0) = 1, f(n) = f(n - 1) - 1 \text{ for } n \geq 1$
+		
+		This is valid. The basis step tells us what $f(0)$ is, and the recursive step tells us how each subsequent value is determined from the one before. It is not hard to look at the pattern and conjecture that $f(n) = 1 - n$. We prove this by induction. The basis step is $f(0) = 1 = 1 - 0$; and if $f(k) = 1 - k$, then $f(k + 1) = f(k) - 1 = 1 - k - 1 = 1 - (k + 1)$.
+		
+		\item $f(0) = 2, f(1) = 3, f(n) = f(n - 1) - 1 \text{ for } n \geq 2$
+		
+		The basis conditions specify $f(0)$ and $f(1)$, and the recursive step gives $f(n)$ in terms of $f(n - 1)$ for $n \geq 2$, so this is a valid definition. If we compute the first several values, we conjecture that $f(n) = 4 - n$ if $n > 0$, but $f(0) = 2$. That is our "formula." To prove it correct by induction we need two basis steps: $f(0) = 2$, and $f(1) = 3 = 4 - 1$. For the inductive step (with $k \geq 1$), $f(k + 1) = f(k) - 1 = (4 - k) - 1 = 4 - (k + 1)$.
+		
+		\item $f(0) = 1, f(1) = 2, f(n) = 2f(n - 2) \text{ for } n \geq 2$
+		
+		The basis conditions specify $f(0)$ and $f(1)$, and the recursive step gives $f(n)$ in terms of $f(n - 2)$ for $n \geq 2$, so this is a valid definition. The sequence of function values is $1, 2, 2, 4, 4, 8, 8, \ldots$, and we can fit a formula to this if we use the floor function: $f(n) = 2^{\lfloor (n + 1) / 2 \rfloor}$. For a proof, we check the base cases: $f(0) = 1 = 2^{\lfloor (0 + 1) / 2 \rfloor}$ and $f(1) = 2 = 2^{\lfloor (1 + 1) / 2 \rfloor}$. For the inductive step: $f(k + 1) = 2f(k - 1) = 2 \cdot 2^{\lfloor k / 2 \rfloor} = 2^{\lfloor k / 2 \rfloor + 1} = 2^{\lfloor ((k + 1) + 1) / 2 \rfloor}$.
+		
+		\item $f(0) = 1, f(n) = 3f(n - 1)$ if $n$ is odd and $n \geq 1$ and $f(n) = 9f(n - 2)$ if $n$ is even and $n \geq 2$
+		
+		The definition tells us explicitly what $f(0)$ is. The recursive step specifies $f(1), f(3), \ldots$ in terms of $f(0), f(2), \ldots$; and it also gives $f(2), f(4), \ldots$ in terms of $f(0), f(2), \ldots$. So the definition is valid. We compute that $f(1) = 3, f(2) = 9, f(3) = 27$, and so conjecture that $f(n) = 3^n$. The basis step of the inductive proof is clear. For odd $n$ greater than 0 we have $f(n) = 3f(n - 1) = 3 \cdot 3^{n - 1} = 3^n$, and for even $n$ greater than 1 we have $f(n) = 9f(n - 2) = 9 \cdot 3^{n - 2} = 3^n$.
+	\end{enumerate}
+
+	\item Give a recursive definition of the sequence $\{ a_n \}$, $n = 1, 2, 3, \ldots$ if
+	
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item $a_n = 6n$.
+		
+		Each term in this sequence is 6 greater than the preceding term. Thus we can define the sequence by setting $a_1 = 6$ and declaring that $a_{n + 1} = a_n + 6$ for all $n \geq 1$.
+		
+		\item $a_n = 2n + 1$.
+		
+		This is just like part (a), in that each term is 2 more than its predecessor. Thus we have $a_1 = 3$ and $a_{n + 1} = a_2 + 2$ for all $n \geq 1$.
+		
+		\item $a_n = 10^n$.
+		
+		Each term is 10 times its predecessor. Thus we have $a_1 = 10$ and $a_{n + 1} = 10a_n$ for all $n \geq 1$.
+		
+		\item $a_n = 5$.
+		
+		Just set $a_1 = 5$ and declare that $a_{n + 1} = a_n$ for all $n \geq 1$.
+	\end{enumerate}
+
+	\item Let $F$ be the function such that $F(n)$ is the sum of the first $n$ positive integers. Give a recursive definition of $F(n)$.
+	
+	We need to write $F(n + 1)$ in terms of $F(n)$. Since $F(n)$ is the sum of the first $n$ positive integers (namely 1 through $n$), and $F(n + 1)$ is the sum of the first $n + 1$ positive integers (namely 1 through $n + 1$), we can obtain $F(n + 1)$ from $F(n)$ by adding $n + 1$. Therefore the recursive part of the definition is $F(n + 1) = F(n) + n + 1$. The initial condition is a specification of the value of $F(0)$; the sum of no positive integers is clearly 0, so we set $F(0) = 0$.
+	
+	\item Give a recursive definition of $P_m(n)$, the product of the integer $m$ and the nonnegative integer $n$.
+	
+	We need to see how $P_m(n + 1)$ relates to $P_m(n)$. Now $P_m(n + 1) = m(n + 1) = mn + m = P_m(n) + m$. Thus the recursive part of our definition is just $P_m(n + 1) = P_m(n) + m$. The basis step is $P_m(0) = 0$, since $m \cdot 0 = 0$, no matter what value $m$ has.
+	
+	\item Where $f_n$ is the $n$th Fibonacci number, prove that $f_1 + f_3 + \cdots + f_{2n - 1} = f_{2n}$ when $n$ is a positive integer.
+	
+	We prove this using the principle of mathematical induction. The base case is $n = 1$, and in that case the statement to be proved is just $f_1 = f_2$; thus is true since both values are 1. Next we assume the inductive hypothesis, that
+	
+	$$f_1 + f_3 + \cdots + f_{2n - 1} = f_{2n},$$
+	
+	and try to prove the corresponding statement for $n + 1$, namely
+	
+	$$f_1 + f_3 + \cdots + f_{2n - 1} + f_{2n + 1} = f_{2n + 2}.$$
+	
+	We have
+	
+	$$f_1 + f_3 + \cdots + f_{2n - 1} + f_{2n + 1} = f_{2n} + f_{2n + 1} \text{ (by the inductive hypothesis) }$$
+	
+	$$\hspace{6.7cm} = f_{2n + 2} \text{ (by the definition of the Fibonacci numbers). }$$
+	
+	\item Give a recursive definition of the set of positive integers that are multiples of 5.
+	
+	We can define the set $S = \{ x\ |\ x \text{ is a positive integer and } x \text{ is a multiple of } 5 \}$ by the basis step requirement that $5 \in S$ and the recursive requirement that if $n \in S$, then $n + 5 \in S$.
+	
+	\item Give a recursive definition of
+	
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item the set of even integers.
+		
+		Since we can generate all the even integers by starting with 0 and repeatedly adding or subtracting 2, a simple recursive way to define this set is as follows: $0 \in S$; and if $x \in S$ then $x + 2 \in S$ and $x - 2 \in S$.
+		
+		\item the set of positive integers congruent to 2 modulo 3.
+		
+		The smallest positive integer congruent to 2 modulo 3 is 2, so we declare $2 \in S$. All the others can be obtained by adding multiples of 3, so our inductive step is that if $x \in S$, then $x + 3 \in S$.
+		
+		\item the set of positive integers not divisible by 5.
+		
+		The positive integers not divisible by 5 are the ones congruent to 1, 2, 3, or 4 modulo 5. Therefore we can proceed just as in part (b), setting $1 \in S, 2 \in S, 3 \in S, \text{ and } 4 \in S$ as the base cases, and then declaring that if $x \in S$, then $x + 5 \in S$.
+	\end{enumerate}
+
+	\item Give a recursive definition of the reversal of a string. [\emph{Hint:} First define the reversal of the empty string. Then write a string $w$ of length $n + 1$ as $xy$, where $x$ is a string of length $n$, and express the reversal of $w$ in terms of $x^R$ and $y$.]
+	
+	The string of length 0, namely the empty string, is its own reversal, so we define $\lambda^R = \lambda$. A string $w$ of length $n + 1$ can always be written as $vy$, where $v$ is a string of length $n$ (the first $n$ symbols of $w$), and $y$ is a symbol (the last symbol of $w$). To reverse $w$, we need to start with $y$, and then follow it by the first part of $w$ (namely $v$), reversed. Thus we define $w^R = y(v^R)$. (Note that the parentheses are for our benefit---they are not part of the string.)
+	
+	\item Give a recursive definition of $w^i$, where $w$ is a string and $i$ is a nonnegative integer. (Here $w^i$ represents the concatenation of $i$ copies of the string $w$.)
+	
+	We set $w^0 = \lambda$ (the concatenation of no copies of $w$ should be defined to be the empty string). For $i \geq 0$, we define $w^{i + 1} = ww^i$, where this notation means that we first write down $w$ and then follow it with $w^i$.
+\end{enumerate}
+
+\section*{\textbf{5.4 Recursive Algorithms}}
+\begin{enumerate}[label=\textbf{\arabic*.}]
+	\item Give a recursive algorithm for computing $nx$ whenever $n$ is a positive and $x$ is an integer, using just addition.
+	
+	\textbf{procedure} \emph{product}($n$ : positive integer, $x$ : integer)
+	
+	\textbf{if} $n = 1$ \textbf{then return} $x$
+	
+	\textbf{else return} $product(n - 1, x) + x$
+	
+	\item Give a recursive algorithm for finding the sum of the first $n$ odd positive integers.
+	
+	\textbf{procedure} \emph{sum of odds}($n$ : positive integer)
+	
+	\textbf{if} $n = 1$ \textbf{then return} 1
+	
+	\textbf{else return} \emph{sum of odds}$(n - 1) + 2n - 1$
+	
+	\item Give a recursive algorithm for finding the minimum of a finite sent of integers, making use of the fact that the minimum of $n$ integers is the smaller of the last integer in the list and the minimum of the first $n - 1$ integers in the list.
+	
+	\textbf{procedure} \emph{smallest}($a_1, a_2, \ldots, a_n$ : integers)
+	
+	\textbf{if} $n = 1$ \textbf{then return} 1
+	
+	\textbf{else return} min($smallest(a_1, a_2, \ldots, a_{n - 1}), a_n$)
+	
+	\item Devise a recursive algorithm for computing the greatest common divisor of two nonnegative integers $a$ and $b$ with $a < b$ using the fact that gcd($a, b$) = gcd($a, b - a$).
+	
+	\textbf{procedure} \emph{gcd}($a, b$ : nonnegative integers with $a < b$)
+	
+	\textbf{if} $a = 0$ \textbf{then return} $b$
+	
+	\textbf{else if} $a = b - a$ \textbf{then return} $a$
+	
+	\textbf{else if} $a < b - a$ \textbf{then return} $gcd(a, b - a)$
+	
+	\textbf{else return} $gcd(b - a, a)$
+	
+	\item Describe a recursive algorithm for multiplying two nonnegative integers $x$ and $y$ based on the fact that $xy = 2(x \cdot (y / 2))$ when $y$ is even and $xy = 2(x \cdot \lfloor y / 2 \rfloor) + x$ when $y$ is odd, together with the initial condition $xy = 0$ when $y = 0$.
+	
+	\textbf{procedure} \emph{multiply}($x, y$ : nonnegative integers)
+	
+	\textbf{if} $y = 0$ \textbf{then return} 0
+	
+	\textbf{else if} $y$ is even \textbf{then return} $2 \cdot multiply(x, y / 2)$
+	
+	\textbf{else return} $2 \cdot multiply(x, (y - 1) / 2) + x$
+	
+	\item Devise a recursive algorithm for computer $n^2$ where $n$ is a nonnegative integer, using the fact that $(n + 1)^2 = n^2 + 2n + 1$. Then prove that this algorithm is correct.
+	
+	\textbf{procedure} \emph{square}($n$ : nonnegative integer)
+	
+	\textbf{if} $n = 0$ \textbf{then return} 0
+	
+	\textbf{else return} $square(n - 1) + 2(n - 1) + 1$
+	
+	The proof of correctness comes by mathematical induction. Let $P(n)$ be the statement that this algorithm correctly computes $n^2$. Since $0^2 = 0$, the algorithm works correctly (using the \textbf{if} clause) if the input is 0. Assume that the algorithm works correctly for input $k$. Then for input $k + 1$ it gives as output (because of the \textbf{else} clause) its output when the input is $k$, plus $2(k + 1 - 1) + 1$. By the inductive hypothesis, its output at $k$ is $k^2$, so its output at $k + 1$ is $k^2 + 2(k + 1 - 1) + 1 = k^2 + 2k + 1 = (2 + 1)^2$, exactly what it would be.
+	
+	\item Devise a recursive algorithm to find the $n$th term of the sequence defined by $a_0 = 1, a_1 = 2$, and $a_n = a_{n - 1} \cdot a_{n - 2}$, for $n = 2, 3, 4, \ldots$.
+	
+	\textbf{procedure} \emph{sequence}($n$ : nonnegative integer)
+	
+	\textbf{if} $n < 2$ \textbf{then return} $n + 1$
+	
+	\textbf{else return} $sequence(n - 1) \cdot sequence(n - 2)$
+	
+	\item Is the recursive algorithm or the iterative algorithm for finding the sequence in Exercise 7 more efficient?
+	
+	The iterative version is much more efficient. The analysis is exactly the same as that for the Fibonacci sequence. The $n$th term in this sequence is actually just $2^{f_n}$.
+	
+	\item Give iterative and recursive algorithms for finding the $n$th term of the sequence defined by $a_0 = 1, a_1 = 3, a_2 = 5$ and $a_n = a_{n - 1} \cdot a^2_{n - 2} \cdot a^3_{n - 3}$. Which is more efficient?
+	
+	\textbf{procedure} \emph{recursive}($n$ : nonnegative integer)
+	
+	\textbf{if} $n < 3$ \textbf{then return} $2n + 1$
+	
+	\textbf{else return} $recursive(n - 1) \cdot (recursive(n - 2))^2 \cdot (recursive(n - 3))^3$ \\
+	
+	\textbf{procedure} \emph{iterative}($n$ : nonnegative integer)
+	
+	\textbf{if} $n = 0$ \textbf{then return} 1
+	
+	\textbf{else if} $n = 1$ \textbf{then return} 3
+	
+	\textbf{else}
+	
+	\qquad $x := 1$
+	
+	\qquad $y := 3$
+	
+	\qquad $z := 5$
+	
+	\qquad \textbf{for} $i := 1$ \text{to} $n - 2$
+	
+	\qquad\qquad $w := z \cdot y^2 \cdot x^3$
+	
+	\qquad\qquad $x := y$
+	
+	\qquad\qquad $y := z$
+	
+	\qquad\qquad $z := w$
+	
+	\textbf{return} $z$
+	
+	The recursive version is much easier to write, but the iterative version is much more efficient. In doing the computation for the iterative version, we just need to go through the loop $n - 2$ times in order to compute $a_n$, so it requires $O(n)$ steps. In doing the computation for the recursive version, we are constantly recalculating previous values that we've already calculated, just as was the case with the recursive version of the algorithm to calculate the Fibonacci numbers.
+\end{enumerate}
+
+\section*{\textbf{5.5 Program Correctness}}
+\begin{enumerate}[label=\textbf{\arabic*.}]
+	\item Prove that the program segment
+	
+	\qquad $y := 1$
+	
+	\qquad $z := x + y$
+	
+	is correct with respect to the initial assertion $x = 0$ and the final assertion $z = 1$.
+	
+	We suppose that initially $x = 0$. The segment causes two things to happen. FIrst $y$ is assigned the value of 1. Next the value of $x + y$ is computed to be $0 + 1 = 1$, and so $z$ is assigned the value of 1. Therefore at the end $z$ has the value 1, so the final assertion is satisfied.
+	
+	\item Verify that the program segment
+	
+	\qquad $x := 2$
+	
+	\qquad $z := x + y$
+	
+	\qquad \textbf{if} $y > 0$ \textbf{then}
+	
+	\qquad\qquad $z := z + 1$
+	
+	\qquad \textbf{else}
+	
+	\qquad\qquad $z := 0$
+	
+	is correct with respect to the initial assertion $y = 3$ and the final assertion $z = 6$.
+	
+	We suppose that initially $y = 3$. The effect of the first two statements is to assign $x$ the value 2 and $z$ the value $2 + 3 = 5$. Next, when the \textbf{if...then} statement is encountered, since the value of $y$ is 3, and $3 > 0$ is true, the statement $z := z + 1$ assigned the value $5 + 1 = 6$ to $z$ (and the \textbf{else} clause is not executed). Therefore at the end, $z$ has the value 6, so the final assertion $z = 6$ is true.
+	
+	\item Use a loop invariant to prove that the following program segment for computing the $n$th power, where $n$ is a positive integer, of a real number $x$ is correct.
+	
+	\qquad $power := 1$
+	
+	\qquad $i := 1$
+	
+	\qquad \textbf{while} $i \leq n$
+	
+	\qquad\qquad $power := power * x$
+	
+	\qquad\qquad $i := i + 1$
+	
+	We will use the loop invariant $p$: "$power = x^{i - 1}$ and $i \leq n + 1$." Now $p$ is true initially, since before the loop starts, $i = 1$ and $power = 1 = x^0 = x^{i - 1}$. (There is a technicality here: we define $0^0$ to equal 1 in order for this to be correct if $x = 0$. There is no harm in this, since $n > 0$, so if $x = 0$, then the program certainly computes the correct answer $x^n = 0$.) We must now show that if $p$ is true and $i \leq n$ before some pass through the loop, then $p$ remains true after that pass. The loop increments $i$ by one. Hence since $i \leq n$ before this pass through the loop, $i \leq n + 1$ after this pass. Also the loop assigned $power \cdot x$ to $power$. By the inductive hypothesis, $power$ started with the value $x^{i - 1}$ (the old value of $i$). Therefore its new value is $x^{i - 1} \cdot x = x^i = x^{(i + 1) - 1}$. But since $i + 1$ is the new value of $i$, the statement $power = x^{i - 1}$ is true at the completion of this pass through the loop. Hence $p$ remains true, so $p$ is a loop invariant. Furthermore, the loop terminates after $n$ traversals, with $i = n + 1$, since $i$ is assigned the value 1 prior to entering the loop, $i$ is incremented by 1 on each pass, and the loop terminates when $i > n$. At termination we have $(i \leq n + 1) \land \neg(i \leq n)$, so $i = n + 1$. Hence $power = x^{(n + 1) - 1} = x^n$, as desired.
+\end{enumerate}
+\end{document}

@@ -1,0 +1,2363 @@
+\documentclass[11pt]{article}
+
+\usepackage{color, enumitem, amsmath, amsthm, amssymb}
+\usepackage[margin=.5in]{geometry}
+\usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
+
+\usepackage[english]{babel} % English language/hyphenation
+
+\usepackage{sectsty} % Allows customizing section commands
+\allsectionsfont{\normalfont\scshape} % Make all sections centered, the default font and small caps
+
+\usepackage{fancyhdr} % Custom headers and footers
+\pagestyle{fancyplain} % Makes all pages in the document conform to the custom headers and footers
+\fancyhead{} % No page header - if you want one, create it in the same way as the footers below
+\fancyfoot[L]{} % Empty left footer
+\fancyfoot[C]{} % Empty center footer
+\fancyfoot[R]{\thepage} % Page numbering for right footer
+\renewcommand{\headrulewidth}{0pt} % Remove header underlines
+\renewcommand{\footrulewidth}{0pt} % Remove footer underlines
+\setlength{\headheight}{13.6pt} % Customize the height of the header
+
+\setlength\parindent{2em}
+
+\renewcommand\qedsymbol{$\blacksquare$}
+
+%-------------------------------------------------------------------------------
+%	TITLE SECTION
+%-------------------------------------------------------------------------------
+
+%\newcommand{\horrule}[1]{\rule{\linewidth}{#1}} % Create horizontal rule command with 1 argument of height
+
+\title{	
+	\normalfont \normalsize 
+	\textsc{Discrete Mathematics} \\
+	%\horrule{0.5pt} \\[0.4cm] % Thin top horizontal rule
+	\huge The Foundations: Logic and Proofs \\
+	%\horrule{2pt} \\[0.5cm] % Thick bottom horizontal rule
+}
+
+\author{Myles Moylan} % Your name
+
+\date{} % Today's date or a custom date
+
+
+%-------------------------------------------------------------------------------
+%	WORK SECTION
+%-------------------------------------------------------------------------------
+
+\begin{document}
+
+\maketitle
+
+\section*{\textbf{1.1 Propositional Logic}}
+\begin{enumerate}[label=\textbf{\arabic*.}]
+	\item Which of these sentences are propositions? What are the truth values of those that are propositions?
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item Boston is the capital of Massachusetts.
+		
+		This is a true proposition.
+		
+		\item $2 + 3 = 5$.
+		
+		This is a true proposition.
+		
+		\item $5 + 7 = 10$.
+		
+		This is a false proposition.
+		
+		\item $x + 2 = 11$.
+		
+		This is not a proposition because it is neither true nor false.
+		
+		\item Answer this question.
+		
+		This is not a proposition because it is not a declarative sentence.
+	\end{enumerate}
+
+	\item Which of these are propositions? What are the truth values of those that are propositions?
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item Do not pass go.
+		
+		This is not a proposition because it is not a declarative sentence.
+		
+		\item What time is it?
+		
+		This is not a proposition because it is not a declarative sentence.
+		
+		\item There are no black flies in Maine.
+		
+		This is a false proposition.
+		
+		\item $4 + x = 5$.
+		
+		This is not a proposition because it is neither true nor false.
+		
+		\item The moon is made of green cheese.
+		
+		This is a false proposition.
+		
+		\item $2^n \geq 100$.
+		
+		This is not a proposition because it is neither true nor false.
+	\end{enumerate}
+
+	\item What is the negation of each of these propositions?
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item Jennifer and Teja are friends.
+		
+		Jennifer and Teja are not friends.
+		
+		\item There are 13 items in a baker's dozen.
+		
+		There are not 13 items in a baker's dozen.
+		
+		\item Abby sent more than 100 text messages yesterday.
+		
+		Abby did not sent more than 100 text messages yesterday.
+		
+		\item 121 is a perfect square.
+		
+		121 is not a perfect square.
+	\end{enumerate}
+
+	\item  Suppose that during the most recent fiscal year, the annual review of Acme Computer was 138 billion dollars and its net profit was 8 billion dollars, the annual revenue of Nadir Software was 87 billion dollars and its net profit was 5 billion dollars, and the annual revenue of Quixote Media was 111 billion dollars and its net profit was 13 billion dollars. Determine the truth value of each of these propositions for the most recent fiscal year.
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item Quixote Media had the largest annual revenue.
+		
+		This proposition is false.
+		
+		\item Nadir Software had the lowest net profit and Acme Computer had the largest annual revenue.
+		
+		This proposition is true.
+		
+		\item Acme Computer had the largest net profit or Quixote Media had the largest net profit.
+		
+		This proposition is true.
+		
+		\item If Quixote Media had the smallest net profit, then Acme Computer had the largest annual revenue.
+		
+		This proposition as conditional statement is true.
+		
+		\item Nadir Software had the smallest net profit if and only if Acme Computer had the largest annual revenue.
+		
+		Since both of these propositions are true, this biconditional statement is true.
+	\end{enumerate}
+
+	\item Let $p$ and $q$ be the propositions
+	
+	\hspace{1cm}$p$: I bought a lottery ticket this week.
+	
+	\hspace{1cm}$q$: I won the million dollar jackpot.
+	
+	Express each of these propositions as an English sentence.
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item $\neg p$
+		
+		I did not buy a lottery ticket this week.
+		
+		\item $p \lor q$
+		
+		I bought a lottery ticket this week or I won the million dollar jackpot.
+		
+		\item $p \implies q$
+		
+		If I bought a lottery ticket this week, then I won the million dollar jackpot.
+		
+		\item $p \land q$
+		
+		I bought a lottery ticket this week and I won the million dollar jackpot.
+		
+		\item $\neg q \implies p$
+		
+		If I did not win the million dollar jackpot, then I bought a lottery ticket this week.
+		
+		\item $\neg p \implies \neg q$
+		
+		If I did not buy a lottery ticket this week, then I did not win the million dollar jackpot.
+		
+		\item $p \iff \neg q$
+		
+		I bought a lottery ticket this week if and only if I did not win the million dollar jackpot.
+		
+		\item $\neg p \land (p \lor \neg q)$
+		
+		I did not buy a lottery ticket this week, but I did buy a lottery ticket this week or I didn't win the million dollar jackpot.
+	\end{enumerate}
+
+	\item Let $p$ and $q$ be the propositions
+	
+	\hspace{1cm}$p$: It is below freezing.
+	
+	\hspace{1cm}$q$: It is snowing.
+	
+	Write these propositions using $p$ and $q$ and logical connectives (including negations).
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item It is below freezing and snowing.
+		
+		$p \land q$
+		
+		\item It is below freezing but not snowing.
+		
+		$p \land \neg q$
+		
+		\item It is not below freezing and it is not snowing.
+		
+		$\neg p \land \neg q$
+		
+		\item It is either snowing or below freezing (or both).
+		
+		$q \lor p$
+		
+		\item If it is below freezing, it is also snowing.
+		
+		$p \implies q$
+		
+		\item Either it is below freezing or it is snowing, but it is not snowing if it is below freezing.
+		
+		$(p \lor q) \land (p \implies \neg q)$
+		
+		\item That it is below freezing is necessary and sufficient for it to be snowing.
+		
+		$p \iff q$
+	\end{enumerate}
+
+	\item Determine whether these biconditionals are true or false.
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item $2 + 2 = 4$ if and only if $1 + 1 = 2$.
+		
+		True.
+		
+		\item $1 + 1 = 2$ if and only if $2 + 3 = 4$.
+		
+		False
+		
+		\item $1 + 1 = 3$ if and only if monkeys can fly.
+		
+		True.
+		
+		\item $0 > 1$ if and only if $2 > 1$.
+		
+		False.
+	\end{enumerate}
+
+	\item For each of these sentences, determine whether an inclusive or, or and exclusive or, is intended. Explain your answer.
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item Experience with C++ or Java is required
+		
+		Inclusive or.
+		
+		\item Lunch includes soup or salad.
+		
+		Exclusive or.
+		
+		\item To enter the country you need a passport or a voter registration card.
+		
+		Inclusive or.
+		
+		\item Publish or perish.
+		
+		Exclusive or.
+	\end{enumerate}
+
+	\item Write each of these statements in the form "if $p$, then $q$" in English.
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item It is necessary to wash the boss's car to get promoted.
+		
+		If you want to get promoted, it is necessary to wash the boss's car.
+		
+		\item Winds from the south imply a spring thaw.
+		
+		If there are winds from the south, then there will be a spring thaw.
+		
+		\item A sufficient condition for the warranty to be good is that you bought the computer less than a year ago.
+		
+		If you bought the computer less than a year ago, then the warranty is good.
+		
+		\item Willy gets caught whenever he cheats.
+		
+		If Willy cheats, then he gets caught.
+		
+		\item You can access the website only if you pay a subscription fee.
+		
+		If you can access the website, then you've paid a subscription fee.
+		
+		\item Getting elected follows from knowing the right people.
+		
+		If you know the right people, then you will get elected.
+		
+		\item Carol gets seasick whenever she is on a boat.
+		
+		If Carol is on a boat, then she gets seasick.
+	\end{enumerate}
+
+	\item Write each of these propositions in the form "$p$ if and only if $q$" in English.
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item For you to get an A in this course, it is necessary and sufficient that you learn how to solve discrete mathematics problems.
+		
+		You can get an A in this course if and only if you learn how to solve discrete mathematics problems.
+		
+		\item If you read the newspaper every day, you will be informed, and conversely.
+		
+		You will be informed if and only if you read the newspaper every day.
+		
+		\item It rains if it is a weekend day, and it is a weekend day if it rains.
+		
+		It rains if and only if it is a weekend day.
+		
+		\item You can see the wizard only if the wizard is not in, and the wizard is not in only if you can see him.
+		
+		The wizard is not in if and only if you can see him.
+		
+		\item My airplane flight is late exactly when I have to catch a connecting flight.
+		
+		My airplane flight is late if and only if I have to catch a connecting flight.
+	\end{enumerate}
+
+	\item State the converse, contrapositive, and inverse of each of these conditional statements.
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item If it snows today, I will ski tomorrow.
+		
+		Contrapositive: If I do not ski tomorrow, it will not snow today.
+		
+		Converse: If I ski tomorrow, then it will snow today.
+		
+		Inverse: If it does not snow today, I will not ski tomorrow.
+		
+		\item I come to class whenever there is going to be a quiz.
+		
+		Contrapositive: If there is not going to be a quiz then I do not come to class.
+		
+		Converse: If there is going to be a quiz then I come to class.
+		
+		Inverse: If I do not come to class there is not going to be a quiz.
+		
+		\item A positive integer is a prime only if it has no divisors other than 1 and itself.
+		
+		Contrapositive: If a positive integer has divisors other than 1 and itself then it is not a prime.
+		
+		Converse: If a positive integer has no divisors other than 1 and itself then it is a prime.
+		
+		Inverse: A positive integer is not a prime if it had divisors other than 1 and itself.
+	\end{enumerate}
+
+	\item How many rows appear in a truth table for each of these compound propositions?
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item $p \implies \neg p$
+		
+		2
+		
+		\item $(p \lor \neg r) \land (q \lor \neg s)$
+		
+		16
+		
+		\item $q \lor p \lor \neg s \lor \neg r \lor \neg t \lor u$
+		
+		64
+		
+		\item $(p \land r \land t) \iff (q \land t)$
+		
+		16
+	\end{enumerate}
+
+	\item Construct a truth table for each of these compound propositions.
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item $p \land \neg p$
+		
+		\begin{tabular}{c | c | c}
+			$p$ & $\neg p$ & $p \land \neg p$ \\
+			\hline
+			T &	F &	F \\
+			F &	T &	F \\
+		\end{tabular}
+		
+		\item $p \lor \neg p$
+		
+		\begin{tabular}{c | c | c}
+			$p$	& $\neg p$ & $p \lor \neg p$ \\
+			\hline
+			T & F & T \\
+			F & T & T \\
+		\end{tabular}
+		
+		\item $(p \lor \neg q) \implies q$
+		
+		\begin{tabular}{c | c | c | c | c}
+			$p$ & $q$ & $\neg q$ & $p \lor \neg q$ & $(p \lor \neg q) \implies q$ \\
+			\hline
+			T & T & F & T & T \\
+			T & F & T & T &F \\
+			F & T & F & F & T \\
+			F & F & T & T & T \\
+		\end{tabular}
+		
+		\item $(p \lor q) \implies (p \land q)$
+		
+		\begin{tabular}{c | c | c | c | c}
+			$p$ & $q$ & $p \lor q$ & $p \land q$ & $(p \lor q) \implies (p \land q)$ \\
+			\hline
+			T & T & T & T & T \\
+			T & F & T & F & F \\
+			F & T & T & F & T \\
+			F & F & F & F & T \\
+		\end{tabular}
+		
+		\item $(p \implies q) \iff (\neg q \implies \neg p)$
+		
+		\begin{tabular}{c | c | c | c | c | c | c}
+			$p$ & $q$ & $\neg p$ & $\neg q$ & $p \implies q$ & $\neg q \implies \neg p$ & $(p \implies q) \iff (\neg q \implies \neg p)$ \\
+			\hline
+			T & T & F & F & T & T &T \\
+			T & F & F & T & F & F & T \\
+			F & T & T & F & T & T & T \\
+			F & F & T & T & T & T & T \\
+		\end{tabular}
+		
+		\item $(p \implies q) \iff (q \implies p)$
+		
+		\begin{tabular}{c | c | c | c | c}
+			$p$ & $q$ & $p \implies q$ & $q \implies p$ & $(p \implies q) \iff (q \implies p)$ \\
+			\hline
+			T & T & T & T & T \\
+			T & F & F & T & F \\
+			F & T & T & F & F \\
+			F & F & T & T & T \\
+		\end{tabular}
+	\end{enumerate}
+
+	\item What is the value of $x$ after each of these statements is encountered in a computer program, if $x = 1$ before the statement is reached?
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item \textbf{if} $x + 2 = 3$ \textbf{then} $x := x + 1$
+		
+		$x = 2$
+		
+		\item \textbf{if} $(x + 1 = 3)$ $OR$ $(2x + 2 = 3)$ \textbf{then} $x := x + 1$
+		
+		$ x = 1$
+		
+		\item \textbf{if} $(2x + 3 = 5)$ $AND$ $(3x + 4 = 7)$ \textbf{then} $x := x + 1$
+		
+		$x = 2$
+		
+		\item \textbf{if} $(x + 1 = 2)$ $XOR$ $(x + 2 = 3)$ \textbf{then} $x := x + 1$
+		
+		$x = 1$
+		
+		\item \textbf{if} $x < 2$ \textbf{then} $x := x + 1$
+		
+		$x = 2$
+	\end{enumerate}
+
+	\item Find the bitwise $OR$, bitwise $AND$, and bitwise $XOR$ of each of these pairs of bit strings.
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item 1011110, 0100001
+		
+		$OR$: 1111111 \\
+		$AND$: 0000000 \\
+		$XOR$: 1111111
+		
+		\item 11110000, 10101010
+		
+		$OR$: 11111010 \\
+		$AND$: 10100000 \\
+		$XOR$: 01011010
+		
+		\item 00 0111 0001, 1001001000
+
+		$OR$: 1001111001 \\
+		$AND$: 0001000000 \\
+		$XOR$: 1000111001
+		
+		\item 1111111111, 0000000000
+		
+		$OR$: 1111111111 \\
+		$AND$: 0000000000 \\
+		$XOR$: 1111111111
+	\end{enumerate}
+
+	\item Evaluate each of these expressions.
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item $11000 \land (01011 \lor 11011)$
+		
+		$11000$
+		
+		\item $(01111 \land 10101) \lor 01000$
+		
+		$01101$
+		
+		\item $(01010 \oplus 11011) \oplus 01000$
+		
+		$11001$
+		
+		\item $(11011 \lor 01010) \land (10001 \lor 11011)$
+
+		$11011$
+	\end{enumerate}
+\end{enumerate}
+
+\section*{\textbf{1.2 Applications of Propositional Logic}}
+\begin{enumerate}[label=\textbf{\arabic*.}]
+	\item Translate the given statement into propositional logic using the propositions provided.
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item You cannot edit a protected Wikipedia entry unless you are an administrator. Express your answer in terms of $e$: "You can edit a protected Wikipedia entry" and $a$: "You are an administrator."
+		
+		$e \implies a$
+		
+		\item You can see the movie only if you are over 18 years old or you have the permission of a parent. Express your answer in terms of $m$: "You can see the movie," $e$: "You are over 18 years old," and $p$: "You have the permission of a parent."
+		
+		$(e \lor p) \implies m$
+		
+		\item You can graduate only if you have completed the requirements of your major and you do not own money to the university and you do not have an overdue library book. Express your answer in terms of $g$: "You can graduate," $m$: "You owe money to the university," $r$: "You have completed the requirements of your major," and $b$: "You have an overdue library book."
+		
+		$(r \land \neg m \land \neg b) \implies g$
+		
+		\item To use the wireless network in the airport you must pay the daily fees unless you are a subscriber to the service. Express your answer in terms of $w$: "You can use the wireless network in the airport," $d$: "You pay the daily fee," and $s$: "You are a subscriber to the service."
+		
+		$(d \lor s) \implies w$
+	\end{enumerate}
+
+	\item Express these system specifications using the propositions $p$: "The message is scanned for viruses" and $q$: "The message was sent from an unknown system" together with logical connectives (including negations).
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item "The message is scanned for viruses whenever the message was sent from an unknown system."
+		
+		$p \implies q$
+		
+		\item "The message was sent from an unknown system but it was not scanned for viruses."
+		
+		$q \land \neg p$
+		
+		\item "It is necessary to scan the message for viruses whenever it was sent from an unknown system."
+		
+		$p \implies q$
+		
+		\item "When a message is not sent from an unknown system it is not scanned for viruses."
+		
+		$\neg q \implies \neg p$
+	\end{enumerate}
+
+	\item Are these system specifications consistent? "The system is in multiuser state if and only if it is operating normally. If the system is operating normally, the kernel is functioning. The kernel is not functioning or the system is in interrupt mode. If the system is not in multiuser state, then it is in interrupt mode. The system is not in interrupt mode."
+	
+	First, we express the specifications using logical expressions:
+	
+	\hspace{1em}$p$: The system is operating normally.
+	
+	\hspace{1em}$q$: The system is in multiuser state.
+	
+	\hspace{1em}$r$: The kernel is functioning.
+	
+	\hspace{1em}$s$: The system is in interrupt mode.
+	
+	The specifications can be written as:
+	
+	\hspace{1em}$q \iff p$: "The system is in multiuser state if and only if it is operating normally."
+	
+	\hspace{1em}$p \implies r$: "If the system is operating normally, the kernel is functioning."
+	
+	\hspace{1em}$\neg r \oplus s$: "The kernel is not functioning or the system is in interrupt mode."
+	
+	\hspace{1em}$\neg q \implies s$: "If the system is not in multiuser state, then it is in interrupt mode."
+	
+	\hspace{1em}$\neg s$: "The system is not in interrupt mode."
+	
+	First of all, we can see that "the system is not in interrupt mode," or $\neg s$, and that "the kernel is not functioning or the system is in interrupt mode," or $\neg r \oplus s$. Since $\neg s$ is true and $\neg r \oplus s$, it follows that $\neg r$ must be true. Because $\neg r$ is true, that means $r$ is false, which makes $p \implies r$ false and thus means that $p$ is false. And since $q \iff p$, we find that $q$ is false. However, we also find after this analysis that $\neg q \implies s$, which is \emph{inconsistent} with our findings that $\neg q$ is true and $s$ is false.
+	
+	\item What Boolean search would you use to look for Web pages about beaches in New Jersey? What if you wanted to find Web pages about beaches on the isle of Jersey (in the English Channel)?
+	
+	(New $AND$ Jersey) $AND$ beaches \\
+	(Jersey $AND$ "English Channel" $AND$ $NOT$ New) $AND$ beaches
+	
+	\item An explorer is captured by a group of cannibals. There are two types of cannibals---those who always tell the truth and those who always lie. The cannibals will barbecue the explorer unless he can determine whether a particular cannibal always lies or always tells the truth. He is allowed to ask the cannibal exactly one question.
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item Explain why the question "Are you a liar?" does not work.
+		
+		If the explorer asks that question he will always get the answer "No" regardless of the type of cannibal. So, he will get no information that he can use in deducing whether the cannibal lies or tells the truth.
+		
+		\item Find a question that the explorer can use to determine whether the cannibal always lies or always tells the truth.
+		
+		The explorer can ask "If I don't figure out if you are lying or honest, are you going to eat me?" He will know that the lying cannibal will answer "No" and the honest cannibal will answer "Yes."
+	\end{enumerate}
+	
+	\item When three professors are seated in a restaurant, the hostess asks them: "Does everyone want coffee?" The first professor says "I do not know." The second professor says "I do not know." Finally, the third professor says "No, not everyone wants coffee." The hostess comes back and gives coffee to the professors who want it. How did she figure out who wanted coffee?
+	
+	The first two professors didn't know if everyone wanted coffee but the third did because he did not want coffee. Thus, the first and second professors wanted coffee.
+	
+	\item When planning a party you want to know whom to invite. Among the people you would like to invite are three touchy friends. You know that if Jasmine attends, she will become unhappy if Samir is there, Samir will attend only if Kanti will be there, and Kanti will not attend unless Jasmine also does. Which combination of these three friends can you invite so as not to make someone unhappy.
+	
+	The only one you can invite so as not to make anyone unhappy is Jasmine.
+	
+	\item The following exercises relate to inhabitants of the island of knights and knaves created by Smullyan, where knights always tell the truth and knaves always lie. You encounter two people, $A$ and $B$. Determine, if possible, what $A$ and $B$ are if they address you in the ways described. If you cannot determine what these two people are, can you draw any conclusions?
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item $A$ says "At least one of us is a knave" and $B$ says nothing.
+		
+		If $A$ were a knave and said that at least one of them was a knave he would be contradicting his nature as a liar because, for example, he is a knave. Therefore it must be that $A$ is a knight and that, since $A$ is telling the truth, $B$ is a knave.
+		
+		\item $A$ says "The two of us are both knights" and $B$ says "$A$ is a knave."
+		
+		If $B$ is lying, and $A$ is not a knave, then $A$ must be a knight and $B$ must be a knave. But that cannot be because that would make $A$'s statement a lie. Thus, it seems, $B$ is a knight telling the truth about $A$ being a knave.
+		
+		\item $A$ says "I am a knave or $B$ is a knight" and $B$ says nothing.
+		
+		I am assuming that the conditions of $A$'s statement are mutually exclusive. The first condition of $A$'s statement cannot be true because if he is a knave he will be going against his nature as a liar. Therefore, $B$ must be a knight, and if $B$ is a knight and $A$ is not a knave, both $A$ and $B$ must be knights.
+		
+		\item Both $A$ and $B$ say "I am a knight."
+		
+		There is no way to tell what either of them are because "I am a knight" is what either would say in this instance; that is, a knave would be lying and a knight would be telling the truth.
+		
+		\item $A$ says "We are both knaves" and $B$ says nothing.
+		
+		The idea that both $A$ and $B$ are knaves cannot be true because then $A$'s statement would be true. Since $A$'s statement must be a lie then that would make $A$ a knave. And if $A$ is a knave and his statement is untrue, that means that $B$ is a knight.
+	\end{enumerate}
+	
+	\item Steve would like to determine the relative salaries of three coworkers using two facts. First, he knows that if Fred is not the highest paid of the three, then Janice is. Second, he knows that if Janice is not the lowest paid, then Maggie is paid the most. Is it possible to determine the relative salaries of Fred, Maggie, and Janice from what Steve knows? If so, who is paid the most and who the least? Explain your answer.
+	
+	\hspace{1em}$f_H$: Fred is the highest paid.
+	\hspace{1em}$j_H$: Janice is the highest paid.
+	\hspace{1em}$m_H$: Maggie is the highest paid. 
+	
+	\hspace{1.2em}$f_L$: Fred is the lowest paid.
+	\hspace{1.6em}$j_L$: Janice is the lowest paid.
+	\hspace{1.6em}$m_L$: Maggie is the lowest paid.
+	
+	\vspace{0.5em}
+	\begin{tabular}{c | c | c | c | c | c}
+		$f_H$ & $j_H$ & $m_H$ & $f_L$ & $j_L$ & $m_L$ \\
+		\hline
+		T & F & F & F & T & F \\
+		F & T & F & ? & F & ? \\
+		F & F & T & T & F & F \\
+	\end{tabular}
+
+	Given the two facts, first we can deduce that Maggie cannot be the highest paid because then Fred would not be so, and if Fred is not the highest paid then Janice must be. So, if Maggie must not be the highest paid, either Fred or Janice must be. Next, we can deduce that if Janice is the highest paid she is at the same time not the lowest paid, and, according to the second fact, Maggie must be the highest paid; a contradiction. Therefore, neither Janice nor Maggie can be the highest paid, making Fred the highest paid. It then follows that Janice must be the lowest paid because otherwise Maggie would be paid the highest, which is contrary to the facts of the matter. So, with all that being said, Fred is the highest paid, Janice is the least paid, and Maggie is in the middle.
+	
+	\item A detective has interviewed four witnesses to a crime. From the stories of the witnesses the detective has concluded that if the butler is telling the truth then so is the cook; the cook and the gardener cannot both be telling the truth; the gardener and the handyman are not both lying; and if the handyman is telling the truth then the cook is lying. For each of the four witnesses, can the detective determine whether that person is telling the truth or lying? Explain your reasoning.
+	
+	\hspace{1em}$b$: The butler is telling the truth.
+	\hspace{2.3em}$c$: The cook is telling the truth.
+	
+	\hspace{1em}$g$: The gardener is telling the truth.
+	\hspace{1em}$h$: The handyman is telling the truth.
+	
+	\begin{tabular}{c | c | c | c}
+		$b$ & $c$ & $g$ & $h$ \\
+		\hline
+		T & T & F & T \\
+		F & F & T & T
+	\end{tabular}
+	
+	Let us assume that the butler is telling the truth, then so is the cook. And since the cook and the gardener both cannot be telling the truth, the gardener must be lying. Then, if the gardener is lying the handyman must be telling the truth, since they both are not lying. But the detective concluded that if the handyman is telling the truth then the cook is lying; a contradiction.
+	
+	Let's assume, then, that the butler is lying. It follows that the cook must be lying as well, and if the cook is lying the gardener must be telling the truth. If the gardener and handyman are not both lying, it is possible that they are both actually telling the truth. Then, if the handyman is telling the truth, it confirms that the cook is lying.
+	
+	\item Four friends have been identified as suspects for an unauthorized access into a computer system. They have made statements to the investigating authorities. Alice said, "Carlos did it." John said, "I did not do it." Carlos said, "Diana did it." Diana said, "Carlos lied when he said that I did it."
+	
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item If the authorities also know that exactly one of the four suspects is telling the truth, who did it? Explain your reasoning.
+		
+		\underline{If Alice is telling the truth}: Carlos did it, John did it, and then there is a contradiction between what Carlos lies about and what Diana lies about.
+		
+		\underline{If John is telling the truth}: Carlos did not do it, John did not do it, then there is a contradiction about what Carlos and Diana are lying about.
+		
+		\underline{If Carlos is telling the truth}: Carlos did not do it, John did it, Diana did it, and Carlos did not lie when he said that Diana did it.
+		
+		\underline{If Diana is telling the truth}: Carlos did not do it, John did it, Diana did not do it, and Carlos was lying when he said that Diana did it.
+		
+		Assuming that there is a single perpetrator, we can see that when we take what Diana says for truth there are no contradictions in the other statements. It then follows that John did it.
+		
+		\item If the authorities also know that exactly one is lying, who did it? Explain your reasoning.
+		
+		\underline{If Alice is lying}: Carlos did not do it, John did not do it, then there is a contradiction between what Carlos and Diana say.
+		
+		\underline{If John is lying}: Carlos did it, John did it, and then, again, there is a contradiction between Carlos and Diana.
+		
+		\underline{If Carlos is lying}: Carlos did it, John did not do it, Diana did not do it, and Carlos lied when he said that Diana did it.
+		
+		\underline{If Diana is lying}: Carlos did it, John did not do it, Diana did it, and Carlos did not lie when he said that Diana did it.
+		
+		Again assuming that there is a single perpetrator, the only time when there is not a contradiction is when Carlos is lying. Thus, Carlos did it.
+	\end{enumerate}
+
+	\item Suppose there are signs on the doors to two rooms. The sign on the first door reads "In this room there is a lady, and in the other one there is a tiger"; and the sign on the second door reads "In one of these rooms, there is a lady, and in one of them there is a tiger." Suppose that you know that one of these signs is true and the other is false. Behind which door is the lady?
+	
+	If the sign on the first door were true that would end in a contradiction, essentially making it false by virtue of the second sign. The sign on the second door cannot be false because it says in a general way that there is a lady in one room and a tiger in the other. Therefore, the lady is behind the second door.
+\end{enumerate}
+
+\section*{\textbf{1.3 Propositional Equivalences}}
+\begin{enumerate}[label=\textbf{\arabic*.}]
+	\item Use truth tables to verify these equivalences.
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item $p \land \textbf{T} \equiv p$
+		
+		\begin{tabular}{c | c | c}
+			$p$ & $\textbf{T}$ & $p \land \textbf{T}$ \\
+			\hline
+			T & T & T \\
+			F & T & F 
+		\end{tabular}
+		
+		\item $p \lor \textbf{F} \equiv p$
+		
+		\begin{tabular}{c | c | c}
+			$p$ & $\textbf{F}$ & $p \lor \textbf{F}$ \\
+			\hline
+			T & F & T \\
+			F & F & F
+		\end{tabular}
+		
+		\item $p \land \textbf{F} \equiv \textbf{F}$
+		
+		\begin{tabular}{c | c | c}
+			$p$ & $\textbf{F}$ & $p \land \textbf{F}$ \\
+			\hline
+			T & F & F \\
+			F & F & F
+		\end{tabular}
+		
+		\item $p \lor \textbf{T} \equiv \textbf{T}$
+		
+		\begin{tabular}{c | c | c}
+			$p$ & $\textbf{T}$ & $p \lor \textbf{T}$ \\
+			\hline
+			T & T & T \\
+			F & T & T
+		\end{tabular}
+	
+		\item $p \lor p \equiv p$
+		
+		\begin{tabular}{c | c}
+			$p$ & $p \lor p$ \\
+			\hline
+			T & T \\
+			F & F 
+		\end{tabular}
+		
+		\item $p \land p \equiv p$
+		
+		\begin{tabular}{c | c}
+			$p$ & $p \land p$ \\
+			\hline
+			T & T \\
+			F & F 
+		\end{tabular}
+	\end{enumerate}
+
+	\item Show that $\neg(\neg p)$ and $p$ are logically equivalent.
+	
+	\begin{tabular}{c | c | c}
+		$p$ & $\neg p$ & $\neg(\neg p)$ \\
+		\hline
+		T & F & T \\
+		F & T & F
+	\end{tabular}
+
+	\item Use truth tables to verify the commutative laws
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item $p \lor q \equiv q \lor p$.
+		
+		\begin{tabular}{c | c | c | c}
+			$p$ & $q$ & $p \lor q$ & $q \lor p$ \\
+			\hline
+			T & T & T & T \\
+			T & F & T & T \\
+			F & T & T & T \\
+			F & F & F & F
+		\end{tabular}
+		
+		\item $p \land q \equiv q \land p$.
+		
+		\begin{tabular}{c | c | c | c}
+			$p$ & $q$ & $p \land q$ & $q \land p$ \\
+			\hline
+			T & T & T & T \\
+			T & F & F & F \\
+			F & T & F & F \\
+			F & F & F & F
+		\end{tabular}
+	\end{enumerate}
+
+	\item Use truth tables to verify the associative laws
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item $(p \lor q) \lor r \equiv p \lor (q \lor r)$.
+		
+		\begin{tabular}{c | c | c | c | c | c | c}
+			$p$ & $q$ & $r$ & $p \lor q$ & $q \lor r$ & $(p \lor q) \lor r$ & $p \lor (q \lor r)$ \\
+			\hline
+			T & T & T & T & T & T & T \\
+			T & T & F & T & T & T & T \\
+			T & F & T & T & T & T & T \\
+			T & F & F & T & F & T & T \\
+			F & T & T & T & T & T & T \\
+			F & T & F & T & T & T & T \\
+			F & F & T & F & T & T & T \\
+			F & F & F & F & F & F & F 
+		\end{tabular}
+		
+		\item $(p \land q) \land r \equiv p \land (q \land r)$.
+		
+		\begin{tabular}{c | c | c | c | c | c | c}
+			$p$ & $q$ & $r$ & $p \land q$ & $q \land r$ & $(p \land q) \land r$ & $p \land (q \land r)$ \\
+			\hline
+			T & T & T & T & T & T & T \\
+			T & T & F & T & F & F & F \\
+			T & F & T & F & F & F & F \\
+			T & F & F & F & F & F & F \\
+			F & T & T & F & T & F & F \\
+			F & T & F & F & F & F & F \\
+			F & F & T & F & F & F & F \\
+			F & F & F & F & F & F & F 
+		\end{tabular}
+	\end{enumerate}
+
+	\item Use a truth table to verify the distributive law $p \land (q \lor r) \equiv (p \land q) \lor (p \land r)$.
+	
+	\begin{tabular}{c | c | c | c | c | c | c | c}
+		$p$ & $q$ & $r$ & $q \lor r$ & $p \land q$ & $p \land r$ & $p \land (q \lor r)$ & $(p \land q) \lor (p \land r)$ \\
+		\hline
+		T & T & T & T & T & T & T & T \\
+		T & T & F & T & T & F & T & T \\
+		T & F & T & T & F & T & T & T \\
+		T & F & F & F & F & F & F & F \\
+		F & T & T & T & F & F & F & F \\
+		F & T & F & T & F & F & F & F \\
+		F & F & T & T & F & F & F & F \\
+		F & F & F & F & F & F & F & F
+	\end{tabular}
+
+	\item Use a truth table to verify the first De Morgan law $\neg(p \land q) \equiv \neg p \lor \neg q$.
+	
+	\begin{tabular}{c | c | c | c | c | c | c}
+		$p$ & $q$ & $\neg p$ & $\neg q$ & $p \land q$ & $\neg(p \land q)$ & $\neg p \lor \neg q$ \\
+		\hline
+		T & T & F & F & T & F & F \\
+		T & F & F & T & F & T & T \\
+		F & T & T & F & F & T & T \\
+		F & F & T & T & F & T & T 
+	\end{tabular}
+
+	\item Use De Morgan's laws to find the negation of each of the following statements.
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item Kwame will take a job in industry or go to graduate school.
+		
+		\hspace{1em}$p$: Kwame will take a job in industry.
+		
+		\hspace{1em}$q$: Kwame will go to graduate school.
+		
+		By the second of De Morgan's laws, $\neg(p \lor q)$ is equivalent to $\neg p \land \neg q$. Consequently, we can express the negation of the original statement as "Kwame will not take a job in industry and will not go to graduate school."
+		
+		\item Yoshiko knows Java and calculus.
+		
+		\hspace{1em}$p$: Yoshiko knows Java.
+		
+		\hspace{1em}$q$: Yoshiko knows calculus.
+		
+		By the first of De Morgan's laws, $\neg(p \land q)$ is equivalent to $\neg p \lor \neg q$. Consequently, we can express the negation of the original statement as "Yoshiko does not know Java or he does not know calculus."
+		
+		\item James is young and strong.
+		
+		\hspace{1em}$p$: James is young.
+		
+		\hspace{1em}$q$: James is strong.
+		
+		By the first of De Morgan's laws, $\neg(p \land q)$ is equivalent to $\neg p \lor \neg q$. Consequently, we can express the negation of the original statement as "James is not young or he is not strong."
+		
+		\item Rita will move to Oregon and Washington.
+		
+		\hspace{1em}$p$: Rita will move to Oregon.
+		
+		\hspace{1em}$q$: Rita will move to Washington.
+		
+		By the first of De Morgan's laws, $\neg(p \land q)$ is equivalent to $\neg p \lor \neg q$. Consequently, we can express the negation of the original statement as "Rita will not move to Oregon or not move to Washington."
+	\end{enumerate}
+
+	\item For each of these compound propositions, use the conditional-disjunction equivalence to find an equivalent compound proposition that does not involve conditionals.
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item $p \implies \neg q$
+		
+		\begin{tabular}{c | c | c | c | c | c}
+			$p$ & $q$ & $\neg p$ & $\neg q$ & $p \implies \neg q$ & $\neg p \lor \neg q$ \\
+			\hline
+			T & T & F & F & F & F \\
+			T & F & F & T & T & T \\
+			F & T & T & F & T & T \\
+			F & F & T & T & T & T
+		\end{tabular}
+		
+		\item $(p \implies q) \implies r$
+		
+		\begin{tabular}{c | c | c | c | c | c | c | c}
+			$p$ & $q$ & $r$ & $\neg q$ & $(p \land \neg q)$ & $p \implies q$ & $(p \implies q) \implies r$ & $(p \land \neg q) \lor r$ \\
+			\hline
+			T & T & T & F & F & T & T & T \\
+			T & T & F & F & F & T & F & F\\
+			T & F & T & T & T & F & T & T \\
+			T & F & F & T & T & F & T & T \\
+			F & T & T & F & F & T & T & T \\
+			F & T & F & F & F & T & F & F \\
+			F & F & T & T & F & T & T & T \\
+			F & F & F & T & F & T & F & F
+		\end{tabular}
+	
+		\item $(\neg q \implies p) \implies (p \implies \neg q)$
+		
+		\begin{tabular}{c | c | c | c | c | c | c | c}
+			$p$ & $q$ & $\neg p$ & $\neg q$ & $(\neg q \implies p)$ & $(p \implies \neg q)$ & $(\neg q \implies p) \implies (p \implies \neg q)$ & $\neg p \lor \neg q$ \\
+			\hline
+			T & T & F & F & T & F & F & F \\
+			T & F & F & T & T & T & T & T \\
+			F & T & T & F & T & T & T & T \\
+			F & F & T & T & F & T & T & T
+		\end{tabular}
+	\end{enumerate}
+
+	\item Show that each of these conditional statements is a tautology by using truth tables.
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item $(p \land q) \implies p$
+		
+		\begin{tabular}{c | c | c | c}
+			$p$ & $q$ & $p \land q$ & $(p \land q) \implies p$ \\
+			\hline
+			T & T & T & T \\
+			T & F & F & T \\
+			F & T & F & T \\
+			F & F & F & T
+		\end{tabular}
+		
+		\item $p \implies (p \lor q)$
+		
+		\begin{tabular}{c | c | c | c}
+			$p$ & $q$ & $p \lor q$ & $p \implies (p \lor q)$ \\
+			\hline
+			T & T & T & T \\
+			T & F & T & T \\
+			F & T & T & T \\
+			F & F & F & T 
+		\end{tabular}
+	
+		\item $\neg p \implies (p \implies q)$
+		
+		\begin{tabular}{c | c | c | c | c}
+			$p$ & $q$ & $\neg p$ & $p \implies q$ & $\neg p \implies (p \implies q)$ \\
+			\hline
+			T & T & F & T & T \\
+			T & F & F & F & T \\
+			F & T & T & T & T \\
+			F & F & T & T & T
+		\end{tabular}
+		
+		\item $(p \land q) \implies (p \implies q)$
+		
+		\begin{tabular}{c | c | c | c | c}
+			$p$ & $q$ & $p \land q$ & $p \implies q$ & $(p \land q) \implies (p \implies q)$ \\
+			\hline
+			T & T & T & T & T \\
+			T & F & F & F & T \\
+			F & T & F & T & T \\
+			F & F & F & T & T
+		\end{tabular}
+	
+		\item $\neg(p \implies q) \implies p$
+		
+		\begin{tabular}{c | c | c | c | c}
+			$p$ & $q$ & $p \implies q$ & $\neg(p \implies q)$ & $\neg(p \implies q) \implies p$ \\
+			\hline
+			T & T & T & F & T \\
+			T & F & F & T & T \\
+			F & T & T & F & T \\
+			F & F & T & F & T
+		\end{tabular}
+		
+		\item $\neg(p \implies q) \implies \neg q$
+		
+		\begin{tabular}{c | c | c | c | c | c}
+			$p$ & $q$ & $\neg q$ & $p \implies q$ & $\neg(p \implies q)$ & $\neg(p \implies q) \implies \neg q$ \\
+			\hline
+			T & T & F & T & F & T \\
+			T & F & T & F & T & T \\
+			F & T & F & T & F & T \\
+			F & F & T  &T & F & T
+		\end{tabular}
+	\end{enumerate}
+
+	\item Show that each conditional statement in Exercise 9 is a tautology using the fact that a conditional statement is false exactly when the hypothesis is true and the conclusion is false. (Do not use truth tables.)
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item $(p \land q) \implies p$
+		
+		If this were not a tautology, then $p \land q$ would be true but $p$ would be false. This cannot happen, because the truth of $p \land q$ implies the truth of $p$.
+		
+		\item $p \implies (p \lor q)$
+		
+		If this were not a tautology, then $p$ would be true but $p \lor q$ would be false. This cannot happen, because the truth of $p$ implies the truth of $p \lor q$.
+		
+		\item $\neg p \implies (p \implies q)$
+		
+		If this were not a tautology, then $\neg p$ would be true and $p \implies q$ would be false. This cannot happen, because $p \implies q$ is true when $p$ is false.
+		
+		\item $(p \land q) \implies (p \implies q)$
+		
+		If this were not a tautology, then $p \land q$ would be true and $p \implies q$ would be false. This cannot happen, because $p \implies q$ is true when both $p$ and $q$ are true.
+		
+		\item $\neg(p \implies q) \implies p$
+		
+		If this were not a tautology, then $p \implies q$ would be false and $p$ would be false. This cannot happen, because $p \implies q$ is true when $p$ is false.
+		
+		\item $\neg(p \implies q) \implies \neg q$
+		
+		If this were not a tautology, then $p \implies q$ would be false and $q$ would be true. This cannot happen, because $p \implies q$ is true when $q$ is true.
+	\end{enumerate}
+
+	\item Show that each conditional statement in Exercise 9 is a tautology by applying a chain of logical identities. (Do not use truth tables.)
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item $(p \land q) \implies p$
+		
+		$(p \land q) \implies p \equiv \neg(p \land q) \lor p \equiv \neg p \lor \neg q \lor p \equiv (p \lor \neg p) \lor q \equiv \textbf{T} \lor q \equiv \textbf{T}$
+		
+		\item $p \implies (p \lor q)$
+		
+		$p \implies (p \lor q \equiv \neg p \lor (p \lor q) \equiv (\neg p \lor p) \lor q \equiv \textbf{T} \lor q \equiv \textbf{T}$
+		
+		\item $\neg p \implies (p \implies q)$
+		
+		$\neg p \implies (p \implies q) \equiv \neg p \implies (\neg p \lor q) \equiv p \lor (\neg p \lor q) \equiv (p \lor \neg p) \lor q \equiv \textbf{T} \lor q \equiv \textbf{T}$
+		
+		\item $(p \land q) \implies (p \implies q)$
+		
+		$(p \land q) \implies (p \implies q) \equiv \neg(p \land q) \lor (\neg p \lor q) \equiv \neg p \lor \neg q \lor (\neg p \lor q) \equiv (\neg p \lor \neg p) \lor (\neg q \lor q) \equiv \neg p \lor \textbf{T} \equiv \textbf{T}$
+		
+		\item $\neg(p \implies q) \implies p$
+		
+		$\neg(p \implies q) \implies p \equiv \neg(\neg(\neg p \lor q)) \lor p \equiv (\neg p \lor q) \lor p \equiv (\neg p \lor p) \lor q \equiv \textbf{T} \lor q \equiv \textbf{T}$
+		
+		\item $\neg(p \implies q) \implies \neg q$
+		
+		$\neg(p \implies q) \implies \neg q \equiv (p \implies q) \lor \neg q \equiv (\neg p \lor q) \lor \neg q \equiv \neg p \lor (q \lor \neg q) \equiv p \lor \textbf{T} \equiv \textbf{T}$
+	\end{enumerate}
+
+	\item Use truth tables to verify the absorption laws.
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item $p \lor (p \land q) \equiv p$
+		
+		\begin{tabular}{c | c | c | c}
+			$p$ & $q$ & $p \land q$ & $p \lor (p \land q)$ \\
+			\hline
+			T & T & T & T \\
+			T & F & F & T \\
+			F & T & F & F \\
+			F & F & F & F 
+		\end{tabular}
+		
+		\item $p \land (p \lor q) \equiv p$
+		
+		\begin{tabular}{c | c | c | c}
+			$p$ & $q$ & $p \lor q$ & $p \land (p \lor q)$ \\
+			\hline
+			T & T & T & T \\
+			T & F & T & T \\
+			F & T & T & F \\
+			F & F & F & F
+		\end{tabular}
+	\end{enumerate}
+
+	\item Determine whether $(\neg p \land (p \implies q)) \implies \neg q$ is a tautology.
+
+	\begin{tabular}{c | c | c | c | c | c | c}
+		$p$ & $q$ & $\neg p$ & $\neg q$ & $p \implies q$ & $\neg p \land (p \implies q)$ & $(\neg p \land (p \implies q)) \implies \neg q$ \\
+		\hline
+		T & T & F & F & T & F & T \\
+		T & F & F & T & F & F & T \\
+		F & T & T & F & T & T & F \\
+		F & F & T & T & T & T & T
+	\end{tabular}
+
+	It is not a tautology.
+
+	\item Determine whether $(\neg q \land (p \implies q)) \implies \neg p$ is a tautology.
+	
+	\begin{tabular}{c | c | c | c | c | c | c}
+		$p$ & $q$ & $\neg p$ & $\neg q$ & $p \implies q$ & $\neg q \land (p \implies q)$ & $(\neg q \land (p \implies q)) \implies \neg p$ \\
+		\hline
+		T & T & F & F & T & F & T \\
+		T & F & F & T & F & F & T \\
+		F & T & T & F & T & F & T \\
+		F & F & T & T & T & T & T
+	\end{tabular}
+
+	It is a tautology.
+\end{enumerate}
+
+\section*{\textbf{1.4 Predicates and Quantifiers}}
+\begin{enumerate}[label=\textbf{\arabic*.}]
+	\item Let $P(x)$ denote the statement "$x \le 4$." What are these truth values?
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item $P(0)$ = True		
+		\item $P(4)$ = True
+		\item $P(6)$ = False
+	\end{enumerate}
+
+	\item Let $P(x)$ be the statement "The word $x$ contains the letter $a$." What are these truth values?
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item $P($orange$)$ = True
+		\item $P($lemon$)$ = False
+		\item $P($true$)$ = False
+		\item $P($false$)$ = True
+	\end{enumerate}
+
+	\item Let $Q(x,y)$ denote the statement "$x$ is the capital of $y$." What are these truth values?
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item $Q($Denver, Colorado$)$ = True
+		\item $Q($Detroit, Michigan$)$ = False
+		\item $Q($Massachusetts, Boston$)$ = False
+		\item $Q($New York, New York$)$ = False
+	\end{enumerate}
+
+	\item State the value of $x$ after the statement \textbf{if} $P(x)$ \textbf{then} $x := 1$ is executed, where $P(x)$ is the statement "$x > 1$," if the value of $x$ when this statement is reached is
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item $x = 0$.
+		
+		$x = 0$
+		
+		\item $x = 1$.
+		
+		$x = 1$
+		
+		\item $x = 2$.
+		
+		$x = 1$
+	\end{enumerate}
+
+	\item Let $P(x)$ be the statement "$x$ spends more than five hours every weekday in class," where the domain for $x$ consists of all students. Express each of these quantifications in English.
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item $\exists xP(x)$
+		
+		"There is a student that spends more than five hours every weekday in class."
+		
+		\item $\forall xP(x)$
+		
+		"Every student spends more than five hours every weekday in class."
+		
+		\item $\exists x\neg P(x)$
+		
+		"There is a student that does not spend more than five hours every weekday in class."
+		
+		\item $\forall x\neg P(x)$
+		
+		"No student spends more than five hours every weekday in class."
+	\end{enumerate}
+
+	\item Let $N(x)$ be the statement "$x$ has visited North Dakota," where the domain consists of the students in your school. Express each of these quantifications in English.
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item $\exists xN(x)$
+		
+		"There is a student who has visited North Dakota."
+		
+		\item $\forall xN(x)$
+		
+		"Every student has visited North Dakota."
+		
+		\item $\neg \exists xN(x)$
+		
+		"There is no student that has visited North Dakota."
+		
+		\item $\exists x\neg N(x)$
+		
+		"There is a student that has not visited North Dakota."
+		
+		\item $\neg \forall xN(x)$
+		
+		"Not all students have visited North Dakota."
+		
+		\item $\forall x\neg N(x)$
+		
+		"All the students have not visited North Dakota."
+	\end{enumerate}
+
+	\item Translate these statements into English, where $C(x)$ is "$x$ is a comedian" and $F(x)$ is "$x$ is funny" and the domain consists of all people.
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item $\forall x(C(x) \implies F(x))$
+		
+		"All comedians are funny."
+		
+		\item $\forall x(C(x) \land F(x))$
+		
+		"Every person is a funny comedian."
+		
+		\item $\exists x(C(x) \implies F(x))$
+		
+		"There is a comedian who is funny."
+		
+		\item $\exists x(C(x) \land F(x))$
+		
+		"There is a person who is a funny comedian."
+	\end{enumerate}
+
+	\item Translate these statements into English, where $R(x)$ is "$x$ is a rabbit" and $H(x)$ is "$x$ hops" and the domain consists of all animals.
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item $\forall x(R(x) \implies H(x))$
+		
+		"All rabbits hop."
+		
+		\item $\forall x(R(x) \land H(x))$
+		
+		"Every animal is a rabbit that hops."
+		
+		\item $\exists x(R(x) \implies H(x))$
+		
+		"There is a rabbit that hops."
+		
+		\item $\exists x(R(x) \land H(x))$
+		
+		"There is an animal which is a rabbit that hops."
+	\end{enumerate}
+
+	\item Let $P(x)$ be the statement "$x$ can speak Russian" and let $Q(x)$ be the statement "$x$ knows the computer language C++." Express each of these sentences in terms of $P(x)$, $Q(x)$, quantifiers, and logical connectives. The domain for quantifiers consists of all students at your school.
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item There is a student at your school who can speak Russian and who knows C++.
+		
+		$\exists x(P(x) \land Q(x))"$
+		
+		\item There is a student at your school who can speak Russian but who doesn't know C++.
+		
+		$\exists x(P(x) \land \neg Q(x))"$
+		
+		\item Every student at your school either can speak Russian or knows C++.
+		
+		$\forall x(P(x) \lor Q(x))$
+		
+		\item No student at your school can speak Russian or knows C++.
+		
+		$\neg \exists x(P(x) \lor Q(x))$ or $\forall x\neg(P(x) \lor Q(x))$
+	\end{enumerate}
+
+	\item Let $P(x)$ be the statement "$x = x^2$." If the domain consists of the integers, what are these truth values?
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item $P(0)$ = True
+		\item $P(1)$ = True
+		\item $P(2)$ = False
+		\item $P(-1)$ = False
+		\item $\exists xP(x)$ = True
+		\item $\forall xP(x)$ = False
+	\end{enumerate}
+
+	\item Let $Q(x)$ be the statement "$x + 1 > 2x$." If the domain consists of all integers, what are these truth values?
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item $Q(0)$ = True
+		\item $Q(-1)$ = True
+		\item $Q(1)$ = False
+		\item $\exists xQ(x)$ = True
+		\item $\forall xQ(x)$ = False
+		\item $\exists x\neg Q(x)$ = True
+		\item $\forall x\neg Q(x)$ = False
+	\end{enumerate}
+
+	\item Determine the truth value of each of these statements if the domain consists of all integers.
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item $\forall n(n + 1 > n)$ = True
+		\item $\exists n(2n = 3n)$ = True
+		\item $\exists n(n = -n)$ = True
+		\item $\forall n(3n \le 4n)$ = False
+	\end{enumerate}
+
+	\item Suppose that the domain of the propositional function $P(x)$ consists of the integers 0, 1, 2, 3, and 4. Write out each of these propositions using disjunctions, conjunctions, and negations.
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item $\exists xP(x)$
+		
+		$P(0) \lor P(1) \lor P(2) \lor P(3) \lor P(4)$
+		
+		\item $\forall xP(x)$
+		
+		$P(0) \land P(1) \land P(2) \land P(3) \land P(4)$
+		
+		\item $\exists x\neg P(x)$
+		
+		$\neg P(0) \lor \neg P(1) \lor \neg P(2) \lor \neg P(3) \lor \neg P(4)$
+		
+		\item $\forall x\neg P(x)$
+		
+		$\neg P(0) \land \neg P(1) \land \neg P(2) \land \neg P(3) \land \neg P(4)$
+		
+		\item $\neg \exists xP(x)$
+		
+		$\neg(P(0) \lor P(1) \lor P(2) \lor P(3) \lor P(4))$
+		
+		\item $\neg \forall xP(x)$
+		
+		$\neg(P(0) \land P(1) \land P(2) \land P(3) \land P(4))$
+	\end{enumerate}
+
+	\item For each of these statements find a domain for which the statement is true and a domain for which the statement is false.
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item Everyone is studying discrete mathematics.
+		
+		True: Students in a discrete mathematics class (one would hope). \\
+		False: All students in the world.
+		
+		\item Everyone is older than 21 years.
+		
+		True: Senior citizens. \\
+		False: Infants.
+		
+		\item Every two people have the same mother.
+		
+		True: Two full brothers. \\
+		False: Two half brothers.
+		
+		\item No two different people have the same grandmother.
+		
+		True: Bill Clinton and George Bush. \\
+		False: Two first cousins.
+	\end{enumerate}
+
+	\item Translate in two ways each of these statements into logical expressions using predicates, quantifiers, and logical connectives. First, let the domain consist of the students in your class and second, let it consist of all people.
+	
+	Let $S(x)$ be the propositional function "$x$ is in your class."
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item Someone in your class can speak Hindi.
+		
+		Let $H(x)$ be the propositional function "$x$ can speak Hindi." \\
+		$\exists xH(x)$ or $\exists x(S(x) \land H(x))$
+		
+		\item Everyone in your class is friendly.
+		
+		Let $F(x)$ be the propositional function "$x$ is friendly." \\
+		$\forall xF(x)$ or $\forall x(S(x) \implies F(x))$
+		
+		\item There is a person in your class who was not born in California.
+		
+		Let $C(x)$ be the propositional function "$x$ was born in California." \\
+		$\exists x\neg C(x)$ or $\exists x(S(x) \land \neg C(x))$
+		
+		\item A student in your class has been in a movie.
+		
+		Let $M(x)$ be the propositional function "$x$ has been in a movie." \\
+		$\exists xM(x)$ or $\exists x(S(x) \land M(x))$
+		
+		\item No student in your class has taken a course in logic programming.
+		
+		Let $L(x)$ be the propositional function "$x$ has taken a course in logic programming." \\
+		$\forall x\neg L(x)$ or $\forall x(S(x) \implies \neg L(x))$
+	\end{enumerate}
+
+	\item Translate each of these statements into logical expressions using predicates, quantifiers, and logical connectives.
+	
+	Let $P(x)$ be the propositional function "$x$ is perfect." \\
+	Let $F(x)$ be the propositional function "$x$ is your friend."
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item No one is perfect.
+		
+		$\forall x\neg P(x)$
+		
+		\item Not everyone is perfect.
+		
+		$\exists x\neg P(x)$
+		
+		\item All your friends are perfect.
+		
+		$\forall x(F(x) \implies P(x))$
+		
+		\item At least one of your friends is perfect.
+		
+		$\exists x(F(x) \land P(x))$
+		
+		\item Everyone is your friend and is perfect.
+		
+		$\forall x(F(x) \land P(x))$
+		
+		\item Not everybody is your friend or someone is not perfect.
+		
+		$(\neg\forall xF(x)) \lor (\exists x\neg P(x)$)
+	\end{enumerate}
+
+	\item Translate each of these statements into logical expressions in three different ways by varying the domain and using predicates with one and with two variables.
+	
+	Let $S(x)$ be the propositional function "$x$ is in your school or class."
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item A student in your school has lived in Vietnam.
+		
+		Let $V(x)$ be the propositional function "$x$ has lived in Vietnam." \\
+		$\exists xV(x)$ if the domain is your school. \\
+		$\exists x(S(x) \land V(x))$ if the domain is all people.
+		
+		Let $L(x, y)$ be the propositional function "$x$ has lived in $y$." \\
+		$\exists x(S(x) \land L(x, $Vietnam$))$ if the domain is all people.
+		
+		\item There is a student in your school who cannot speak Hindi.
+		
+		Let $H(x)$ be the propositional function "$x$ cannot speak Hindi." \\
+		$\exists xH(x)$ if the domain is your school. \\
+		$\exists x(S(x) \land H(x))$ if the domain is all people.
+		
+		Let $L(x, y)$ be the propositional function "$x$ cannot speak $y$." \\
+		$\exists x(S(x) \land L(x, $Hindi$))$ if the domain is all people.
+		
+		\item A student in your school knows Java, Prolog, and C++.
+		
+		Let $P(x)$ be the propositional function "$x$ knows Java, Prolog, and C++." \\
+		$\exists xP(x)$ if the domain is your school. \\
+		$\exists x(S(x) \land P(x))$ if the domain is all people.
+		
+		Let $Q(x, y)$ be the propositional function "$x$ knows $y$." \\
+		$\exists x(S(x) \land Q(x, $"Java, Prolog, and C++"$))$ if the domain is all people.
+		
+		\item Everyone in your class enjoys Thai food.
+		
+		Let $T(x)$ be the propositional function "$x$ enjoys Thai food." \\
+		$\forall xT(x)$ if the domain is your class. \\
+		$\forall x(S(x) \implies T(x))$ if the domain is all people.
+		
+		Let $F(x, y)$ be the propositional function "$x$ enjoys $y$ food." \\
+		$\forall x(S(x) \implies F(x, $Thai$))$ if the domain is all people.
+		
+		\item Someone in your class does not play hockey.
+		
+		Let $H(x)$ be the propositional function "$x$ plays hockey." \\
+		$\exists x\neg H(x)$ if the domain is your class. \\
+		$\exists x(S(x) \land \neg H(x))$ if the domain is all people.
+		
+		Let $P(x, y)$ be the propositional function "$x$ plays $y$." \\
+		$\exists x(S(x) \land \neg P(x, $Hockey$))$ if the domain is all people.
+	\end{enumerate}
+
+	\item Express the negation of each of these statements in terms of quantifiers without using the negation symbol.
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item $\forall x(x > 1)$
+		
+		$\neg \forall x(x > 1) \equiv \exists x\neg(x > 1) \equiv \exists x(x \le 1)$
+		
+		\item $\forall x(x \le 2)$
+		
+		$\neg\forall x(x \le 2) \equiv \exists x\neg(x \le 2) \equiv \exists x(x > 2)$
+		
+		\item $\exists x(x \geq 4)$
+		
+		$\neg\exists x(x \geq 4) \equiv \forall x\neg(x \geq 4) \equiv \forall x(x < 4)$
+		
+		\item $\exists x(x < 0)$
+		
+		$\neg\exists x(x < 0) \equiv \forall x \neg(x < 0) \equiv \forall x(x \geq 0)$
+		
+		\item $\forall x((x < -1) \lor (x > 2))$
+		
+		$\neg\forall x((x < -1) \lor (x > 2)) \equiv \exists x\neg((x < -1) \lor (x > 2))$
+		
+		$\hspace{4.26cm}\equiv \exists x(\neg(x < -1) \land \neg(x > 2))$
+		
+		$\hspace{4.26cm}\equiv \exists x((x \geq -1) \land (x \leq 2))$
+		
+		\item $\exists x((x < 4) \lor (x > 7))$
+		
+		$\neg\exists x((x < 4) \lor (x > 7)) \equiv \forall x\neg((x < 4) \lor (x > 7))$
+		
+		$\hspace{3.96cm}\equiv \forall x(\neg(x < 4) \land \neg(x > 7))$
+		
+		$\hspace{3.96cm}\equiv \forall x((x \geq 4) \land (x \leq 7))$
+	\end{enumerate}
+
+	\item Show that $\exists xP(x) \land \exists xQ(x)$ and $\exists x(P(x) \land Q(x))$ are not logically equivalent.
+	
+	Let the domain be all integers, let $P(x)$ be the statement "$x$ is an even number," and let $Q(x)$ be the statement "$x$ is an odd number." $\exists xP(x) \land \exists xQ(x)$ says that there exists an $x$ which is even and there exists an $x$ which is odd. $\exists x(P(x) \land Q(x))$ says there there exists an $x$ which is both even and odd.
+\end{enumerate}
+
+\section*{\textbf{1.5 Nested Quantifiers}}
+\begin{enumerate}[label=\textbf{\arabic*.}]
+	\item Translate these statements into English, where the domain for each variable consists of all real numbers.
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item $\forall x\exists y(x < y)$
+		
+		For every real number $x$ there exists a real number $y$ such that $x$ is less than $y$.
+		
+		\item $\forall x\forall y(((x \geq 0) \land (y \geq 0)) \implies (xy \geq 0))$
+		
+		For all real numbers $x$ and real numbers $y$, if $x$ and $y$ are both greater than or equal to zero, then their product is greater than or equal to zero.
+		
+		\item $\forall x\forall y\exists z(xy = z)$
+		
+		For all real numbers $x$ and $y$ there exists a real number $z$ such that the product of $x$ and $y$ equals $z$.
+	\end{enumerate}
+
+	\item Translate these statements into English, where the domain for each variable consists of all real numbers.
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item $\exists x\forall y(xy = y)$
+		
+		There is a real number $x$ such that for every real number $y$ their product is equal to $y$.
+		
+		\item $\forall x\forall y(((x \geq 0) \land (y < 0)) \implies (x - y > 0))$
+		
+		For all real numbers $x$ and real numbers $y$, if $x$ is greater than or equal to zero and $y$ is less than zero, then $x - y$ is greater than zero.
+		
+		\item $\forall x\forall y\exists z(x = y + z)$
+		
+		For every real number $x$ and real number $y$ there exists a real number $z$ such that $x$ is equal to the sum of $y$ and $z$.
+	\end{enumerate}
+
+	\item Let $Q(x, y)$ be the statement "$x$ has sent an e-mail message to $y$," where the domain for both $x$ and $y$ consists of all students in your class. Express each of these quantifications in English.
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item $\exists x\exists yQ(x, y)$
+		
+		There exists students $x$ and $y$ such that student $x$ has send an e-mail message to student $y$.
+		
+		\item $\exists x\forall yQ(x, y)$
+		
+		There exists a student x such that for all students $y$ student $x$ has sent an e-mail message to all students $y$.
+		
+		\item $\forall x\exists yQ(x, y)$
+		
+		For every student $x$ there exists a student $y$ such that all students $x$ have sent an e-mail message to student $y$.
+		
+		\item $\exists y\forall xQ(x, y)$
+		
+		There exists a student $y$ to which every student $x$ has sent an e-mail message.
+		
+		\item $\forall y\exists xQ(x, y)$
+		
+		Every student $y$ has received an e-mail message from at least one student $x$.
+		
+		\item $\forall x\forall yQ(x, y)$
+		
+		Every student $x$ has sent an e-mail to every student $y$.
+	\end{enumerate}
+
+	\item Let $P(x, y)$ be the statement "Student $x$ has taken class $y$," where the domain for $x$ consists of all students in your class and for $y$ consists of all computer science courses at your school. Express each of these quantifications in English.
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item $\exists x\exists yP(x, y)$
+		
+		There exists a student $x$ that has taken a computer science course $y$.
+		
+		\item $\exists x\forall yP(x, y)$
+		
+		There exists a student $x$ that has taken all the computer science courses $y$.
+		
+		\item $\forall x\exists yP(x, y)$
+		
+		Every student $x$ has taken a certain computer science course $y$.
+		
+		\item $\exists y\forall xP(x, y)$
+		
+		There exists a computer science course $y$ which every student $x$ has taken.
+		
+		\item $\forall y\exists xP(x, y)$
+		
+		For every computer science course $y$ there exists a student $x$ which has taken it.
+		
+		\item $\forall x\forall yP(x, y)$
+		
+		Every student $x$ has taken every computer science course $y$.
+	\end{enumerate}
+
+	\item Let $Q(x, y)$ be the statement "Student $x$ has been a contestant on quiz show $y$." Express each of these sentences in terms of $Q(x, y)$, quantifiers, and logical connectives, where the domain for $x$ consists of all students at your school and for $y$ consists of all quiz shows on television.
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item There is a student at your school who has been a contestant on a television quiz show.
+		
+		$\exists x\exists yQ(x, y)$
+		
+		\item No student at your school has ever been a contestant on a television quiz show.
+		
+		$\neg\forall x\forall y Q(x, y)$
+		
+		\item There is a student at your school who has been a contestant on \emph{Jeopardy!} and on \emph{Wheel of Fortune}.
+		
+		$\exists x(Q(x, $Jeopardy!$) \land Q(x, $Wheel of Fortune$))$
+		
+		\item Every television quiz show has had a student from your school as a contestant.
+		
+		$\forall y\exists xQ(x, y)$
+		
+		\item At least two students from your school have been contestants on \emph{Jeopardy!}.
+		
+		$\exists x\exists y(Q(x, $Jeopardy!$) \land Q(y, $Jeopardy$) \land x \ne y)$
+	\end{enumerate}
+
+	\item Let $L(x, y)$ be the statement "$x$ loves $y$," where the domain for both $x$ and $y$ consists of all people in the world. Use quantifiers to express each of these statements.
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item Everybody loves Jerry.
+		
+		$\forall xL(x, $Jerry$)$
+		
+		\item Everybody loves somebody.
+		
+		$\forall x\exists yL(x, y)$
+		
+		\item There is somebody whom everybody loves.
+		
+		$\exists y\forall xL(x, y)$
+		
+		\item Nobody loves everybody.
+		
+		$\neg\exists x\forall yL(x, y)$
+		
+		\item There is somebody whom Lydia does not love.
+		
+		$\exists y\neg L($Lydia$,y)$
+		
+		\item There is somebody whom no one loves.
+		
+		$\exists y\forall x\neg L(x, y)$
+		
+		\item There is exactly one person whom everybody loves.
+		
+		$\exists! y\forall xL(x, y)$
+		
+		\item There are exactly two people whom Lynn loves.
+		
+		$\exists x\exists y(x \ne y \land L($Lynn$, x) \land L($Lynn$, y) \land \forall z(L($Lynn$, z) \implies (z = x \lor z = y)))$
+		
+		\item Everyone loves himself or herself.
+		
+		$\forall xL(x, x)$
+		
+		\item There is someone who loves no one besides himself or herself.
+		
+		$\exists x\forall y(L(x, y) \iff x = y)$
+	\end{enumerate}
+
+	\item Let $S(x)$ be the predicate "$x$ is a student," $F(x)$ the predicate "$x$ is a faculty member," and $A(x, y)$ the predicate "$x$ has asked $y$ a question," where the domain consists of all people associated with your school. Use quantifiers to express each of these statements.
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item Lois has asked Professor Michaels a question.
+		
+		$A($Lois$,$Professor Michaels$)$
+		
+		\item Every student has asked Professor Gross a question.
+		
+		$\forall x(S(x) \implies A(x, $Professor Gross$))$
+		
+		\item Every faculty member has either asked Professor Miller a question or been asked a question by Professor Miller.
+		
+		$\forall x(F(x) \implies (A(x,$Professor Miller$) \lor A($Professor Miller$, x)))$
+		
+		\item Some student has not asked any faculty member a question.
+		
+		$\exists x(S(x) \land \forall y(F(y) \implies \neg A(x, y)))$
+		
+		\item There is a faculty member who has never been asked a question by a student.
+		
+		$\exists x(F(x) \land \forall y(S(y) \implies \neg A(y, x)))$
+		
+		\item Some student has asked every faculty member a question.
+		
+		$\exists x(S(x) \land \forall y(F(y) \implies A(x, y)))$
+		
+		\item There is a faculty member who has asked every other faculty member a question.
+		
+		$\exists x(F(x) \land \forall y(F(y) \implies A(x, y)))$
+		
+		\item Some student has never been asked a question by a faculty member.
+		
+		$\exists x(S(x) \land \forall y(F(y) \implies \neg A(y, x)))$
+	\end{enumerate}
+
+	\item Let $M(x, y)$ be "$x$ has sent $y$ and e-mail message" and $T(x, y)$ be "$x$ has telephoned $y$," where the domain consists of all students in your class. Use quantifiers to express each of these statements. (Assume that all e-mail messages that were sent are received, which is not the way things often work.)
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item Chou has never sent an e-mail message to Koko.
+		
+		$\neg M($Chou$,$Koko$)$
+		
+		\item Arlene has never sent an e-mail message or telephoned Sarah.
+		
+		$\neg(M($Arlene$,$Sarah$) \lor T($Arlene$,$Sarah$))$
+		
+		\item Jos\'e has never received an e-mail message from Deborah.
+		
+		$\neg M($Deborah$,$Jos\'e$)$
+		
+		\item Every student in your class has sent en e-mail message to Ken.
+		
+		$\forall x M(x,$Ken$)$
+		
+		\item No one in your class has telephoned Nina.
+		
+		$\neg\exists x T(x,$Nina$)$
+		
+		\item Everyone in your class has either telephoned Avi or sent him an e-mail message.
+		
+		$\forall x(T(x,$Avi$) \lor M(x,$Avi$))$
+		
+		\item There is a student in your class who has sent everyone else in your class an e-mail message.
+		
+		$\exists x\forall y(x \ne y \implies M(x,y))$
+		
+		\item There is someone in your class who has either sent an e-mail message or telephoned everyone else in your class.
+		
+		$\exists x\forall y(x \ne y \implies (M(x, y) \lor T(x, y)))$
+		
+		\item There are two different students in your class who have sent each other e-mail messages.
+		
+		$\exists x\exists y(x \ne y \land M(x, y) \land M(y, x))$
+		
+		\item There is a student who has sent himself or herself an e-mail message.
+		
+		$\exists xM(x, x)$
+		
+		\item There is a student in your class who has not received an e-mail message from anyone else in the class and who has not been called by any other student in the class.
+		
+		$\exists x\forall y(x \ne y \implies (\neg M(y, x) \land \neg T(y, x)))$
+		
+		\item Every student in the class has either received an e-mail message or received a telephone call from another student in the class.
+		
+		$\forall x\exists y(x \ne y \land (M(y, x) \lor T(y, x)))$
+		
+		\item There are at least two students in your class such that one student has sent the other e-mail and the second student has telephoned the first student.
+		
+		$\exists x\exists y(x \ne y \land M(x, y) \land T(y, x))$
+		
+		\item There are two different students in your class who between them have sent an e-mail message to or telephoned everyone else in the class.
+		
+		$\exists x\exists y(x \ne y \land \forall z((z \ne x \land z \ne y) \implies (M(x, z) \lor M(y, z) \lor T(x, z) \lor T(y, z))))$
+	\end{enumerate}
+
+	\item Express each of these system specifications using predicates, quantifiers, and logical connectives, if necessary.
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item Every user has access to exactly one mailbox.
+		
+		$\forall u\exists m(A(u, m) \land \forall n(n \ne m \implies \neg A(u, n)))$, where $A(u, m)$ means user $u$ has access to mailbox $m$.
+		
+		\item There is a process that continues to run during all error conditions only if the kernel is working correctly.
+		
+		$\exists p\forall e(H(e) \implies S(p,$running$)) \implies S($kernel$,$working correctly$)$, where $H(e)$ means error condition $e$ is in effect and $S(x, y)$ means that the status of $x$ is $y$.
+		
+		\item All users on the campus network can access all websites whose url has a .edu extension.
+		
+		$\forall u\forall s(E(s,$.edu$) \implies A(u, s))$, where $E(s, x)$ means website $s$ has extension $x$ and $A(u, s)$ means user $u$ can access website $s$.
+		
+		\item There are exactly two systems that monitor every remote server.
+		
+		$\exists x\exists y(x \ne y \land \forall z((\forall sM(z, s)) \iff (z = x \lor z = y)))$, where $M(a, b)$ means that system $a$ monitors remote server $b$.
+	\end{enumerate}
+
+	\item Express each of these mathematical statements using predicates, quantifiers, logical connectives, and mathematical operators.
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item The product of two negative real numbers is positive.
+		
+		$\forall x\forall y((x < 0) \land (y < 0) \implies (xy > 1))$
+		
+		\item The difference of a real number and itself is zero.
+		
+		$\forall x(x - x = 0)$
+		
+		\item Every positive real number has exactly two square roots.
+		
+		$\forall x\exists a\exists b(a \ne b \land \forall c((c^2 = x) \iff (c = a \lor c = b)))$
+		
+		\item A negative real number does not have a square root that is a real number.
+		
+		$\forall x((x < 0) \implies \neg\exists y(x = y^2))$
+	\end{enumerate}
+
+	\item Translate each of these nested quantifications into an English statement that expresses a mathematical fact. The domain in each case consists of all real numbers.
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item $\exists x\forall y(xy = y)$
+		
+		There exists a real number $x$ such that for every real number $y$, the product of $x$ and $y$ equals $y$.
+		
+		\item $\forall x\forall y(((x < 0) \land (y < 0)) \implies (xy > 0))$
+		
+		For every real number $x$ and every real number $y$, if both $x$ and $y$ are less than zero, it follows that the product $xy$ is greater than zero.
+		
+		\item $\exists x\exists y((x^2 > y) \land (x < y))$
+		
+		There exists a real number $x$ and a real number $y$ such that the square of $x$ is greater than $y$ while $x$ is less than $y$.
+		
+		\item $\forall x\forall y\exists z(x + y = z)$
+		
+		For every real number $x$ and every real number $y$ there exists a real number $z$ such that the sum of $x$ and $y$ equal $z$.
+	\end{enumerate}
+
+	\item Express the negations of each of these statements so that all negation symbols immediately precedes predicates.
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item $\forall x\exists y\forall zT(x, y, z)$
+		
+		$\neg \forall x\exists y\forall zT(x, y, z) \equiv \exists x \neg \exists y\forall zT(x, y, z)$
+		
+		$\hspace{3.15cm}\equiv \exists x\forall y\neg \forall zT(x, y, z)$
+		
+		$\hspace{3.15cm}\equiv \exists x\forall y\exists z\neg T(x, y, z)$
+		
+		\item $\forall x\exists yP(x, y) \lor \forall x\exists yQ(x, y)$
+		
+		$\neg(\forall x\exists yP(x, y) \lor \forall x\exists yQ(x, y)) \equiv \neg\forall x\exists yP(x, y) \land \neg\forall x\exists yQ(x, y)$
+		
+		$\hspace{5.17cm}\equiv \exists x\neg\exists yP(x, y) \land \exists x\neg\exists yQ(x, y)$
+
+		$\hspace{5.17cm}\equiv \exists x\forall y\neg P(x, y) \land \exists x\forall y\neg Q(x, y)$
+		
+		\item $\forall x\exists y(P(x, y) \land \exists zR(x, y, z))$
+		
+		$\neg\forall x\exists y(P(x, y) \land \exists zR(x, y, z)) \equiv \exists x\neg \exists y(P(x, y) \land \exists zR(x, y, z))$
+		
+		$\hspace{5.1cm}\equiv \exists x\forall y\neg(P(x, y) \land \exists zR(x, y, z))$
+		
+		$\hspace{5.1cm}\equiv \exists x\forall y(\neg P(x, y) \lor \neg\exists zR(x, y, z)))$
+		
+		$\hspace{5.1cm}\equiv \exists x\forall y(\neg P(x, y) \lor \forall z\neg R(x, y, z)))$
+		
+		\item $\forall x\exists y(P(x, y) \implies Q(x, y))$
+		
+		$\neg\forall x\exists y(P(x, y) \implies Q(x, y)) \equiv \exists x\neg\exists y(P(x, y) \implies Q(x, y)$
+		
+		$\hspace{4.95cm}\equiv  \exists x\forall y\neg(P(x, y) \implies Q(x, y)$
+		
+		$\hspace{4.95cm}\equiv \exists x\forall y(P(x, y) \land \neg Q(x, y))$
+	\end{enumerate}
+
+	\item Rewrite each of these statements so that negations appear only within predicates (that is, so that no negation is outside a quantifier or an expression involving logical connectives).
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item $\neg\forall x\forall yP(x, y)$
+		
+		$\hspace{1cm}\equiv \exists x\neg\forall yP(x, y)$
+		
+		$\hspace{1cm}\equiv \exists x\exists y\neg P(x, y)$
+		
+		\item $\neg\forall y\exists xP(x, y)$
+		
+		$\hspace{1cm}\equiv \exists y\neg\exists xP(x, y)$
+		
+		$\hspace{1cm}\equiv \exists y\forall x\neg P(x, y)$
+		
+		\item $\neg\forall y\forall x(P(x, y) \lor Q(x, y))$
+		
+		$\hspace{1cm}\equiv \exists y\neg\forall x(P(x, y) \lor Q(x, y))$
+		
+		$\hspace{1cm}\equiv \exists y\exists x\neg(P(x, y) \lor Q(x, y))$
+		
+		$\hspace{1cm}\equiv \exists y\exists x(\neg P(x, y) \land \neg Q(x, y))$
+		
+		\item $\neg(\exists x\exists y\neg P(x, y) \land \forall x\forall yQ(x, y))$
+		
+		$\hspace{1cm}\equiv \neg\exists x\exists y\neg P(x, y) \lor \neg\forall x\forall yQ(x, y)$
+		
+		$\hspace{1cm}\equiv \forall x\neg\exists y\neg P(x, y) \lor \exists x\neg\forall yQ(x, y)$
+		
+		$\hspace{1cm}\equiv \forall x\exists yP(x, y) \lor \exists x\exists y\neg Q(x, y)$
+		
+		\item $\neg\forall x(\exists y\forall zP(x, y, z) \land \exists z\forall yP(x, y, z))$
+		
+		$\hspace{1cm}\equiv \exists x\neg(\exists y\forall zP(x, y, z) \land \exists z\forall yP(x, y, z))$
+		
+		$\hspace{1cm}\equiv \exists x(\neg\exists y\forall zP(x, y, z) \lor \neg\exists z\forall yP(x, y, z))$
+		
+		$\hspace{1cm}\equiv \exists x(\forall y\neg\forall zP(x, y, z) \lor \forall z\neg\forall yP(x, y, z))$
+		
+		$\hspace{1cm}\equiv \exists x(\forall y\exists z\neg P(x, y, z) \lor \forall z\exists y\neg P(x, y, z))$
+	\end{enumerate}
+
+	\item Express each of these statements using quantifiers. Then form the negation of the statement so that no negation is to the left of a quantifier. Next, express the negation in simple English. (Do not simply use the phrase "It is not the case that.")
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item Every student in this class has taken exactly two mathematics classes at this school.
+		
+		Let $T(s, c)$ be the predicate that $s$ has taken $c$, where $x$ ranges over all students in the class and $c$ ranges over all mathematics classes. \\
+		\\
+		$\forall s\exists x\exists y(x \ne y \land T(s, x) \land T(s, y) \land \forall w(T(s, w) \implies (w = x \lor w = y)))$ \\
+		\\
+		$\exists s\forall x\forall y(x = y \lor \neg T(s, x) \lor \neg T(s, y) \lor \exists w(T(s, w) \land w \ne x \land w \ne y))$ \\
+		\\
+		There is a student in this class for whom no matter which two distinct math classes you consider, these are not the two and only two math courses this person has taken.
+		
+		\item Someone has visited every country in the world except Libya.
+		
+		Let $V(x, y)$ be the predicate that $x$ has visited $y$, where $x$ ranges over all people and $y$ ranges over all countries. \\
+		\\
+		$\exists x\forall y(V(x, y) \iff y \ne$ Libya$)$ \\
+		\\
+		$\forall x\exists y(V(x, y) \iff y =$ Libya$)$ \\
+		\\
+		For every person, either that person has visited Libya or else that person has failed to visit some country other than Libya.
+		
+		\item No one has climbed every mountain in the Himalayas.
+		
+		Let $C(x, y)$ be the predicate that $x$ has climbed $y$, where $x$ ranges over people and $y$ ranges over mountains in the Himalayas. \\
+		\\
+		$\neg\exists x\forall y(C(x, y))$ \\
+		\\
+		$\exists x\forall y(C(x, y))$ \\
+		\\
+		There exists a person who has climbed every mountain in the Himalayas.
+		
+		\item Every movie actor has either been in a movie with Kevin Bacon or has been in a movie with someone who has been in a movie with Kevin Bacon.
+		
+		Let $M(x, y, z)$ be the predicate that $x$ has been in movie $z$ with $y$, where $x$ and $y$ range over movie actors and $z$ range over movies. \\
+		\\
+		$\forall x((\exists zM(x,$ Kevin Bacon$, z)) \lor (\exists y\exists z_1\exists z_2(M(x, y, z_1) \land M(y,$ Kevin Bacon$, z_2))))$ \\
+		\\
+		$\exists x((\forall z\neg M(x,$ Kevin Bacon$, z)) \land (\forall y\forall z_1\forall z_2(\neg M(x, y, z_1) \lor \neg M(y,$ Kevin Bacon$, z_2))))$ \\
+		\\
+		There is someone who has neither been in a movie with Kevin Bacon nor been in a movie with someone who has been in a movie with Kevin Bacon.
+	\end{enumerate}
+\end{enumerate}
+
+\section*{\textbf{1.6 Rules of Inference}}
+\begin{enumerate}[label=\textbf{\arabic*.}]
+	\item Find the argument form for the following argument and determine whether it is valid. Can we conclude that the conclusion is true if the premises are true?
+	
+	If Socrates is human, then Socrates is mortal. \\
+	Socrates is human. \\
+	\rule[0.75ex]{7.6cm}{0.4pt} \\
+	$\therefore$ Socrates is mortal. \\
+	
+	If "Socrates is human" is $p$ and "Socrates is mortal" is $q$, then the argument can be expressed as $((p \implies q) \land p) \implies q$. This is a valid modus ponens argument.
+	
+	\item Find the argument form for the following argument and determine whether it is valid. Can we conclude that the conclusion is true if the premises are true?
+	
+	If George does not have eight legs, then he is not a spider. \\
+	George is a spider. \\
+	\rule[0.75ex]{9.7cm}{0.4pt} \\
+	$\therefore$ George has eight legs. \\
+	
+	If "George does not have eight legs" is $p$ and "George is not a spider" is $q$, then the argument can be expressed as $((p \implies q) \land \neg q) \implies \neg p$. This is a valid modus tollens argument.
+	
+	\item What rule of inference is used in each of these arguments?
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item Alice is a mathematics major. Therefore, Alice is either a mathematics major or a computer science major.
+		
+		Addition: $p \implies (p \lor q)$
+		
+		\item Jerry is a mathematics major and a computer science major. Therefore, Jerry is a mathematics major.
+		
+		Simplification: $(p \land q) \implies p$
+		
+		\item If it is rainy, then the pool will be closed. It is rainy. Therefore, the pool is closed.
+		
+		Modus ponens: $((p \implies q) \land p) \implies q$
+		
+		\item If it snows today, the university will be closed. The university is not closed today. Therefore, it did not snow today.
+		
+		Modus tollens: $((p \implies q) \land \neg q) \implies \neg p$
+		
+		\item If I go swimming, then I will stay in the sun too long. If I stay in the sun too long, then I will sunburn. Therefore, if I go swimming, then I will sunburn.
+		
+		Hypothetical syllogism: $((p \implies q) \land (q \implies r)) \implies (p \implies r)$
+	\end{enumerate}
+
+	\item Use rules of inference to show that the hypotheses "Randy works hard," "If Randy works hard, then he is a dull boy," and "If Randy is a dull boy, then he will not get the job" imply the conclusion "Randy will not get the job."
+	
+	Let $w$ be the proposition "Randy works hard," let $d$ be the proposition "Randy is a dull boy," and let $j$ be the proposition "Randy will get the job."
+	
+	\begin{center}
+	\begin{tabular}{ll}
+		\textbf{Step} & \textbf{Reason} \\
+		1. $w$ & Hypothesis \\
+		2. $w \implies d$ & Hypothesis \\
+		3. $d$ & Modus ponens using (1) and (2) \\
+		4. $d \implies \neg j$ & Hypothesis \\
+		5. $\neg j$ & Modus ponens using (3) and (4)
+	\end{tabular}
+	\end{center}
+
+	\item Use rules of inference to show that the hypotheses "If it does not rain or if it is not foggy, then the sailing race will be held and the lifesaving demonstration will go on," "If the sailing race is held, then the trophy will be awarded," and "The trophy was not awarded" imply the conclusion "It rained."
+	
+	Let $r$ be the proposition "It rained," let $f$ be the proposition "it was foggy," let $s$ be the proposition "the sailing race was held," let $l$ be the proposition "the lifesaving demonstration went on," and let $t$ be the proposition "The trophy was awarded."
+	
+	\begin{center}
+	\begin{tabular}{ll}
+		\textbf{Step} & \textbf{Reason} \\
+		1. $\neg t$ & Hypothesis \\
+		2. $s \implies t$ & Hypothesis \\
+		3. $\neg s$ & Modus tollens using (1) and (2) \\
+		4. $\neg s \implies r$ & Hypothesis \\
+		5. $r$ & Modus ponens using (3) and (4)
+	\end{tabular}
+	\end{center}
+
+	\item What rules of inference are used in this famous argument? "All men are mortal. Socrates is a man. Therefore, Socrates is mortal."
+	
+	First, we use universal instantiation: $\forall x(P(x) \implies Q(x))$, where $x$ is the domain of all men, $P(x)$ is the proposition "$x$ is a man," and $Q(x)$ is the proposition "$x$ is mortal." Then use modus ponens to conclude that Socrates is mortal ($q$) since he is a man ($p$).
+	
+	\item What rules of inference are used in this argument? "No man is an island. Manhattan is an island. Therefore, Manhattan is not a man."
+	
+	Again, we start with universal instantiation: $\forall x(P(x) \implies Q(x))$, where $x$ is the domain of all men, $P(x)$ is the proposition "$x$ is a man," and $Q(x)$ is the proposition "$x$ is not an island." Then use modus tollens to conclude that Manhattan is not a man ($\neg p$) since it is an island ($\neg q$).
+	
+	\item For each of these arguments, explain which rules of inference are used for each step.
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item "Doug, a student in this class, knows how to write programs in Java. Everyone who knows how to write programs in Java can get a high-paying job. Therefore, someone in this class can get a high-paying job."
+		
+		Let $c(x)$ be "$x$ is in this class," let $j(x)$ be "$x$ knows how to write programs in Java," and let $h(x)$ be "$x$ can get a high-paying job.
+		
+		\begin{center}
+		\begin{tabular}{ll}
+			\textbf{Step} & \textbf{Reason} \\
+			1. $\forall x(j(x) \implies h(x))$ & Hypothesis \\
+			2. $j($Doug$) \implies h($Doug$)$ & Universal instantiation using (1) \\
+			3. $j($Doug$)$ & Hypothesis \\
+			4. $h($Doug$)$ & Modes ponens using (2) and (3) \\
+			5. $c($Doug$)$ & Hypothesis \\
+			6. $c($Doug$) \land h($Doug$)$ & Conjunction using (4) and (5) \\
+			7. $\exists x(c(x) \land h(x))$ & Existential generalization using (6) 
+		\end{tabular}
+		\end{center}
+		
+		\item "Somebody in this class enjoys whale watching. Every person who enjoys whale watching cares about ocean pollution. Therefore, there is a person in this class who cares about ocean pollution."
+		
+		Let $c(x)$ be "$x$ is in this class," let $w(x)$ be "$x$ enjoys whale watching," and let $o(x)$ be "$x$ cares about ocean pollution." Also, in the proof, let $y$ represent some unspecified person.
+		
+		\begin{center}
+		\begin{tabular}{ll}
+			\textbf{Step} & \textbf{Reason} \\
+			1. $\exists x(c(x) \land w(x))$ & Hypothesis \\
+			2. $c(y) \land w(y)$ & Existential instantiation using (1) \\
+			3. $w(y)$ & Simplification using (2) \\
+			4. $c(y)$ & Simplification using (2) \\
+			5. $\forall x(w(x) \implies o(x))$ & Hypothesis \\
+			6. $w(y) \implies o(y)$ & Universal instantiation using (5) \\
+			7. $o(y)$ & Modus ponens from (3) and (6) \\
+			8. $c(y) \land o(y)$ & Conjunction using (4) and (7) \\
+			9. $\exists x(c(x) \land o(x))$ & Existential generalization using (8)
+		\end{tabular}
+		\end{center}
+		
+		\item "Each of the 93 students in this class owns a personal computer. Everyone who owns a personal computer can use a word processing program. Therefore, Zeke, a student in this class, can use a word processing program."
+		
+		Let $c(x)$ be "$x$ is in this class," let $p(x)$ be "$x$ owns a personal computer," and let $w(x)$ be "$x$ can use a word processing program."
+		
+		\begin{center}
+		\begin{tabular}{ll}
+			\textbf{Step} & \textbf{Reason} \\
+			1. $\forall x(c(x) \implies p(x))$ & Hypothesis \\
+			2. $c($Zeke$) \implies p($Zeke$)$ & Universal instantiation using (1) \\
+			3. $c($Zeke$)$ & Hypothesis \\
+			4. $p($Zeke$)$ & Modus ponens using (2) and (3) \\
+			5. $\forall x(p(x) \implies w(x))$ & Hypothesis \\
+			6. $p($Zeke$) \implies w($Zeke$)$ & Universal instantiation using (5) \\
+			7. $w($Zeke$)$ & Modus ponens using (4) and (6)
+		\end{tabular}
+		\end{center}
+		
+		\item "Everyone in New Jersey lives within 50 miles of the ocean. Someone in New Jersey has never seen the ocean. Therefore, someone who lives within 50 miles of the ocean has never seen the ocean."
+		
+		Let $j(x)$ be "$x$ is in New Jersey," let $f(x)$ be "$x$ is within 50 miles of the ocean," and let $s(x)$ be "$x$ has seen the ocean." Also, in the proof, let $y$ represent some unspecified person.
+		
+		\begin{center}
+		\begin{tabular}{ll}
+			\textbf{Step} & \textbf{Reason} \\
+			1. $\exists x(j(x) \land \neg s(x))$ & Hypothesis \\
+			2. $j(y) \land \neg s(y)$ & Existential instantiation using (1) \\
+			3. $j(y)$ & Simplification using (2) \\
+			4. $\neg s(y)$ & Simplification using (2) \\
+			5. $\forall x(j(x) \implies f(x))$ & Hypothesis \\
+			6. $j(y) \implies f(y)$ & Universal instantiation using (5) \\
+			7. $f(y)$ & Modus ponens using (3) and (6) \\
+			8. $f(y) \land \neg s(y)$ & Conjunction using (7) and (4) \\
+			9. $\exists x(f(x) \land \neg s(x))$ & Existential generalization using (8)
+		\end{tabular}
+		\end{center}
+	\end{enumerate}
+
+	\item For each of these arguments, explain which rules of inference are used for each step.
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item "Linda, a student in this class, owns a red convertible. Everyone who owns a red convertible has gotten at least one speeding ticket. Therefore, someone in this class has gotten a speeding ticket."
+		
+		Let $c(x)$ be "$x$ is in this class," let $r(x)$ be "$x$ owns a red convertible," and let $t(x)$ be "$x$ has gotten a speeding ticket."
+		
+		\begin{center}
+		\begin{tabular}{ll}
+			\textbf{Step} & \textbf{Reason} \\
+			1. $\exists x(c(x) \land r(x))$ & Hypothesis \\
+			2. $c($Linda$) \land r($Linda$)$ & Existential instantiation using (1) \\
+			3. $c($Linda$)$ & Simplification using (2) \\
+			4. $r($Linda$)$ & Simplification using (2) \\
+			5. $\forall x(r(x) \implies t(x))$ & Hypothesis \\
+			6. $r($Linda$) \implies t($Linda$)$ & Universal instantiation using (5) \\
+			7. $t($Linda$)$ & Modus ponens using (4) and (6) \\
+			8. $c($Linda$) \land t($Linda$)$ & Conjunction using (3) and (7) \\
+			9. $\exists x(c(x) \land t(x))$ & Existential generalization using (8)
+		\end{tabular}
+		\end{center}
+		
+		\item "Each of five roommates, Melissa, Aaron, Ralph, Veneesha, and Keeshawn, has taken a course in discrete mathematics. Every student who has taken a course in discrete mathematics can take a course in algorithms. Therefore, all five roommates can take a course in algorithms next year."
+		
+		Let $m(x)$ be "$x$ has taken a course in discrete mathematics" and let $a(x)$ be "$x$ can take a course in algorithms." In the proof, names are shortened to their first letters and we are assuming the roommates are students.
+		
+		\begin{center}
+		\begin{tabular}{ll}
+			\textbf{Step} & \textbf{Reason} \\
+			1. $\forall x(m(x) \implies a(x))$ & Hypothesis \\
+			2. $m($M, A, R, V, K$) \implies a($M, A, R, V, K$)$ & Universal instantiation using (1) \\
+			3. $m($M, A, R, V, K$)$ & Hypothesis \\
+			4. $a($M, A, R, V, K$)$ & Modus ponens using (2) and (3)
+		\end{tabular}
+		\end{center}
+		
+		\vspace{1cm}
+		\item "All movies produced by John Sayles are wonderful. John Sayles produced a movie about coal miners. Therefore, there is a wonderful movie about coal miners."
+		
+		Let $p(x)$ be "$x$ is produced by John Sayles," let $w(x)$ be "$x$ is wonderful," and let $c(x)$ be "$x$ is about coal miners." Also, let the domain range over all movies and let $y$ be some unspecified movie.
+		
+		\begin{center}
+		\begin{tabular}{ll}
+			\textbf{Step} & \textbf{Reason} \\
+			1. $\exists x(p(x) \land c(x))$ & Hypothesis \\
+			2. $p(y) \land c(y)$ & Existential instantiation using (1) \\
+			3. $p(y)$ & Simplification using (2) \\
+			4. $c(y)$ & Simplification using (2) \\
+			5. $\forall x(p(x) \implies w(x))$ & Hypothesis \\
+			6. $p(y) \implies w(y)$ & Universal instantiation using (5) \\
+			7. $w(y)$ & Modus ponens using (3) and (6) \\
+			8. $c(y) \land w(y)$ & Conjunction using (4) and (7) \\
+			9. $\exists x(c(x) \land w(x))$ & Existential generalization using (8)
+		\end{tabular}
+		\end{center}
+		
+		\item "There is someone in this class who has been to France. Everyone who goes to France visits the Louvre. Therefore, someone in this class has visited the Louvre."
+		
+		Let $c(x)$ be "$x$ is in this class," let $f(x)$ be "$x$ has been to France, and let $l(x)$ be "$x$ has visited the Louvre." Also, in the proof, let $y$ represent some unspecified person.
+		
+		\begin{center}
+		\begin{tabular}{ll}
+			\textbf{Step} & \textbf{Reason} \\
+			1. $\exists x(c(x) \land f(x))$ & Hypothesis \\
+			2. $c(y) \land f(y)$ & Existential instantiation using (1) \\
+			3. $c(y)$ & Simplification using (2) \\
+			4. $f(y)$ & Simplification using (2) \\
+			5. $\forall x(f(x) \implies l(x))$ & Hypothesis \\
+			6. $f(y) \implies l(y)$ & Universal instantiation using (5) \\
+			7. $l(y)$ & Modus ponens using (4) and (6) \\
+			8. $c(y) \land l(y)$ & Conjunction using (3) and (7) \\
+			9. $\exists x(c(x) \land l(x))$ & Existential generalization using (8)
+		\end{tabular}
+		\end{center}
+	\end{enumerate}
+
+	\item What is wrong with this argument? Let $H(x)$ be "$x$ is happy." Given the premise $\exists xH(x)$, we conclude that $H($Lola$)$. Therefore, Lola is happy.
+	
+	It is not established that Lola is within the domain of $x$. It follows that \emph{some} member $x$ of the domain is happy, but not necessarily Lola. Therefore, $\exists xH(x)$ is true and $H($Lola$)$ is false.
+	
+	\item Determine whether each of these arguments is valid. If an argument is correct, what rule of inference is being used? If it is not, what logical error occurs?
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item If $n$ is a real number such that $n > 1$, then $n^2 > 1$. Suppose that $n^2 > 1$. then $n > 1$.
+		
+		This is a fallacy of affirming the conclusion since it has the form $((p \implies q) \land q) \implies p$; this is false then $p$ is false and $q$ is true.
+		
+		\item If $n$ is a real number with $n > 3$, then $n^2 > 9$. Suppose that $n^2 \leq 9$. Then $n \leq 3$.
+		
+		This is a valid modus tollens argument since it has the form $p \implies q$ and $\neg q$ implies $\neg p$.
+		
+		\item If $n$ is a real number with $n > 2$, then $n^2 > 4$. Suppose that $n \leq 2$. Then $n^2 \leq 4$.
+		
+		This is a fallacy of denying the hypothesis because it has the form $((p \implies q) \land \neg p) \implies \neg q$; this is false when $p$ is false and $q$ is true.
+	\end{enumerate}
+
+	\pagebreak
+	\item Identify the error or errors in this argument that supposedly shows that if $\exists xP(x) \land \exists xQ(x)$ is true then $\exists(P(x) \land Q(x))$ is true.
+	
+	\begin{center}
+	\begin{tabular}{ll}
+		\textbf{Step} & \textbf{Reason} \\
+		1. $\exists xP(x) \lor \exists xQ(x)$ & Premise \\
+		2. $\exists xP(x)$ & Simplification from (1) \\
+		3. $P(c)$ & Existential instantiation from (2) \\
+		4. $\exists xQ(x)$ & Simplification from (1) \\
+		5. $Q(c)$ & Existential instantiation from (4) \\
+		6. $P(c) \land Q(c)$ & Conjunction from (3) and (5) \\
+		7. $\exists x(P(x) \land Q(x))$ & Existential generalization
+	\end{tabular}
+	\end{center}
+
+	There are two errors of the same type, namely the simplification of a logical or on steps 2 and 4. Simplification is of the form $(p \land q) \implies p$, not $(p \lor q) \implies p$.
+	
+	\item Identify the error or errors in this argument that supposedly shows that if $\forall x(P(x) \lor Q(x))$ is true then $\forall xP(x) \lor \forall xQ(x)$ is true.
+	
+	\begin{center}
+	\begin{tabular}{ll}
+		\textbf{Step} & \textbf{Reason} \\
+		1. $\forall x(P(x) \lor Q(x))$ & Premise \\
+		2. $P(c) \lor Q(c)$ & Universal instantiation from (1) \\
+		3. $P(c)$ & Simplification from (2) \\
+		4. $\forall xP(x)$ & Universal generalization from (3) \\
+		5. $Q(c)$ & Simplification from (2) \\
+		6. $\forall xQ(x)$ & Universal generalization from (5) \\
+		7. $\forall x(P(x) \lor \forall xQ(x))$ & Conjunction from (4) and (6)
+	\end{tabular}
+	\end{center}
+
+	Again, there are two errors of the use of simplification on step 3 and step 5. Simplification is of the form $(p \land q) \implies p$, not $(p \lor q) \implies p$. 
+
+	\item Use rules of inference to show that if $\forall x(P(x) \implies (Q(x) \land S(x)))$ and $\forall x(P(x) \land R(x))$ are true, then $\forall x(R(x) \land S(x))$ is true.
+	
+	\begin{center}
+	\begin{tabular}{ll}
+		\textbf{Step} & \textbf{Reason} \\
+		1. $\forall x(P(x) \land R(x))$ & Premise \\
+		2. $P(a) \land R(a)$ & Universal instantiation using (1) \\
+		3. $P(a)$ & Simplification using (2) \\
+		4. $\forall x(P(x) \implies (Q(x) \land S(x)))$ & Premise \\
+		5. $Q(a) \land S(a)$ & Modus ponens using (3) and (4) \\
+		6. $R(a)$ & Simplification using (2) \\
+		7. $S(a)$ & Simplification using (5) \\
+		8. $R(a) \land S(a)$ & Conjunction using (6) and (7) \\
+		9. $\forall x(R(x) \land S(x))$ & Universal generalization using (8)
+	\end{tabular}
+	\end{center}
+\end{enumerate}
+
+\section*{\textbf{1.7 Introduction to Proofs}}
+\begin{enumerate}[label=\textbf{\arabic*.}]
+	\item Use a direct proof to show that the sum of two odd integers is even.
+	
+	\begin{proof}
+		We need to prove that whenever we have two odd integers, their sum is even. Suppose that $a$ and $b$ are two odd integers. Then there exist integers $s$ and $t$ such that $a = 2s + 1$ and $b = 2t + 1$.  Adding, we get $a + b = (2s + 1) + (2t + 1) = 2(s + t + 1)$. Since this represents $a + b$ as 2 times the integer $s + t + 1$, we conclude that $a + b$ is even.
+	\end{proof}
+
+	\pagebreak
+	\item Use a direct proof to show that the sum of two even integers is even.
+	
+	\begin{proof}
+		We need to prove that whenever we have two even integers, their sum is even. Suppose that $a$ and $b$ are two even integers. Then there exist integers $s$ and $t$ such that $a = 2s$ and $b = 2t$. Adding, we get $a + b = 2s + 2t = 2(s + t)$. Since this represents $a + b$ as 2 times the integer $s + t$, we conclude that $a + b$ is even.
+	\end{proof}
+
+	\item Show that the square of an even number is an even number using a direct proof.
+	
+	\begin{proof}
+		We need to prove that, for an arbitrary integer $n$, "If $n$ is even, then $n^2$ is even." Suppose that $n$ is even. Then $n = 2k$ for some integer k. It follows that $n^2 = (2k)^2 = 4k^2 = 2(2k^2)$. Since this shows that $n^2$ equals 2 times an integer, we conclude that $n^2$ is even.
+	\end{proof}
+
+	\item Show that the additive inverse, or negative, of an even number is an even number using a direct proof.
+	
+	\begin{proof}
+		We need to prove that for some even number, its additive inverse is also an even number. The additive inverse of an number $a$ is defined as the number that, when added to $a$, yields zero. Suppose that $a$ is even, then $a = 2k$ for some integer $k$. It then follows that by definition the additive inverse of $a$, namely $-a$, will be even since $a$ is also even.
+	\end{proof}
+
+	\item Prove that if $m + n$ and $n + p$ are even integers, where $m$, $n$, and $p$ are integers, then $m + p$ is even. What kind of proof did you use?
+	
+	\begin{proof}
+		We need to prove that given the integers $m$, $n$, and $p$, if $m + n$ and $n + p$ result in even integers, then $m + p$ is even. Suppose that $m + n$ and $n + p$ are both even. Then $m + n = 2s$ for some integer $s$ and $n + p = 2t$ for some integer $t$. Adding these, we get $m + p + 2n = 2s + 2t$. Then, if we isolate $m + p$ we get $m + p = 2s + 2t - 2n = 2(s + t - n)$ which results in $m + p$ equaling 2 times some integer $(s + t - n)$. We then conclude that $m + p$ is even. This is a direct proof.
+	\end{proof}
+
+	\item Use a direct proof to show that the product of two odd numbers is odd.
+	
+	\begin{proof}
+		We need to prove that given two odd numbers, their product is odd. Suppose $a$ and $b$ are both odd. Then $a = 2s + 1$ for some integer $s$ and $b = 2t + 1$ for some integer $t$. Next, when we multiply $a$ and $b$ we get $ab = (2s + 1)(2t + 1) = 4st + 2s + 2t + 1 = 2(2st + s + t) + 1$. Since $ab =  2(2st + s + t) + 1$ it follows that $ab$ is odd.
+	\end{proof}
+
+	\item Use a direct proof to show that every odd integer is the difference of two squares. [\emph{Hint:} Find the difference of squares of $k + 1$ and $k$ where $k$ is a positive integer.]
+	
+	\begin{proof}
+		We need to prove that every odd integer is the difference of two squares. We start by finding the difference of squares of $k + 1$ and $k$ where $k$ is a positive integer. Then $(k + 1)^2 - k^2 = k^2 + 2k + 1 - k^2 = 2k + 1$, which shows us that the difference between the squares of $k + 1$ and $k$ is $2k + 1$, or odd. Now, suppose we have some odd integer $n$. Then it follows that $n = 2k + 1$ for some integer $k$, and also that $n = (k + 1)^2 - k^2$. Thus, we have shown the odd integer $n$ as the difference of two squares.
+	\end{proof}
+
+	\item Prove that if $n$ is a perfect square, then $n + 2$ is not a perfect square.
+	
+	\begin{proof}
+		We need to prove that for some perfect square $n$, $n + 2$ is not a perfect square. Suppose that $n$ and, for the sake of contradiction, $n + 2$ are both perfect squares. Then $n = a^2$ and $n + 2 = b^2$ where $a$ and $b$ are non-negative integers. Taking the difference of $b^2 - a^2$ we get $(b + a)(b -a) = b^2 - a^2 = (n + 2) - n = 2$, which is impossible since if either $b - a$ or $b + a$ is equal to 1, the other cannot also equal 2.
+	\end{proof}
+
+	\pagebreak
+	\item Use a proof by contradiction to prove that the sum of an irrational number and a rational number is irrational.
+	
+	\begin{proof}
+		We need to prove by contradiction that if $r$ is a rational number and $i$ is an irrational number, then $s = r + i$ is an irrational number. So suppose that $r$ is rational, $i$ is irrational, and $s$ is rational. Then it follows that the sum of the rational numbers $s$ and $-r$ must be rational. Indeed, if $s = a/b$ and $r = c/d$, where $a$, $b$, $c$, and $d$ are integers, with $b \ne 0$ and $d \ne 0$, then by algebra we see that $s + (-r) = (ad - bc)/(bd)$, showing that $s + (-r)$ is a rational number. But $s + (-r) = r + i - r = i$ forces us to the conclusion that $i$ is rational, contradicting our hypothesis that $i$ is irrational. Therefore we have shown that our assumption that $s$ was rational was incorrect, concluding that $s$ is in fact irrational.
+	\end{proof}
+
+	\item Use a direct proof to show that the product of two rational numbers is rational.
+	
+	\begin{proof}
+		We need to prove that the product of two rational numbers $r$ and $s$ is rational. Suppose that $r = a/b$ and $s = c/d$, where $a$, $b$, $c$, and $d$ are integers, with $b \ne 0$ and $d \ne 0$. Then it follows that $r \cdot s = (a/b) \cdot (c/d) = ac/bd$, showing that the product of $r$ and $s$ is indeed rational.
+	\end{proof}
+
+	\item Prove or disprove that the product of two irrational numbers is irrational.
+	
+	\begin{proof}
+		To disprove that the product of two irrational numbers is irrational, we will find a counterexample. If we take the irrational number $\sqrt{2}$ and multiply it by itself we get the rational number 2. Thus, this counterexample refutes the proposition.
+	\end{proof}
+
+	\item Prove that if $x$ is irrational, then $1/x$ is irrational.
+	
+	\begin{proof}
+		We give a proof by contraposition. The contrapositive of this statement is "If $1/x$ is rational, then $x$ is rational." Note that since $1/x$ exists, we know that $x \ne 0$. Also, if $1/x$ is rational, then by definition $1/x = p/q$ for some integers $p$ and $q$ with $q \ne 0$. Since $1/x$ cannot be 0, we know that $p \ne 0$. Now $x = 1/(1/x) = 1/(p/q) = q/p$ by the rules of algebra and arithmetic. And since $x$ can be written as the quotient of two integers with the denominator nonzero, $x$ is, by definition, rational.
+	\end{proof}
+
+	\item Prove that if $x$, $y$, and $z$ are integers and $x + y + z$ is odd, then at least one of $x$, $y$, and $z$ is odd.
+	
+	\begin{proof}
+		We need to prove that for some integers $x$, $y$, and $z$, if $x + y + z$ is odd, then at least one of $x$, $y$, and $z$ is odd. First, suppose that none are odd, then $x = 2s$ for some integer $s$, $y = 2t$ for some integer $t$, and $z = 2u$ for some integer $u$. Then $x + y + z = 2s + 2t + 2u = 2(s + t + u)$ which shows us that $x + y + z$ would indeed result in an even integer. Next, suppose that instead of even, $x$ is odd. Then $x = 2s + 1$ for some integer $s$. It follows with $x + y + z = 2s + 1 + 2t + 2u = 2(s + t + u) + 1$ that the resulting sum of $x$, $y$, and $z$ will be odd. Now, suppose that both $x$ and $y$ are odd. Then $x = 2s + 1$ for some integer $s$ and $y = 2t + 1$ for some integer $t$. This results in an even integer since $x + y + z = 2s + 1 + 2t + 1 + 2u = 2(s + t + u + 1)$. So, it appears that the parity of the sum's result depends on how many odd numbers there are to begin with.
+	\end{proof}
+
+	\item Prove that if $m$ and $n$ are integers and $mn$ is even, then $m$ is even or $n$ is even.
+	
+	\begin{proof}
+		We need to prove that for some integer $m$ and $n$ if $mn$ is even, then $m$ is even or $n$ is even. Suppose $m$ is even and $n$ is odd. Then $m = 2k$ for some integer $k$ and $n = 2l + 1$ for some integer $l$. Next, $mn = (2k)(2l + 1) = 4kl + 2k = 2k(2l + 1)$ showing us that $mn$ does indeed result in an even integer since it is a multiple of 2.
+	\end{proof}
+\end{enumerate}
+
+\pagebreak
+\section*{\textbf{1.8 Proof Methods and Strategy}}
+\begin{enumerate}[label=\textbf{\arabic*.}]
+	\item Prove that $n^2 + 1 \geq 2^n$ when $n$ is a positive integer with $1 \leq n \leq 4$.
+
+	\begin{proof}
+		We can give here an exhaustive proof by checking the entire domain. For $n = 1$ we have $1^2 + 1 = 2 \geq 2 = 2^1$. For $n = 2$ we have $2^2 + 1 = 5 \geq 4 = 2^2$. For $n = 3$ we have $3^2 + 1 = 10 \geq 8 = 2^3$. For $n = 4$ we have $4^2 + 1 = 17 \geq 16 = 2^4$.
+	\end{proof}
+
+	\item Use a proof by cases to show that 10 is not the square of a positive integer.
+	
+	\begin{proof}
+		\hfill
+		\begin{description}[font=\normalfont\itshape, labelindent=\parindent, leftmargin=\parindent]
+			\item[Case (i):] Suppose $1 \leq x \leq 3$. For $x = 1$ we have $1^2 = 1$. For $x = 2$ we have $2^2 = 4$. And for $n = 3$ we have $3^2 = 9$. Then $x^2 \ne 10$.
+			\item[Case (ii):] Suppose $x \geq 4$. For $x = 4$ we get $4^2 = 16$. Then, again, $x^2 \ne 10$.
+		\end{description}
+		The conclusion that $x^2 \ne 10$ holds in all possible cases, so 10 is not the square of any integer.
+	\end{proof}
+
+	\item Use a proof by cases to show that 100 is not the cube of a positive integer.
+	
+	\begin{proof}
+		\hfill
+		\begin{description}[font=\normalfont\itshape, labelindent=\parindent, leftmargin=\parindent]
+			\item[Case (i):] Suppose $1 \leq x \leq 4$. Then $x^3 \leq 64$, so $x^3 \ne 100$.
+			\item[Case (ii):] Suppose $x \geq 5$. If $x^3 \geq 5$, then $x^3 \geq 125$, so $x^3 \ne 100$.
+		\end{description}
+		We conclude that $x^3 \ne 100$ holds in all possible cases, so 100 is not the cube of any integer.
+	\end{proof}
+
+	\item Prove that if $x$ and $y$ are real numbers, then max($x, y$) $+$ min($x, y$) $ = x + y$.
+	
+	\begin{proof}
+		\hfill
+		\begin{description}[font=\normalfont\itshape, labelindent=\parindent, leftmargin=\parindent]
+			\item[Case (i):] Suppose $x \geq y$. Then by definition max($x, y$) $ = x$ and min($x, y$) $ = y$, making max($x, y$) $+$ min($x, y$) $ = x + y$.
+			\item[Case (ii):] Suppose $x < y$. Then max($x, y$) $ = y$ and min($x, y$) $ = x$, resulting in max($x, y$) $+$ min($x, y$) $ = y + x$.
+		\end{description}
+		Hence in all cases, the equality holds.
+	\end{proof}
+
+	\item Use a proof by cases to show that min($a$, min($b, c$)) = min(min($a, b$), $c$) whenever $a$, $b$, and $c$ are real numbers.
+
+	\begin{proof}
+		\hfill
+		\begin{description}[font=\normalfont\itshape, labelindent=\parindent, leftmargin=\parindent]
+			\item[Case (i):] Suppose $a \leq b \leq c$. Then min($a$, min($b, c$)) $ = a$ and min(min($a, b$), $c$) $ = a$. 
+			\item[Case (ii):] Suppose $b \leq c \leq a$. Then min($a$, min($b, c$)) $ = b$ and min(min($a, b$), $c$) $ = b$. 
+			\item[Case (iii):] Suppose $c \leq a \leq b$. Then min($a$, min($b, c$)) $ = c$ and min(min($a, b$), $c$) $ = c$. 
+		\end{description}
+		It follows that the equality holds in all possible cases.
+	\end{proof}
+
+	\pagebreak
+	\item Prove using the notion of without loss of generality that min($x, y$) $ = (x + y - |x - y|) / 2$ and max($x, y$) $= (x + y + |x - y|) / 2$ whenever $x$ and $y$ are real numbers.
+	
+	\begin{proof}
+		Because $|x - y| = |y - x|$, the values of $x$ and $y$ are interchangeable. Therefore, without loss of generality, we can assume that $x \geq y$. In this case, $|x - y| = x - y$, so the first expression gives us
+		\[
+		\frac{x + y - (x - y)}{2} = \frac{x + y - x + y}{2} = \frac{2y}{2} = y
+		\]
+		and indeed $y$ is the smaller. Similarly, the second expression gives us
+		\[
+		\frac{x + y + (x - y)}{2} = \frac{x + y + x - y}{2} = \frac{2x}{2} = x
+		\]
+		and indeed $x$ is the larger.
+	\end{proof}
+
+	\item Prove using the notion of without loss of generality that $5x + 5y$ is an odd integer when $x$ and $y$ are integers of opposite parity.
+	
+	\begin{proof}
+		Since the coefficient of both $x$ and $y$ is 5, their values are interchangeable. Therefore, without loss of generality, we can assume that $x = 2s$ for some integer $s$ and $y = 2t + 1$ for some integer $t$. With that, we get $5(2s) + 5(2t + 1) = 10s + 10t + 5 = 2(5s + 5t) + 5$ which shows that the result is indeed an odd integer.
+	\end{proof}
+
+	\item Prove the \textbf{triangle inequality}, which states that if $x$ and $y$ are real numbers, then $|x| + |y| \geq |x + y|$ (where $|x|$ represents the absolute value of $x$, which equals $x$ if $x \geq 0$ and equals $-x$ if $x < 0$).
+	
+	\begin{proof}
+		The complication (and strict inequality) here comes if one of the variables is nonnegative and the other is negative. By the symmetry of the roles of $x$ and $y$, we can assume without loss of generality that it is $x$ that is nonnegative and $y$ that is negative. So, for cases \emph{iii} and \emph{iv} we have $x \geq 0$ and $y < 0$.
+		\hfill
+		\begin{description}[font=\normalfont\itshape, labelindent=\parindent, leftmargin=\parindent]
+			\item[Case (i):] Suppose $x$ and $y$ are both nonnegative. Then $|x| + |y| = x + y = |x + y|$.
+			\item[Case (ii):] Suppose $x$ and $y$ are both negative. Then $|x| + |y| = (-x) + (-y) = -(x + y) = |x + y|$.
+			\item[Case (iii):] Suppose that $x \geq -y$. Then $x + y > 0$ and, therefore, $|x + y| = x + y$ which is a nonnegative quantity smaller than $x$ (since $y$ is negative). On the other hand $|x| + |y| = x + |y|$ is a positive number bigger than $x$. And so we have $|x + y| < x < |x| + |y|$.
+			\item[Case (iv):] Suppose that $x < -y$. Then $|x + y| = -(x + y) = (-x) + (-y)$ is a positive number less than or equal to $-y$ (since $-x$ is nonpositive). On the other hand $|x| + |y| = |x| + (-y)$ is a positive number greater than or equal to $-y$. Therefore we have $|x + y| \geq -y \geq |x| + |y|$.
+		\end{description}
+	\end{proof}
+\end{enumerate}
+\end{document}

@@ -1,0 +1,1867 @@
+\documentclass[11pt]{article}
+
+\usepackage{color, enumitem, graphicx, amsmath, amsthm, amssymb}
+\usepackage[margin=.5in]{geometry}
+\usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
+
+\usepackage[english]{babel} % English language/hyphenation
+
+\usepackage{sectsty} % Allows customizing section commands
+\allsectionsfont{\normalfont\scshape} % Make all sections centered, the default font and small caps
+
+\usepackage{fancyhdr} % Custom headers and footers
+\pagestyle{fancyplain} % Makes all pages in the document conform to the custom headers and footers
+\fancyhead{} % No page header - if you want one, create it in the same way as the footers below
+\fancyfoot[L]{} % Empty left footer
+\fancyfoot[C]{} % Empty center footer
+\fancyfoot[R]{\thepage} % Page numbering for right footer
+\renewcommand{\headrulewidth}{0pt} % Remove header underlines
+\renewcommand{\footrulewidth}{0pt} % Remove footer underlines
+\setlength{\headheight}{13.6pt} % Customize the height of the header
+
+\setlength\parindent{2em}
+
+\graphicspath{ {./} }
+
+\renewcommand\qedsymbol{$\blacksquare$}
+
+%-------------------------------------------------------------------------------
+%	TITLE SECTION
+%-------------------------------------------------------------------------------
+
+%\newcommand{\horrule}[1]{\rule{\linewidth}{#1}} % Create horizontal rule command with 1 argument of height
+
+\title{	
+	\normalfont \normalsize 
+	\textsc{Discrete Mathematics} \\
+	%\horrule{0.5pt} \\[0.4cm] % Thin top horizontal rule
+	\huge Basic Structures: Sets, Functions, Sequences, Sums, and Matrices \\
+	%\horrule{2pt} \\[0.5cm] % Thick bottom horizontal rule
+}
+
+\author{Myles Moylan} % Your name
+
+\date{} % Today's date or a custom date
+
+
+%-------------------------------------------------------------------------------
+%	WORK SECTION
+%-------------------------------------------------------------------------------
+
+\begin{document}
+	
+\maketitle
+
+\section*{\textbf{2.1 Sets}}
+\begin{enumerate}[label=\textbf{\arabic*.}]
+	\item List the members of these sets.
+	
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item $\{\,x \mid x \text{ is a real number such that } x^2 = 1\,\}$
+		
+		$\{1, -1\}$
+		
+		\item $\{\,x \mid x \text{ is a positive integer less than } 12\,\}$
+		
+		$\{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11\}$
+		
+		\item $\{\,x \mid x \text{ is the square of an integer and } x < 100\,\}$
+		
+		$\{0, 1, 4, 9, 16, 25, 36, 49, 84, 81\}$
+		
+		\item $\{\,x \mid x \text{ is an integer such that } x^2 = 1\,\}$
+		
+		$\emptyset$ ($\sqrt{2}$ is not an integer)
+	\end{enumerate}
+
+	\item Use set builder notation to give a description of each of these sets.
+	
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item $\{0, 3, 6, 9, 12\}$
+		
+		$\{\,x \in \mathbb{N} \mid 3x \text{ and } x \leq 4\,\}$
+		
+		\item $\{-3, -2, -1, 0, 1, 2, 3\}$
+		
+		$\{\,x \in \mathbb{Z} \mid -3 \leq x \leq 3\,\}$
+		
+		\item $\{m, n, o, p\}$
+		
+		$\{\,x \in \text{English alphabet} \mid  ...\,\}$
+	\end{enumerate}
+
+	\item Which of the intervals $(0, 5)$, $(0, 5]$, $[0, 5)$, $[0, 5]$, $(1, 4]$, $[2, 3]$, $(2, 3)$ contains
+	
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item 0?
+		
+		$[0, 5) \text{ and } [0, 5]$.
+		
+		\item 1?
+		
+		$(0, 5), (0, 5], [0, 5), \text{ and } [0, 5]$.
+		
+		\item 2?
+		
+		$(0, 5), (0, 5], [0, 5), [0, 5], (1, 4], \text{ and } [2, 3]$.
+		
+		\item 3?
+		
+		$(0, 5), (0, 5], [0, 5), [0, 5], (1, 4], \text{ and } [2, 3]$.
+		
+		\item 4?
+		
+		$(0, 5), (0, 5], [0, 5), [0, 5], \text{ and } (1, 4]]$.
+		
+		\item 5?
+		
+		$(0, 5] \text{ and } [0, 5]$
+	\end{enumerate}
+
+	\pagebreak
+	\item For each of these intervals, list all its elements or explain why it is empty.
+	
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item $[a, a]$
+		
+		$\{a\}$
+		
+		\item $[a, a)$
+		
+		$\{a\}$
+		
+		\item $(a, a]$
+		
+		$\{a\}$
+		
+		\item $(a, a)$
+		
+		This interval is empty because it is an open interval from $a$ to itself.
+		
+		\item $(a, b)$, where $a > b$
+		
+		$\{a - 1, a - 2, \ldots, b - 1\}$
+		
+		\item $[a, b]$, where $a > b$
+		
+		$\{a, a - 1, a - 2, \ldots, b\}$
+	\end{enumerate}
+
+	\item For each of these pairs of sets, determine whether the first is a subset of the second, the second is a subset of the first, or neither is a subset of the other.
+	
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item the set of airline flights form New York to New Delhi, the set of nonstop airline flights from New York to New Delhi
+		
+		Every element in the second set falls within the set of the first, so the second set is a subset of the first. However, since with the first set there may be intermediate stops, the first set is not a subset of the second.
+		
+		\item the set of people who speak English, the set of people who speak Chinese
+		
+		Neither is a subset of the other.
+		
+		\item the set of flying squirrels, the set of living creatures that can fly
+		
+		Since flying squirrels are living creatures that can fly, the first set is a subset of the other. And since living creatures that can fly include, say, birds, the second set is not a subset of the first.
+	\end{enumerate}
+
+	\item For each of these pairs of sets, determine whether the first is a subset of the second, the second is a subset of the first, or neither is a subset of the other.
+	
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item the set of people who speak English, the set of people who speak English with an Australian accent
+		
+		The second set is a subset of the first while the first set is not a subset of the second.
+		
+		\item the set of fruits, the set of citrus fruits
+		
+		The second set is a subset of the first and the first is not a subset of the second.
+		
+		\item the set of students studying discrete mathematics, the set of students studying data structures
+		
+		Neither is a subset of the other.
+	\end{enumerate}
+
+	\item Determine whether each of these pairs of sets are equal.
+	
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item $\{1, 3, 3, 3, 5, 5, 5, 5, 5\}$, $\{5, 3, 1\}$
+		
+		Yes.
+		
+		\item $\{\{1\}\}$, $\{1, \{1\}\}$
+		
+		No.
+		
+		\item $\emptyset$, $\{\emptyset\}$
+		
+		No.
+	\end{enumerate}
+
+	\pagebreak
+	\item Suppose that $A = \{2, 4, 6\}$, $B = \{2, 6\}$, $C = \{4, 6\}$, and $D = \{4, 6, 8\}$. Determine which of these sets are subsets of which other of these sets.
+	
+	$A$ is not a subset of any other set.
+	
+	$B$ is only a subset of $A$.
+	
+	$C$ is a subset of $A$ and $D$.
+	
+	$D$ is not a subset of any other set.
+	
+	\item For each of the following sets, determine whether 2 is an element of that set.
+	
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item $\{\,x \in \mathbb{R} \mid x \text{ is an integer greater than } 1\,\}$
+		
+		Yes, 2 is an integer greater than 1.
+		
+		\item $\{\,x \in \mathbb{R} \mid x \text{ is the square of an integer}\,\}$
+		
+		No, 2 is not the square of an integer.
+		
+		\item $\{2, \{2\}\}$
+		
+		Yes, this set contains 2 (as well as another set, coincidentally containing 2).
+		
+		\item $\{\{2\}, \{\{2\}\}\}$
+		
+		No, it does not contain 2 but only two other sets.
+		
+		\item $\{\{2\}, \{2, \{2\}\}\}$
+		
+		No, it does not contain 2 but only two other sets.
+		
+		\item $\{\{\{2\}\}\}$
+		
+		No, it only contains another set.
+	\end{enumerate}
+
+	\item For each of the sets in Exercise 9, determine whether $\{2\}$ is an element of that set.
+	
+		\begin{enumerate}[label=\textbf{\alph*)}]
+		\item $\{\,x \in \mathbb{R} \mid x \text{ is an integer greater than } 1\,\}$
+		
+		No, the set containing 2 is not an element of this set.
+		
+		\item $\{\,x \in \mathbb{R} \mid x \text{ is the square of an integer}\,\}$
+		
+		No, the set containing 2 is not an element of this set.		
+		
+		\item $\{2, \{2\}\}$
+		
+		Yes, $\{2\}$ is an element of this set.
+		
+		\item $\{\{2\}, \{\{2\}\}\}$
+		
+		Yes, $\{2\}$ is an element of this set.
+		
+		\item $\{\{2\}, \{2, \{2\}\}\}$
+		
+		Yes, $\{2\}$ is an element of this set.
+		
+		\item $\{\{\{2\}\}\}$
+		
+		No, $\{2\}$ is not an element of this set, but $\{\{2\}\}$ is.
+	\end{enumerate}
+
+	\item Determine whether each of these statements is true or false.
+	
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item $0 \in \emptyset$
+		
+		False.
+		
+		\item $\emptyset \in \{0\}$
+		
+		False. The set on the right contains only 0, not the empty set.
+		
+		\item $\{0\} \subset \emptyset$
+		
+		False. The empty set has no proper subsets.
+		
+		\item $\emptyset \subset \{0\}$
+		
+		True. Every element of the empty set is, vacuously, an element of the set $\{0\}$; and the set $\{0\}$ contains an element that is not in the empty set.
+		
+		\item $\{0\} \in \{0\}$
+		
+		False. The set $\{0\}$ is not an element of the set $\{0\}$.
+		
+		\item $\{0\} \subset \{0\}$
+		
+		False. For one set to be the proper subset of another, the two sets cannot be equal.
+		
+		\item $\{\emptyset\} \subseteq \{\emptyset\}$
+		
+		True. Every set is a subset of itself.
+	\end{enumerate}
+
+	\item Determine whether these statements are true or false.
+	
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item $\emptyset \in \{\emptyset\}$
+		
+		True. The empty set is an element of the set on the right.
+		
+		\item $\emptyset \in \{\emptyset, \{\emptyset\}\}$
+		
+		True. The empty set is an element of the set on the right.
+		
+		\item $\{\emptyset\} \in \{\emptyset\}$
+		
+		False. The set with the empty set is not an element of the set on the right.
+		
+		\item $\{\emptyset\} \in \{\{\emptyset\}\}$
+		
+		True. The set with the empty set is an element of the set on the right.
+		
+		\item $\{\emptyset\} \subset \{\emptyset, \{\emptyset\}\}$
+		
+		True. The set with the empty set is a proper subset of the set on the right.
+		
+		\item $\{\{\emptyset\}\} \subset \{\emptyset, \{\emptyset\}\}$
+		
+		False. The set of the set with the empty set is not a proper subset of the set on the right.
+		
+		\item $\{\{\emptyset\}\} \subset \{\{\emptyset\}, \{\emptyset\}\}$
+		
+		False. The set of the set with the empty set is not a proper subset of the set on the right.
+	\end{enumerate}
+
+	\item Determine whether each of these statements is true or false.
+	
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item $x \in \{x\}$
+		
+		True. $x$ is an element in the set $\{x\}$.
+		
+		\item $\{x\} \subseteq \{x\}$
+		
+		True. Every set is a subset of itself.
+		
+		\item $\{x\} \in \{x\}$
+		
+		False. The set with $x$ is not an element of $\{x\}$.
+		
+		\item $\{x\} \in \{\{x\}\}$
+		
+		True. The set with $x$ is an element of the set $\{\{x\}\}$.
+		
+		\item $\emptyset \subseteq \{x\}$
+		
+		True. The empty set is a subset of every set.
+		
+		\item $\emptyset \in \{x\}$
+		
+		False. The empty set is not an element of the set $\{x\}$.
+	\end{enumerate}
+
+	\item Suppose that $A$, $B$, and $C$ are sets such that $A \subseteq B$ and $B \subseteq C$. Show that $A \subseteq C$.
+	
+	Let $x \in A$. Then since $A \subseteq B$, we can conclude that $x \in B$. And since $B \subseteq C$, it follows that $x \in C$. Therefore, $A \subseteq C$.
+	
+	\item Find two sets $A$ and $B$ such that $A \in B$ and $A \subseteq B$.
+	
+	$A = \{x\}$
+	
+	$B = \{x, \{x\}\}$
+\end{enumerate}
+
+\pagebreak
+\section*{\textbf{2.2 Set Operations}}
+\begin{enumerate}[label=\textbf{\arabic*.}]
+	\item Let $A$ be the set of students who live within one mile of school and let $B$ be the set of students who walk to classes. Describe the students in each of these sets.
+	
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item $A \cap B$
+		
+		The set of those students who both live within one mile of school and walk to class.
+		
+		\item $A \cup B$
+		
+		The set of those students who live within one mile of school and those who walk to class (or both).
+		
+		\item $A - B$
+		
+		The set of those students who live within one mile of school.
+		
+		\item $B - A$
+		
+		The set of those students who walk to class.
+	\end{enumerate}
+
+	\item Suppose that $A$ is the set of sophomores at your school and $B$ is the set of students in discrete mathematics at your school. Express each of these sets in terms of $A$ and $B$.
+	
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item the set of sophomores taking discrete mathematics in your school
+		
+		$A \cap B$
+		
+		\item the set of sophomores at your school who are not taking discrete mathematics
+		
+		$A - B$
+		
+		\item the set of students at your school who either are sophomores or are taking discrete mathematics
+		
+		$\overline{A \cap B}$
+		
+		\item the set of students at your school who either are not sophomores or are not taking discrete mathematics
+		
+		$\overline{A \cup B}$
+	\end{enumerate}
+
+	\item Let $A = \{1, 2, 3, 4, 5\}$ and $B = \{0, 3, 6\}$. Find
+	
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item $A \cup B$.
+		
+		$\{0, 1, 2, 3, 4, 5, 6\}$
+		
+		\item $A \cap B$.
+		
+		$\{3\}$
+		
+		\item $A - B$.
+		
+		$\{1, 2, 4, 5\}$
+				
+		\item $B - A$.
+		
+		$\{0, 6\}$
+	\end{enumerate}
+
+	\item Let $A = \{a, b, c, d, e\}$ and $B = \{a, b, c, d, e, f, g, h\}$. Find
+	
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item $A \cup B$.
+		
+		$\{a, b, c, d, r, f, g, h\}$
+		
+		\item $A \cap B$.
+		
+		$\{a, b, c, d, e\}$
+		
+		\item $A - B$.
+		
+		$\emptyset$
+		
+		\item $B - A$.
+		
+		$\{f, g, h\}$
+	\end{enumerate}
+
+	\pagebreak
+	\item Prove the complementation law by showing that $\overline{\overline{A}} = A$.
+	
+	By definition $\overline{\overline{A}}$ is the set of elements of the universal set that are not in $\overline{A}$. To not be in $\overline{A}$ means to be in $A$, making $\overline{\overline{A}}$ the same set as $A$.
+	
+	$\overline{\overline{A}} = \{\,x \mid \neg x \in \overline{A}\,\} = \{\,x \mid \neg\neg x \in A\,\} = \{\,x \mid x \in A\,\} = A$
+	
+	\item Prove the identity laws by showing that
+	
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item $A \cup \emptyset = A$.
+		
+		The union of the set $A$ and the empty set $\emptyset$ includes every element of both. Thus, since the $\emptyset$ has no elements, their union simply equates to the set $A$.
+		
+		$A \cup \emptyset = \{\,x \mid x \in A \lor x \in \emptyset\,\} = \{\,x \mid x \in A \lor \textbf{F}\,\} = A$
+		
+		\item $A \cap U = A$.
+		
+		The intersection of the set $A$ and the universal set $U$ will equate to the set $A$ because the set $U$ overlaps entirely with the set $A$ and $A$ is the only other set intersected.
+		
+		$A \cap U = \{\,x \mid x \in A \land x \in U\,\} = \{\,x \mid x \in A \land \textbf{T}\,\} = A$
+	\end{enumerate}
+
+	\item Prove the domination laws by showing that
+	
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item $A \cup U = U$.
+		
+		The union of the set $A$ and the universal set $U$ equates to the set $U$ because the union of the universal set includes all possible elements.
+		
+		$A \cup U = \{\,x \mid x \in A \lor x \in U\,\} = \{\,x \mid x \in A \lor \textbf{T}\,\} = \{\,x \mid \textbf{T}\,\} = U$
+		
+		\item $A \cap \emptyset = \emptyset$.
+		
+		The intersection of a set $A$ with the empty set $\emptyset$ will result in a set with zero elements because there are no common elements between the two sets that exist.
+		
+		$A \cap \emptyset = \{\,x \mid x \in A \land x \in \emptyset\,\} = \{\,x \mid x \in A \land \textbf{F}\,\} = \{\,x \mid \textbf{F}\,\} = \emptyset$
+	\end{enumerate}
+
+	\item Prove the idempotent laws by showing that
+	
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item $A \cup A = A$.
+		
+		The union of the set $A$ with itself includes all contained elements, thus resulting in the set $A$.
+		
+		$A \cup A = \{\,x \mid x \in A \lor x \in A\,\} = \{\,x \mid x \in A\,\} = A$
+		
+		\item $A \cap A = A$.
+		
+		Since the intersection of the set $A$ with itself encompasses only those elements common to $A$, it results in the set $A$.
+		
+		$A \cap A = \{\,x \mid x \in A \land x \in A\,\} = \{\,x \mid x \in A\,\} = A$
+	\end{enumerate}
+
+	\item Prove the complement laws by showing that
+	
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item $A \cup \overline{A} = U$.
+		
+		The set $\overline{A}$ includes all elements not in the set $A$. So when you effect a union between the set $A$ and its complement $\overline{A}$ you get all elements in the universal set $U$.
+		
+		$A \cup \overline{A} = \{\,x \mid x \in A \lor x \notin A\,\} = \{\,x \mid x \in U\,\} = U$
+		
+		\item $A \cap \overline{A} = \emptyset$.
+		
+		The intersection of the set $A$ with its complement $\overline{A}$ results in the empty set $\emptyset$ since they have no elements in common.
+		
+		$A \cap \overline{A} = \{\,x \mid x \in A \land x \notin A\,\} = \{\,x \mid x \in \emptyset\,\} = \emptyset$
+	\end{enumerate}
+
+	\pagebreak
+	\item Show that
+	
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item $A - \emptyset = A$.
+		
+		The difference of the set $A$ and the empty set $\emptyset$ is the set containing those elements that are in $A$ but not in $\emptyset$. Since there are no elements in the empty set, this equates to the set $A$.
+		
+		$A - \emptyset = \{\,x \mid x \in A \land x \notin \emptyset\,\} = \{\,x \mid x \in A \land \textbf{T}\,\} = \{\,x \mid x \in A\,\}= A$
+		
+		\item $\emptyset - A = \emptyset$.
+		
+		The difference of the empty set $\emptyset$ and the set $A$ will exclude all elements in $A$, leaving the empty set $\emptyset$ as the result.
+		
+		$\emptyset - A = \{\,x \mid x \in \emptyset \land x \notin A\,\} = \{\,x \mid \textbf{F} \land x \notin A\,\} = \{\,x \mid x \in \emptyset\,\} = \emptyset$
+	\end{enumerate}
+
+	\item Let $A$ and $B$ be sets. Prove the commutative laws by showing that
+	
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item $A \cup B = B \cup A$.
+		
+		$A \cup B = \{\,x \mid x \in A \lor x \in B\,\} = \{\,x \mid x \in B \lor x \in A\,\} = B \cup A$
+		
+		\item $A \cap B = B \cap A$.
+		
+		$A \cap B = \{\,x \mid x \in A \land x \in B\,\} = \{\,x \mid x \in B \land x \in A\,\} = B \cap A$
+	\end{enumerate}
+
+	\item Prove the absorption law by showing that if $A$ and $B$ are sets, then $A \cup (A \cap B) = A$.
+	
+	\begin{tabular}{c | c | c | c}
+		$A$ & $B$ & $A \cap B$ & $A \cup (A \cap B)$ \\
+		\hline
+		1 & 1 & 1 & 1 \\
+		1 & 0 & 0 & 1 \\
+		0 & 1 & 0 & 0 \\
+		0 & 0 & 0 & 0 
+	\end{tabular}
+
+	\item Prove the absorption law by showing that if $A$ and $B$ are sets, then $A \cap (A \cup B) = A$.
+	
+	\begin{tabular}{c | c | c | c}
+		$A$ & $B$ & $A \cup B$ & $A \cap (A \cup B)$ \\
+		\hline
+		1 & 1 & 1 & 1 \\
+		1 & 0 & 1 & 1 \\
+		0 & 1 & 1 & 0 \\
+		0 & 0 & 0 & 0
+	\end{tabular}
+
+	\item Find the sets $A$ and $B$ if $A - B = \{1, 5, 7, 8\}$, $B - A = \{2, 10\}$, and $A \cap B = \{3, 6, 9\}$.
+	
+	Firstly, if $A \cap B = \{3, 6, 9\}$ then both $A$ and $B$ contain 3, 6, and 9. Also, $A - B = \{1, 5, 7, 8\}$ indicates that $A$ contains 1, 5, 7, and 8 while $B - A = \{2, 10\}$ indicates that $B$ contains 2 and 10. We can derive from these facts that $A = \{1, 3, 5, 6, 7, 8, 9\}$ and $B = \{2, 3, 6, 9, 10\}$.
+	
+	\item Prove the De Morgan law by showing that if $A$ and $B$ are sets, then $\overline{A \cup B} = \overline{A} \cap \overline{B}$
+	
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item by using set builder notation and logical equivalences.
+		
+		$\overline{A \cup B} = \{\,x \mid x \notin A \cup B\,\}$
+		
+		$\hspace{1.15cm} = \{\,x \mid \neg(x \in (A \cup B))\,\}$
+		
+		$\hspace{1.15cm} = \{\,x \mid \neg(x \in A \lor x \in B)\,\}$
+		
+		$\hspace{1.15cm} = \{\,x \mid \neg(x \in A) \land \neg(x \in B)\,\}$
+		
+		$\hspace{1.15cm} = \{\,x \mid x \notin A \land x \notin B\,\}$
+		
+		$\hspace{1.15cm} = \{\,x \mid x \in \overline{A} \land x \in \overline{B}\,\}$
+		
+		$\hspace{1.15cm} = \{\,x \mid x \in \overline{A} \cap \overline{B}\,\}$
+		
+		$\hspace{1.15cm} = \overline{A} \cap \overline{B}$
+		
+		\item using a membership table.
+		
+		\begin{tabular}{c | c | c | c | c | c | c}
+			$A$ & $B$ & $A \cup B$ & $\overline{A \cup B}$ & $\overline{A}$ & $\overline{B}$ & $\overline{A} \cap \overline{B}$ \\
+			\hline
+			1 & 1 & 1 & 0 & 0 & 0 & 0 \\
+			1 & 0 & 1 & 0 & 0 & 1 & 0 \\
+			0 & 1 & 1 & 0 & 1 & 0 & 0 \\
+			0 & 0 & 0 & 1 & 1 & 1 & 1
+		\end{tabular}
+	\end{enumerate}
+\end{enumerate}
+
+\section*{\textbf{2.3 Functions}}
+\begin{enumerate}[label=\textbf{\arabic*.}]
+	\item Why is $f$ not a function from $\mathbb{R}$ to $\mathbb{R}$ if
+	
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item $f(x) = 1/x$?
+		
+		This function is undefined for when $x = 0$, which is one of the elements in the domain.
+		
+		\item $f(x) = \sqrt{x}$?
+		
+		When $x$ is a negative number $f(x)$ is undefined (or at best a complex number).
+		
+		\item $f(x) = \pm \sqrt{(x^2 + 1)}$?
+		
+		We must have $f(x)$ defined uniquely, but here there are two values associated with every $x$.
+	\end{enumerate}
+
+	\item Determine whether $f$ is a function from $\mathbb{Z}$ to $\mathbb{R}$ if
+	
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item $f(n) = \pm n$.
+		
+		The function $f$ must be defined uniquely for any $n$, otherwise it is not a function.
+		
+		\item $f(n) = \sqrt{n^2 + 1}$.
+		
+		This function works for all integers, both positive and negative.
+		
+		\item $f(n) = 1/(n^2 - 4)$.
+		
+		This function is not defined for $n = 2$ because it resolves to $1/0$.
+	\end{enumerate}
+
+	\item Determine whether $f$ is a function from the set of all bit strings to the set of integers if
+	
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item $f(S)$ is the position of a 0 bit in $S$.
+		
+		This is not a function because there may not be a 0 bit in $S$ or there may be more than one. In either case it violates the definition of a function since $f(S)$ must have a unique value.
+		
+		\item $f(S)$ is the number of 1 bits in $S$.
+		
+		This is a function since the number of 1 bits is always a clearly defined nonnegative integer.
+		
+		\item $f(S)$ is the smallest integer $i$ such that the $i$th bit of $S$ is 1 and $f(0) = 0$ when $S$ is the empty string, the string with no bits.
+		
+		This function does not tell what to do with an empty string of all 0's. It is thus undefined and not a function.
+	\end{enumerate}
+
+	\item Find the domain and range of these functions. Note that in each case, to find the domain, determine the set of elements assigned values by the function.
+	
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item the function that assigns to each nonnegative integer its last digit
+		
+		Both the domain and the range are the set of nonnegative integers.
+		
+		\item the function that assigns the next largest integer to a positive integer
+		
+		The domain is the set of integers. The range is the set of positive integers.
+		
+		\item the function that assigns to a bit string the number of one bits in the string
+		
+		The domain is the set of bit strings. The range is the set of nonnegative integers.
+		
+		\item the function that assigns to a bit string the number of bits in the string
+		
+		The domain is the set of bit strings. The range is the set of nonnegative integers.
+	\end{enumerate}
+
+	\item Find the domain and range of these functions. Note that in each case, to find the domain, determine the set of elements assigned values by the function.
+	
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item the function that assigns to each bit string the number of ones in the string minus the number of zeros in the string
+		
+		The domain is the set of bit strings. The range is the set of all integers.
+		
+		\item the function that assigns to each bit string twice the number of zeros in that string
+		
+		The domain is the set of bit strings. The range is the set of even natural numbers.
+		
+		\item the function that assigns the number of bits left over when a bit string is split into bytes (which are blocks of 8 bits)
+		
+		The domain is the set of bit strings. The range is the interval $\{0, 1, 2, 3, 4, 5, 6, 7\}$.
+		
+		\item the function that assigns to each positive integer the largest perfect square not exceeding this integer
+		
+		The domain is the set of positive integers. The range is $\{1, 4, 9, 16, \ldots\}$.
+	\end{enumerate}
+
+	\item Find the domain and range of these functions.
+	
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item the function that assigns to each pair of positive integers the maximum of these two integers
+		
+		Both the domain and the range are the set of positive integers.
+		
+		\item the function that assigns to each positive integer the number of digits 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 that do not appear as decimal digits of the integer
+		
+		The domain is the set of positive integers. The range is $\{0, 1, 2, 3, 4, 5, 6, 7, 8, 9\}$.
+		
+		\item the function that assigns to a bit string the number of times the block 11 appears
+		
+		The domain is the set of bit strings. The domain is the set of nonnegative integers.
+		
+		\item the function that assigns to a bit string the numerical position of the first 1 in the string and that assigns the value 0 to a bit string consisting of all 0s
+		
+		The domain is the set of bit strings. The range is the set of nonnegative integers.
+	\end{enumerate}
+
+	\item Find these values.
+	
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item $\lfloor 1.1 \rfloor = 1$
+		\item $\lceil 1.1 \rceil = 2$
+		\item $\lfloor -0.1 \rfloor = -1$
+		\item $\lceil -0.1 \rceil = 0$
+		\item $\lceil 2.99 \rceil = 3$
+		\item $\lceil -2.99 \rceil = -2$
+		\item $\lfloor \frac{1}{2} + \lceil \frac{1}{2} \rceil \rfloor = 1$
+		\item $\lceil \lfloor \frac{1}{2} \rfloor + \lceil \frac{1}{2} \rceil + \frac{1}{2} \rceil = 2$
+	\end{enumerate}
+
+	\item Find these values.
+	
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item $\lceil \frac{3}{4} \rceil = 1$
+		\item $\lfloor \frac{7}{8} \rfloor = 0$
+		\item $\lceil -\frac{3}{4} \rceil = 0$
+		\item $\lfloor -\frac{7}{8} \rfloor = -1$
+		\item $\lceil 3 \rceil = 3$
+		\item $\lfloor -1 \rfloor = -1$
+		\item $\lfloor \frac{1}{2} + \lceil \frac{3}{2} \rceil \rfloor = 2$
+		\item $\lfloor \frac{1}{2} \cdot \lfloor \frac{5}{2} \rfloor \rfloor = 1$
+	\end{enumerate}
+
+	\item Determine whether each of these functions from $\{a, b, c, d\}$ to itself is one-to-one.
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item $f(a) = b, f(b) = a, f(c) = c, f(d) = d$
+		
+		This function is one-to-one since it never assigns the same value to two different domain elements.
+		
+		\item $f(a) = b, f(b) = b, f(c) = d, f(d) = c$
+		
+		Since both $f(a)$ and $f(b)$ assign to $b$, this is not a one-to-one function.
+		
+		\item $f(a) = d, f(b) = b, f(c) = c, f(d) = d$
+		
+		Since both $f(a)$ and $f(d)$ assign to $d$, this is not a one-to-one function.
+	\end{enumerate}
+
+	\item Which functions in Exercise 9 are onto?
+	
+	The function in part \textbf{(a)} is onto because the range is all of $\{a, b, c, d\}$. The other two functions are not onto.
+	
+	\item Determine whether each of these functions from $\mathbb{Z}$ to $\mathbb{Z}$ is one-to-one.
+	
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item $f(n) = n - 1$
+		
+		This function is one-to-one.
+		
+		\item $f(n) = n^2 + 1$
+		
+		This function is not one-to-one since $f(1) = f(-1) = 2$.
+		
+		\item $f(n) = n^3$
+		
+		This function is one-to-one.
+		
+		\item $f(n) = \lceil n / 2 \rceil$
+		
+		This function is not one-to-one since $f(1) = f(2) = 1$.
+	\end{enumerate}
+
+	\item Which functions in Exercise 11 are onto?
+	
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item This function is onto since every integer is simply 1 less than $n$.
+		\item This function is not onto since $n^2 + 1$ is always positive.
+		\item This function is not onto since, for example, 2 is not in the range (it is not the cube of any integer).
+		\item This function is onto since $f(2x) = \lceil 2x / 2 \rceil = \lceil x \rceil = x \text{ for all } x \in \mathbb{Z}$
+	\end{enumerate}
+
+	\item Determine whether the function $f: \mathbb{Z} \times \mathbb{Z} \implies \mathbb{Z}$ is onto if
+	
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item $f(m, n) = m + n$.
+		
+		Given any integer $n$, we have $f(0, n) = n$, so the function is onto.
+		
+		\item $f(m, n) = m^2 + n^2$.
+		
+		Since the range contains no negative integers, this function is not onto.
+		
+		\item $f(m, n) = m$.
+		
+		Given any integer $m$, we have $f(m, 0) = m$, so the function is onto.
+		
+		\item $f(m, n) = |n|$.
+		
+		Since the range contains no negative integers, this function is not onto.
+		
+		\item $f(m, n) = m - n$.
+		
+		Given any integer $m$, we have $f(m, 0) = m - 0 = m$, so the function is onto.
+	\end{enumerate}
+
+	\item Consider these functions from the set of teachers in a school. Under what conditions is the function one-to-one if it assigns to a teacher his or her
+	
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item office.
+		
+		If there are no shared offices then this is one-to-one.
+		
+		\item assigned bus to chaperone in a group of buses taking students on a field trip.
+		
+		As long as there is only one chaperone per bus this is one-to-one.
+		
+		\item salary.
+		
+		This is most likely not one-to-one because there will probably be teachers making the same salary, otherwise this would be one-to-one.
+		
+		\item social security number.
+		
+		This is one-to-one because no two people can have the same social security number.
+	\end{enumerate}
+
+	\item Give an example of a function from $\mathbb{N}$ to $\mathbb{N}$ that is
+	
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item one-to-one but not onto.
+		
+		$f(n) = 2n$
+		
+		\item onto but not one-to-one.
+		
+		$f(n) = \lceil n / 2 \rceil$
+		
+		\item both onto and one-to-one (but different from the identity function).
+		
+		$
+		f(n) = 
+		\begin{cases}
+			n + 1 & \text{if n is even} \\
+			n - 1 & \text{if n is odd}
+		\end{cases}
+		$
+		
+		\item neither one-to-one nor onto.
+		
+		$f(n) = 1$
+	\end{enumerate}
+
+	\item Determine whether each of these functions is a bijection from $\mathbb{R}$ to $\mathbb{R}$.
+	
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item $f(x) = 2x + 1$
+		
+		One way to determine whether a function is a bijection is to try to construct its inverse. This function is a bijection since its inverse is the function $g(y) = (y - 1) / 2$.
+		
+		\item $f(x) = x^2 + 1$
+		
+		This function is not a bijection because its range does not include negative numbers.
+		
+		\item $f(x) = x^3$
+		
+		This function is a bijection since it has an inverse function, namely $g(y) = y^{1/3}$.
+		
+		\item $f(x) = (x^2 + 1) / (x^2 + 2)$
+		
+		This function is not a bijection since you can see that $x$ and $-x$ have the same image.
+	\end{enumerate}
+
+	\item Let $S = \{-1, 0, 2, 4, 7\}$. Find $f(S)$ if
+	
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item $f(x) = 1$.
+		
+		$f(S) = \{1, 1, 1, 1, 1\}$
+		
+		\item $f(x) = 2x + 1$.
+		
+		$f(S) = \{-1, 1, 5, 9, 15\}$
+		
+		\item $f(x) = \lceil x / 5 \rceil$.
+		
+		$f(S) = \{0, 0, 1, 1, 2\}$
+		
+		\item $f(x) = \lfloor (x^2 + 1) / 3 \rfloor$.
+		
+		$f(S) = \{0, 0, 1, 5, 16\}$
+	\end{enumerate}
+
+	\item Let $f(x) = \lfloor x^2 / 3 \rfloor$. Find $f(S)$ if
+	
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item $S = \{-2, -1, 0, 1, 2, 3\}$.
+		
+		$f(S) = \{1, 0, 0, 0, 1, 3\}$
+		
+		\item $S = \{0, 1, 2, 3, 4, 5\}$.
+		
+		$f(S) = \{0, 0, 1, 3, 5, 8\}$
+		
+		\item $S = \{1, 5, 7, 11\}$.
+		
+		$f(S) = \{0, 8, 16, 40\}$
+		
+		\item $S = \{2, 6, 10, 14\}$.
+		
+		$f(S) = \{1, 12, 33, 65\}$
+	\end{enumerate}
+\end{enumerate}
+
+\section*{\textbf{2.4 Sequences and Summations}}
+\begin{enumerate}[label=\textbf{\arabic*.}]
+	\item Find these terms of the sequence $\{a_n\}$, where $a_n = 2 \cdot (-3)^n + 5^n$.
+	
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item $a_0$
+		
+		$a_0 = 2 \cdot (-3)^0 + 5^0 = 2 \cdot 1 + 1 = 3$
+		
+		\item $a_1$
+		
+		$a_1 = 2 \cdot (-3)^1 + 5^1 = 2 \cdot (-3) + 5 = -1$
+		
+		\item $a_4$
+		
+		$a_4 = 2 \cdot (-3)^4 + 5^4 = 2 \cdot 81 + 625 = 787$
+		
+		\item $a_5$
+		
+		$a_5 = 2 \cdot (-3)^5 + 5^5 = 2 \cdot (-243) + 3125 = 2639$
+	\end{enumerate}
+
+	\item What is the term $a_8$ of the sequence $\{a_n\}$ if $a_n$ equals
+	
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item $2^{n-1}$?
+		
+		$2^{8 - 1} = 2^7 = 128$
+		
+		\item $7$?
+		
+		$7$
+		
+		\item $1 + (-1)^n$?
+		
+		$1 + (-1)^8 = 1 + 1 = 2$
+		
+		\item $-(-2)^n$?
+		
+		$-(-2)^8 = -256$
+	\end{enumerate}
+
+	\item What are the terms $a_0$, $a_1$, $a_2$, and $a_3$ of the sequence $\{a_n\}$, where $a_n$ equals
+	
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item $2^n + 1$?
+		
+		$a_0 = 2^0 + 1 = 1$, $a_1 = 2^1 + 1 = 3$, $a_2 = 2^2 + 1 = 5$, $a_3 = 2^3 + 1 = 9$
+		
+		\item $(n + 1)^{n + 1}$?
+		
+		$a_0 = 1^1 = 1$, $a_1 = 2^2 = 4$, $a_2 = 3^3 = 27$, $a_3 = 4^4 = 256$
+		
+		\item $\lfloor n / 2 \rfloor$?
+		
+		$a_0 = \lfloor 0 / 2 \rfloor = 0$, $a_1 = \lfloor 1 / 2 \rfloor = 0$, $a_2 = \lfloor 2 / 2 \rfloor = 1$, $a_3 = \lfloor 3 / 2 \rfloor = 1$
+		
+		\item $\lfloor n / 2 \rfloor + \lceil n / 2 \rceil$?
+		
+		$a_0 = \lfloor 0 / 2 \rfloor + \lceil 0 / 2 \rceil = 0 + 0 = 0$, $a_1 = \lfloor 1 / 2 \rfloor + \lceil 1 / 2 \rceil = 0 + 1 = 1$, $a_2 = \lfloor 2 / 2 \rfloor + \lceil 2 / 2 \rceil = 1 + 1 = 2$, $a_3 = \lfloor 3 / 2 \rfloor + \lceil 3 / 2 \rceil = 1 + 2 = 3$
+	\end{enumerate}
+
+	\item What are the terms $a_0$, $a_1$, $a_2$, and $a_3$ of the sequence $\{a_n\}$, where $a_n$ equals
+	
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item $(-2)^n$?
+		
+		$a_0 = (-2)^0 = 1$, $a_1 = (-2)^1 = -2$, $a_2 = (-2)^2 = 4$, $a_3 = (-2)^3 = -8$
+		
+		\item $3$?
+		
+		$a_0 = a_1 = a_2 = a_3 = 3$
+		
+		\item $7 + 4^n$?
+		
+		$a_0 = 7 + 4^0 = 8$, $a_1 = 7 + 4^1 = 11$, $a_2 = 7 + 4^2 = 23$, $a_3 = 7 + 4^3 = 71$
+		
+		\item $2^n + (-2)^n$?
+		
+		$a_0 = 2^0 + (-2)^0 = 2$, $a_1 = 2^1 + (-2)^1 = 0$, $a_2 = 2^2 + (-2)^2 = 8$, $a_3 = 2^3 + (-2)^3 = 0$
+	\end{enumerate}
+
+	\pagebreak
+	\item List the first 10 terms of each of these sequences.
+	
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item the sequence that begins with 2 and in which each successive term is 3 more than the preceding term
+		
+		$\{2, 5, 8, 11, 14, 17, 20, 23, 26, 29\}$
+		
+		\item the sequence that lists each positive integer three times, in increasing order
+		
+		$\{1, 1, 1, 2, 2, 2, 3, 3, 3, 4\}$
+		
+		\item the sequence that lists the odd positive integers in increasing order, listing each odd integer twice
+		
+		$\{1, 1, 3, 3, 5, 5, 7, 7, 9, 9\}$
+		
+		\item the sequence whose $n$th term is $n! - 2^n$
+		
+		$\{-1, -2, -2, 8, 88, 656, 4912, 40064, 362368, 3627776\}$
+		
+		\item the sequence that begins with 3, where each succeeding term is twice the preceding term
+		
+		$\{3, 6, 12, 24, 48, 96, 192, 384, 768, 1536\}$
+		
+		\item the sequence whose first term is 2, second term is 4, and each succeeding term is the sum of the two preceding terms
+		
+		$\{2, 4, 6, 10, 16, 26, 42, 68, 110, 178\}$
+		
+		\item the sequence whose $n$th term is the number of bits in the binary expansion of the number $n$
+		
+		$\{1, 2, 2, 3, 3, 3, 3, 4, 4, 4\}$
+		
+		\item the sequence where the $n$th term is the number of letters in the English word for the index $n$
+		
+		$\{3, 3, 5, 4, 4, 3, 5, 5, 4, 3\}$
+	\end{enumerate}
+
+	\item Find the first five terms of the sequence defined by each of these recurrence relations and initial conditions.
+	
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item $a_n = 6a_{n - 1}$, $a_0 = 2$
+		
+		$a_0 = 2$ \\
+		$a_1 = 6a_0 = 6 \cdot 2 = 12$ \\
+		$a_2 = 6a_1 = 6 \cdot 12 = 72$ \\
+		$a_3 = 6a_2 = 6 \cdot 72 = 432$ \\
+		$a_4 = 6a_3 = 6 \cdot 432 = 2592$
+		
+		\item $a_n = a_{n - 1}^2$, $a_1 = 2$
+		
+		$a_1 = 2$ \\
+		$a_2 = a_1^2 = 2^2 = 4$ \\
+		$a_3 = a_2^2 = 4^2 = 16$ \\
+		$a_4 = a_3^2 = 16^2 = 256$ \\
+		$a_5 = a_4^2 = 256^2 = 65536$
+		
+		\item $a_n = a_{n - 1} + 3a_{n - 2}$, $a_0 = 1$, $a_1 = 2$
+		
+		$a_0 = 1$ \\
+		$a_1 = 2$ \\
+		$a_2 = a_1 + 3a_0 = 2 + 3 \cdot 1 = 5$ \\
+		$a_3 = a_2 + 3a_1 = 5 + 3 \cdot 2 = 10$ \\
+		$a_4 = a_3 + 3a_2 = 10 + 3 \cdot 5 = 25$
+		
+		\item $a_n = na_{n - 1} + n^2a_{n - 2}$, $a_0 = 1$, $a_1 = 1$
+		
+		$a_0 = 1$ \\
+		$a_1 = 1$ \\
+		$a_2 = 2a_1 + 2^2a_0 = 2 \cdot 1 + 2^2 \cdot 1 = 6$ \\
+		$a_3 = 3a_2 + 3^2a_1 = 3 \cdot 6 + 3^2 \cdot 1 = 27$ \\
+		$a_4 = 4a_3 + 4^2a_2 = 4 \cdot 27 + 4^2 \cdot 6 = 204$
+		
+		\item $a_n = a_{n - 1} + a_{n - 3}$, $a_0 = 1$, $a_1 = 2$, $a_2 = 0$
+		
+		$a_0 = 1$ \\
+		$a_1 = 2$ \\
+		$a_2 = 0$ \\
+		$a_3 = a_2 + a_0 = 0 + 1 = 1$ \\
+		$a_4 = a_3 + a_1 = 1 + 2 = 3$
+	\end{enumerate}
+
+	\item Find the first six terms of the sequence defined by each of these recurrence relations and initial conditions.
+	
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item $a_n = -2a_{n - 1}$, $a_0 = -1$
+		
+		$a_0 = -1$ \\
+		$a_1 = -2a_0 = -2 \cdot -1 = 2$ \\
+		$a_2 = -2a_1 = -2 \cdot 2 = -4$ \\
+		$a_3 = -2a_2 = -2 \cdot -4 = 8$ \\
+		$a_4 = -2a_3 = -2 \cdot 8 = -16$ \\
+		$a_5 = -2a_4 = -2 \cdot -16 = 32$
+		
+		\item $a_n = a_{n - 1} - a_{n - 2}$, $a_0 = 2$, $a_1 = -1$
+		
+		$a_0 = 2$ \\
+		$a_1 = -1$ \\
+		$a_2 = a_1 - a_0 = -1 - 2 = -3$ \\
+		$a_3 = a_2 - a_1 = -3 - (-1) = -2$ \\
+		$a_4 = a_3 - a_2 = -2 - (-3) = 1$ \\
+		$a_5 = a_4 - a_3 = 1 - (-2) = 3$
+		
+		\item $a_n = 3a_{n - 1}^2$, $a_0 = 1$
+		
+		$a_0 = 1$ \\
+		$a_1 = 3a_0^2 = 3 \cdot 1^2 = 3$ \\
+		$a_2 = 3a_1^2 = 3 \cdot 3^2 = 27$ \\
+		$a_3 = 3a_2^2 = 3 \cdot 27 ^2 = 2187$ \\
+		$a_4 = 3a_3^2 = 3 \cdot 2187^2 = 14348907$ \\
+		$a_5 = 3a_4^2 = 3 \cdot 14348907^2 = 6.176733963$e$14$ \\
+		
+		\item $a_n = na_{n - 1} + a_{n - 2}^2$, $a_0 = -1$, $a_1 = 0$
+		
+		$a_0 = -1$ \\
+		$a_1 = 0$ \\
+		$a_2 = 2a_1 + a_0^2 = 2 \cdot 0 + (-1)^2 = 1$ \\
+		$a_3 = 3a_2 + a_1^2 = 3 \cdot 1 + 0^2 = 3$ \\
+		$a_4 = 4a_3 + a_2^2 = 4 \cdot 3 + 1^2 = 13$ \\
+		$a_5 = 5a_4 + a_3^2 = 5 \cdot 13 + 3^2 = 74$
+		
+		\item $a_n = a_{n - 1} - a_{n - 2} + a_{n - 3}$, $a_0 = 1$, $a_1 = 1$, $a_2 = 2$
+		
+		$a_0 = 1$ \\
+		$a_1 = 1$ \\
+		$a_2 = 2$ \\
+		$a_3 = a_2 - a_1 + a_0 = 2 - 1 + 1 = 2$ \\
+		$a_4 = a_3 - a_2 + a_1 = 2 - 2 + 1 = 1$ \\
+		$a_5 = a_4 - a_3 + a_2 = 1 - 2 + 1 = 0$
+	\end{enumerate}
+
+	\item Let $a_n = 2^n + 5 \cdot 3^n$ for $n = 0, 1, 2, \ldots$ .
+	
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item Find $a_0$, $a_1$, $a_2$, $a_3$, and $a_4$.
+		
+		$a_0 = 2^0 + 5 \cdot 2^0 = 6$ \\
+		$a_1 = 2^1 + 5 \cdot 3^1 = 17$ \\
+		$a_2 = 2^2 + 5 \cdot 3^2 = 49$ \\
+		$a_3 = 2^3 + 5 \cdot 3^3 = 143$ \\
+		$a_4 = 2^4 + 5 \cdot 3^4 = 421$
+		
+		\pagebreak
+		\item Show that $a_2 = 5a_1 - 6a_0$, $a_3 = 5a_2 - 6a_1$, and $a_4 = 5a^3 - 6a_2$.
+		
+		$a_2 = 5 \cdot 17 - 6 \cdot 6 = 49$ \\
+		$a_3 = 5 \cdot 49 - 6 \cdot 17 = 143$ \\
+		$a_4 = 5 \cdot 143 - 6 \cdot 49 = 421$
+		
+		\item Show that $a_n = 5a_{n - 1} - 6a_{n - 2}$ for all integers $n$ with $n \geq 2$.
+		
+		$5a_{n - 1} - 6a_{n - 2} = 5(2^{n - 1} + 5 \cdot 3^{n - 1}) - 6(2^{n - 2} + 5 \cdot 3^{n - 2})$
+
+		$\hspace{2.53cm} = 5 \cdot 2^{n - 1} + 25 \cdot 3^{n - 1} - 6 \cdot 2^{n - 2} - 30 \cdot 3^{n - 2}$
+		
+		$\hspace{2.53cm} = 5 \cdot 2^{n - 1} - 6 \cdot 2^{n - 2} + 25 \cdot 3^{n - 1} - 30 \cdot 3^{n - 2}$
+		
+		$\hspace{2.53cm} = 10 \cdot 2^{n - 2} - 6 \cdot 2^{n - 2} + 75 \cdot 3^{n - 2} - 30 \cdot 3^{n - 2}$
+		
+		$\hspace{2.53cm} = 2^{n - 2}(10 - 6) + 3^{n - 2}(75 - 30)$
+		
+		$\hspace{2.53cm} = 2^{n - 2} \cdot 4 + 3^{n - 2} \cdot 9 \cdot 5$
+		
+		$\hspace{2.53cm} = 2^n + 3^n \cdot 5 = a_n$
+	\end{enumerate}
+
+	\item Show that the sequence $\{a_n\}$ is a solution of the recurrence relation $a_n = a_{n - 1} + 2a_{n - 2} + 2n - 9$ if
+	
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item $a_n = -n + 2$.
+		
+		$a_{n - 1} + 2a_{n - 2} + 2n - 9 = -(n - 1) + 2 + 2(-(n - 2) + 2) + 2n - 9$
+		
+		$\hspace{3.9cm} = -n + 2 = a_n$
+		
+		\item $a_n = 5(-1)^n - n + 2$.
+		
+		$a_{n - 1} + 2a_{n - 2} + 2n - 9 = 5(-1)^{n - 1} - n + 2 + 2(5(-1)^{n - 2} - n + 2) + 2n - 9$
+		
+		$\hspace{3.9cm} = 5(-1)^{n - 2}(-1 + 2) - n + 2 = a_n$
+		
+		Note that we had to factor our $(-1)^{n - 2}$ and that this is the same as $(-1)^n$ since $(-1)^2 = 1$.
+		
+		\item $a_n = 3(-1)^n + 2^n - n + 2$.
+		
+		$a_{n - 1} + 2a_{n - 2} + 2n - 9 = 3(-1)^{n - 1} + 2^{n - 1} - (n - 1) + 2 + 2(3(-1)^{n - 2} + 2^{n - 2} - (n - 2) + 2) + 2n - 9$
+		
+		$\hspace{3.9cm} = 3(-1)^{n - 2}(-1 + 2) + 2^{n - 2}(2 + 2) - n + 2 = a_n$
+		
+		Note that we had to factor out $2^{n - 2}$ and that $2^{n - 2} \cdot 4 = 2^n$.
+		
+		\item $a_n = 7 \cdot 2^n - n + 2$.
+		
+		$a_{n - 1} + 2a_{n - 2} + 2n - 9 = 7 \cdot 2^{n - 1} - (n - 1) + 2 + 2(7 \cdot 2^{n - 2} - (n - 2) + 2) + 2n - 9$
+		
+		$\hspace{3.9cm} = 2^{n - 2}(7 \cdot 2 + 2 \cdot 7) - n + 2 = a_n$
+	\end{enumerate}
+
+	\item Find the solution to each of these recurrence relations and initial conditions. Use an iterative approach.
+	
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item $a_n = 3a_{n - 1}$, $a_0 = 2$
+		
+		$a_n = 3a_{n - 1}$
+		
+		$\hspace{0.5cm} = 3(3a_{n - 2}) = 3^2a_{n - 2}$
+		
+		$\hspace{0.5cm} = 3^2(3a_{n - 3}) = 3^3a_{n - 3}$
+		
+		$\hspace{1cm} \vdots$
+		
+		$\hspace{0.5cm} = 3^na_{n - n} = 3^na_0 = 3^n \cdot 2$
+		
+		\item $a_n = a_{n - 1} + 2$, $a_0 = 3$
+		
+		$a_n = a_{n - 1} + 2$
+		
+		$\hspace{0.5cm} = (a_{n - 2} + 2) + 2 = a_{n - 2} + (2 \cdot 2)$
+		
+		$\hspace{0.5cm} =  (a_{n - 3} + 2) + (2 \cdot 2) = a_{n - 3} + (3 \cdot 2)$
+
+		$\hspace{1cm} \vdots$
+		
+		$\hspace{0.5cm} = a_{n - n} + (n \cdot 2) = a_0 + (n \cdot 2) = 3 + (n \cdot 2) = 3 + 2n$
+		
+		\item $a_n = a_{n - 1} + n$, $a_0 = 1$
+		
+		$a_n = n + a_{n - 1}$
+		
+		$\hspace{0.5cm} = n + ((n - 1) + a_{n - 2}) = (n + (n - 1)) + a_{n - 2}$
+		
+		$\hspace{0.5cm} = (n + (n - 1)) + ((n - 2) + a_{n - 3}) = (n + (n - 1) + (n - 2)) + a_{n - 3}$
+		
+		$\hspace{1cm} \vdots$
+		
+		$\hspace{0.5cm} = (n + (n - 1) + (n - 2) + \cdots + (n - (n - 1))) + a_{n - n}$
+		
+		$\hspace{0.5cm} = (n + (n - 1) + (n - 2) + \cdots + 1) + a_0$
+		
+		$\hspace{0.5cm} = \frac{n(n + 1)}{2} + 1 = \frac{n^2 + n + 2}{2}$
+		
+		\item $a_n = a_{n - 1} + 2n + 3$, $a_0 = 4$
+		
+		$a_n = 3 + 2n + a_{n - 1}$
+		
+		$\hspace{0.5cm} = 3 + 2n + (3 + 2(n - 1) + a_{n - 2}) = (2 \cdot 3 + 2n + 2(n - 1)) + a_{n - 2}$
+		
+		$\hspace{0.5cm} = (2 \cdot 3 + 2n + 2(n - 1)) + (3 + 2(n - 2) + a_{n - 3})$
+		
+		$\hspace{0.5cm} = (3 \cdot 3 + 2n + 2(n - 1) + 2(n - 2)) + a_{n - 3}$
+		
+		$\hspace{1cm} \vdots$
+		
+		$\hspace{0.5cm} = (n \cdot 3 + 2n + 2(n - 1) + 2(n - 2) + \cdots + 2(n - (n - 1))) + a_{n - n}$
+		
+		$\hspace{0.5cm} = (n \cdot 3 + 2n + 2(n - 1) + 2(n - 2) + \cdots + 2 \cdot 1) + a_0$
+		
+		$\hspace{0.5cm} = 3n +2 \cdot \frac{n(n + 1)}{2} + 4 = n^2 + 4n + 4$
+		
+		\item $a_n = 2a_{n - 1} - 1$, $a_0 = 1$
+		
+		$a_n = -1 + 2a_{n - 1}$
+		
+		$\hspace{0.5cm} = -1 + 2(-1 + 2a_{n - 2}) = -3 + 4a_{n - 2}$
+		
+		$\hspace{0.5cm} = -3 + 4(-1 + 2a_{n - 3}) = -7 + 8a_{n - 3}$
+		
+		$\hspace{0.5cm} = -7 + 8(-1 + 2a_{n - 4}) = -15 + 16a_{n - 4}$
+		
+		$\hspace{0.5cm} = -15 + 16(-1 + 2a_{n - 5}) = -31 + 32a_{n - 5}$
+		
+		$\hspace{1cm} \vdots$
+		
+		$\hspace{0.5cm} = -(2^n - 1) + 2^na_{n - n} = -2^n + 1 +2^n \cdot 1 = 1$
+		
+		\item $a_n = 3a_{n - 1} + 1$, $a_0 = 1$
+		
+		$a_n = 1 + 3a_{n - 1}$
+		
+		$\hspace{0.5cm} = 1 + 3(1 + 3a_{n - 2}) = (1 + 3) + 3^2a_{n - 2}$
+		
+		$\hspace{0.5cm} = (1 + 3) + 3^2(1 + 3a_{n - 3}) = (1 + 3 + 3^2) + 3^3a_{n - 3}$
+		
+		$\hspace{1cm} \vdots$
+		
+		$\hspace{0.5cm} = (1 + 3 + 3^2 + \cdots + 3^{n - 1}) + 3^na_{n - n}$
+		
+		$\hspace{0.5cm} = 1 + 3 + 3^2 + \cdots + 3^{n - 1} + 3^n$
+		
+		$\hspace{0.5cm} = \frac{3^{n + 1} - 1}{3 - 1}$ (a geometric series)
+		
+		$\hspace{0.5cm} = \frac{3^{n + 1} - 1}{2}$
+		
+		\item $a_n = na_{n - 1}$, $a_0 = 5$
+		
+		$a_n = na_{n - 1} = n(n - 1)a_{n - 2}$
+		
+		$\hspace{0.5cm} = n(n - 1)(n - 2)a_{n - 3} = n(n - 1)(n - 2)(n - 3)a_{n - 4}$
+		
+		$\hspace{1cm} \vdots$
+		
+		$\hspace{0.5cm} = n(n - 1)(n - 2)(n - 3) \cdots (n - (n - 1))a_{n - n}$
+		
+		$\hspace{0.5cm} = n(n - 1)(n - 2)(n - 3) \cdots 1 \cdot a_0$
+		
+		$\hspace{0.5cm} = n! \cdot 5 = 5n!$
+		
+		\item $a_n = 2na_{n - 1}$, $a_0 = 1$
+		
+		$a_n = 2na_{n - 1}$
+		
+		$\hspace{0.5cm} = 2n(2(n - 1)a_{n - 1}) = 2^2(n(n - 1))a_{n -2}$
+		
+		$\hspace{0.5cm} = 2^2(n(n - 1))(2(n - 2)a_{n - 3}) = 2^3(n(n - 1)(n - 2))a_{n - 3}$
+		
+		$\hspace{1cm} \vdots$
+		
+		$\hspace{0.5cm} = 2^nn(n - 1)(n - 2)(n - 3) \cdots (n - (n - 1))a_{n - n}$
+		
+		$\hspace{0.5cm} = 2^nn(n - 1)(n - 2)(n - 3) \cdots 1 \cdot a_0 = 2^nn!$
+	\end{enumerate}
+
+	\item What the values of these sums?
+	
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item $\sum_{k = 1}^{5} (k + 1)$
+		
+		$2 + 3 + 4 + 5 + 6 = 20$
+		
+		\item $\sum_{j = 0}^{4} (-2)^j$
+		
+		$1 - 2 + 4 - 8 + 16 = 11$
+		
+		\item $\sum_{i = 1}^{10} 3$
+		
+		$3 + 3 + \cdots + 3 = 10 \cdot 3 = 30$
+		
+		\item $\sum_{j = 0}^{8} (2^{j + 1} - 2^j)$
+		
+		$(4 - 2) + (8 - 4) + \cdots + (512 - 256) = -1 + 512 = 511$
+	\end{enumerate}
+
+	\item What are the values of these sums, where $S = \{1, 3, 5, 7\}$?
+	
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item $\sum_{j \in S} j$
+		
+		$1 + 3 + 5 + 7 = 16$
+		
+		\item $\sum_{j \in S} j^2$
+		
+		$1 + 9 + 25 + 49 = 84$
+		
+		\item $\sum_{j \in S} (-3)^j$
+		
+		$(-3) + (-27) + (-243) + (-2187) = -2460$
+		
+		\item $\sum_{j \in S} 1$
+		
+		$1 + 1 + 1 + 1 = 4$
+	\end{enumerate}
+
+	\item What is the value of each of these sums of terms of a geometric progression?
+	
+	We use the formula for the sum of a geometric progression: $\sum_{j = 0}^{n} ar^j = a(r^{n + 1} - 1) / (r - 1)$.
+	
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item $\sum_{j = 0}^{8} 3 \cdot 2^j$
+		
+		Here $a = 3$, $r = 2$, and $n = 8$, so the sum is $3(2^9 - 1) / (2 - 1) = 1533$.
+		
+		\item $\sum_{j = 1}^{8} 2^j$
+		
+		Here $a = 1$, $r = 2$, and $n = 8$. The sum taken over all the values of $j$ from 0 to $n$ is $(2^9 - 1) / (2 - 1) = 511$. However, our sum starts at $j = 1$, so we must subtract out the term that isn't there, namely $2^0$. Hence the answer is $511 - 1 = 510$.
+		
+		\item $\sum_{j = 2}^{8} (-3)^j$
+		
+		Again we have to subtract the missing terms, so the sum is $((-3)^9 - 1) / ((-3) - 1) - (-3)^0 - (-3)^1 = 4921 - 1 - (-3) = 4923$.
+		
+		\item $\sum_{j = 0}^{8} 2 \cdot (-3)^j$
+		
+		Here $a = 2$, $r = (-3)$, and $n = 8$, so the sum is $2((-3)^9 - 1) / ((-3) - 1) = 9842$.
+	\end{enumerate}
+
+	\item Find the value of each of these sums.
+	
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item $\sum_{j = 0}^{8} (1 + (-1)^j)$
+		
+		$(1 + (-1)^0) + (1 + (-1)^1) + \cdots + (1 + (-1)^8) = 10$
+		
+		\item $\sum_{j = 0}^{8} (3^j - 2^j)$
+		
+		$(3^0 - 2^0) + (3^1 - 2^1) + \cdots + (3^8 - 2^8) = 9330$
+		
+		\item $\sum_{j = 0}^{8} (2 \cdot 3^j + 3 \cdot 2^j)$
+		
+		$(2 \cdot 3^0 + 3 \cdot 2^0) + (2 \cdot 3^1 + 3 \cdot 2^1) + \cdots + (2 \cdot 3^8 + 3 \cdot 2^8) = 21215$
+		
+		\item $\sum_{j = 0}^{8} (2^{j + 1} - 2^j)$
+		
+		$(2^1 - 2^0) + (2^2 - 2^1) + \cdots + (2^9 - 2^8) = 511$
+	\end{enumerate}
+\end{enumerate}
+
+\section*{\textbf{2.5 Cardinality of Sets}}
+\begin{enumerate}[label=\textbf{\arabic*.}]
+	\item Determine whether each of these sets is finite, countably infinite, or uncountable. For those that are countably infinite, exhibit a one-to-one correspondence between the set of positive integers and that set.
+	
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item the negative integers
+		
+		The negative integers are countably infinite. Each negative integer can be paired with its absolute value to give the desired one-to-one correspondence: $1 \iff -1$, $2 \iff -2$, $3 \iff -3$, and so on.
+		
+		\item the even integers
+		
+		The even integers are countably infinite. We can list the set of even integers in the order $0, 2, -2, 4, -4, 6, -6, ...$, and pair them with the positive integers listed in their natural order. Thus $1 \iff 0$, $2 \iff 2$, $3 \iff -2$, $4 \iff 4$, and so on.
+		
+		\item the integers less than 100
+		
+		This set is countably infinite. A formula for a correspondence with the set of positive integers is given by $f(n) = 100 - n$, listing the elements in the order $99, 98, 97, \ldots$ .
+		
+		\item the real numbers between 0 and $\frac{1}{2}$
+		
+		Since the set of real numbers between 0 and 1 is not countable, it follows that the set of real numbers between 0 and $\frac{1}{2}$ is also not countable.
+		
+		\item the positive integers less than 1,000,000,000
+		
+		This set is finite, with a cardinality of 999,999,999.
+		
+		\item the integers that are multiples of 7
+		
+		This set is countably infinite. The correspondence is given by pairing the positive integer $n$ with $7n/2$ if $n$ is even and $-7(n - 1)/2$ if $n$ is odd: $0, 7, -7, 14, -14, 21, -21, \ldots$.
+	\end{enumerate}
+
+	\item Determine whether each of these sets is countable or uncountable. For those that are countably infinite, exhibit a one-to-one correspondence between the set of positive integers and that set.
+	
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item all bit strings not containing the bit 0
+		
+		This set is countably infinite. The correspondence matches the positive integer $n$ with the string of $n - 1$ 1's.
+		
+		\item all positive rational numbers that cannot be written with denominators less than 4
+		
+		Since this is a subset of the set of rational numbers, it is countable. To find a correspondence, we just follow the path in Example 4 of the book, but omit fractions in the top three rows.
+		
+		\item the real numbers not containing 0 in their decimal representations
+		
+		This set is uncountable since real numbers are not countable.
+		
+		\item the real numbers containing only a finite number of 1s in their decimal representation
+		
+		This set is uncountable since real numbers are not countable.
+	\end{enumerate}
+
+	\item Show that a finite group of guests arriving at Hilbert's fully occupied Grand Hotel can be given rooms without evicting any current guests.
+	
+	Suppose $m$ new guests arrive at the fully occupied hotel. If we move the guest in Room 1 to Room $m + 1$, the guest in Room 2 to Room $m + 2$, and so on, then rooms with numbers 1 to $m$ will be vacant and the new guests can occupy them.
+	
+	\item Suppose that Hilbert's Grand Hotel is fully occupied on the day the hotel expands to a second building which also contains a countably infinite number of rooms. Show that the current guests can be spread out to fill every room of the two buildings of the hotel.
+	
+	We can use the guests in the even-numbered rooms to occupy the original rooms, and the guests in the odd-numbered rooms to occupy the rooms in the second building. For each positive integer $n$, put the guest currently in Room $2n$ into Room $n$, and the guest currently in Room $2n - 1$ into Room $n$ of the new building.
+	
+	\item Give an example of two uncountable sets $A$ and $B$ such that $A \cap B$ is
+	
+	In each case, we can make the intersection what we want it to be, and then put additional elements into $A$ and into $B$ (with no overlap) to make them uncountable.
+	
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item finite.
+		
+		We can make $A \cap B = \emptyset$. So, for example, take $A$ to be the interval $(1, 2)$ of real numbers and take $B$ to be the interval $(3, 4)$.
+		
+		\item countably infinite.
+		
+		Adjoin the set of positive integers to the examples from part (a). Then, let $A = (1, 2) \cup \mathbb{Z^+}$ and let $B = (3, 4) \cup \mathbb{Z^+}$.		
+		\item uncountable.
+		
+		Let $A = (1, 2)$ and $B = (3, 4)$.
+	\end{enumerate}
+
+	\item Explain why the set $A$ is countable if and only if $|A| \leq |\mathbb{Z^+}|$.
+	
+	Suppose that $A$ is countable. This means either that $A$ is finite or that there exists a one-to-one correspondence $f$ from $A$ to $\mathbb{Z^+}$. In the former case, there is a one-to-one function $g$ from $A$ to a subset of $\mathbb{Z^+}$ (the range of $g$ is the first $n$ positive integers, where $|A| = n$). Conversely, suppose that $|A| \leq |\mathbb{Z^+}|$. By definition, this means that there is a one-to-one function $g$ from $A$ to $\mathbb{Z^+}$, so that $A$ has the same cardinality as a subset of $\mathbb{Z^+}$ (namely, the range of $g$).
+	
+	\item If $A$ is an uncountable set and $B$ is a countable set, must $A - B$ be uncountable?
+	
+	Yes. First, note that $A = (A \cap B) \cup (A - B)$. Given that $B$ is countable, its subset $A \cap B$ is also countable. If $A - B$ were also countable, then, since the union of two countable sets is also countable, we would conclude that $A$ is countable. But we are given that $A$ is not countable. Therefore our assumption that $A - B$ is countable is wrong, concluding that it is actually uncountable.
+	
+	\item Show that if $A$, $B$, $C$, and $D$ are sets with $|A| = |B|$ and $|C| = |D|$, then $|A \times C| = |B \times D|$.
+	
+	By what we are given, we know that there are bijections $f$ from $A$ to $B$ and $g$ from $C$ to $D$. Then we can define a bijection from $A \times C$ to $B \times D$ by sending $(a, c)$ to $(f(a), g(c))$. This is one-to-one and onto, so we have shown that $A \times C$ and $B \times D$ have the same cardinality.
+	
+	\item Show that if $A$, $B$, and $C$ are sets such that $|A| \leq |B|$ and $|B| \leq |C|$, then $|A| \leq |C|$.
+	
+	The definition of $|A| \leq |B|$ is that there is a one-to-one function $f : A \implies B$. Similarly, we are given a one-to-one function $g : B \implies C$. It happens that to composition $g \circ f : A \implies C$ is one-to-one. Therefore by definition $|A| \leq |C|$.
+	
+	\item Show that if $A$ is an infinite set, then it contains a countably infinite subset.
+	
+	Define a sequence $a_1, a_2, a_3, \ldots$ of elements of $A$ as follows. First, $a_1$ is any element of $A$. Once we have selected $a_1, a_2, a_3, \ldots, a_k$, let $a_{k + 1}$ be any element of $A - \{a_1, a_2, \ldots, a_k\}$. Such an element must exist because $A$ is infinite. The resulting set $\{a_1, a_2, a_3, \ldots\}$ is the desired countably infinite subset of $A$.
+	
+	\item Prove that if it is possible to label each element of an infinite set $S$ with a finite string of keyboard characters, from a finite list of characters, where no two elements of $S$ have the same label, then $S$ is a countably infinite set.
+	
+	The set of finite strings of characters over a finite alphabet is countably infinite, because we can list these strings in alphabetical order by length. For example, if the alphabet is $\{a, b, c\}$, then our list is $\lambda, a, b, c, aa, ab, ac, ba, bb, bc, ca, cb, cc, aaa, aab, \ldots$ (where $\lambda$ denotes the empty string). Therefore the infinite set $S$ can be identified with an infinite subset of this countable set, which is also countably infinite.
+	
+	\item Use the Schr{\"o}der-Bernstein theorem to show that $(0, 1)$ and $[0, 1]$ have the same cardinality.
+	
+	It suffices to fine one-to-one function $f : (0, 1) \implies [0, 1]$ and $g : [0, 1] \implies (0, 1)$. We can use the function $f(x) = x$ in the first case. For the second, we can compress $[0, 1]$ into, say, $[\frac{1}{3}, \frac{2}{3}]$; the increasing linear function $g(x) = (x + 1) / 3$ will do that. It then follows from the Schr{\"o}der-Bernstein theorem that $|(0, 1)| = |[0, 1]|$.
+\end{enumerate}
+
+\section*{\textbf{2.6 Matrices}}
+\begin{enumerate}[label=\textbf{\arabic*.}]
+	\item Let $\textbf{A} =	
+	\begin{bmatrix}
+		1 & 1 & 1 & 3 \\
+		2 & 0 & 4 & 6 \\
+		1 & 1 & 3 & 7
+	\end{bmatrix}$.
+	
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item What size is \textbf{A}?
+		
+		Since \textbf{A} has 3 rows and 4 columns, its size is $3 \times 4$.
+		
+		\item What is the third column of \textbf{A}?
+		
+		It is the $3 \times 1$ matrix 
+		$\begin{bmatrix}
+			1 \\
+			4 \\
+			3
+		\end{bmatrix}$.
+		
+		\item What is the second row of \textbf{A}?
+		
+		It is the $1 \times 4$ matrix 
+		$\begin{bmatrix}
+			2 & 0 & 4 & 6
+		\end{bmatrix}$.
+		
+		\item What is the element of \textbf{A} in the (3, 2)th position?
+		
+		It is the element in the third row, second column, namely 1.
+		
+		\item What is $\textbf{A}^t$?
+		
+		The transpose of \textbf{A} is the $4 \times 3$ matrix 
+		$\begin{bmatrix}
+			1 & 2 & 1 \\
+			1 & 0 & 1 \\
+			1 & 4 & 3 \\
+			3 & 6 & 7 
+		\end{bmatrix}$.
+	\end{enumerate}
+
+	\item Find $\textbf{A} + \textbf{B}$ where
+	
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item $\textbf{A} = 
+		\begin{bmatrix}
+			1 & 0 & 4 \\
+			-1 & 2 & 2 \\
+			0 & -2 & -3
+		\end{bmatrix}$, $\textbf{B} =
+		\begin{bmatrix}
+			-1 & 3 & 5 \\
+			2 & 2 & -3 \\
+			2 & -3 & 0
+		\end{bmatrix}$.
+	
+		$\begin{bmatrix}
+			1 & 0 & 4 \\
+			-1 & 2 & 2 \\
+			0 & -2 & -3
+		\end{bmatrix} +
+		\begin{bmatrix}
+			-1 & 3 & 5 \\
+			2 & 2 & -3 \\
+			2 & -3 & 0
+		\end{bmatrix} = 
+		\begin{bmatrix}
+			0 & 3 & 9 \\
+			1 & 4 & -1 \\
+			2 & -5 & -3
+		\end{bmatrix}$
+	
+		\item $\textbf{A} = 
+		\begin{bmatrix}
+			-1 & 0 & 5 & 6 \\
+			-4 & -3 & 5 & -2
+		\end{bmatrix}$, $\textbf{B} =
+		\begin{bmatrix}
+			-3 & 9 & -3 & 4 \\
+			0 & -2 & -1 & 2
+		\end{bmatrix}$.
+	
+		$\begin{bmatrix}
+			-1 & 0 & 5 & 6 \\
+			-4 & -3 & 5 & -2
+		\end{bmatrix} +
+		\begin{bmatrix}
+			-3 & 9 & -3 & 4 \\
+			0 & -2 & -1 & 2
+		\end{bmatrix} =
+		\begin{bmatrix}
+			-4 & 9 & 2 & 10 \\
+			-4 & -5 & 4 & 0
+		\end{bmatrix}$
+	\end{enumerate}
+
+	\item Find \textbf{AB} if
+	
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item $\textbf{A} = 
+		\begin{bmatrix}
+			2 & 1 \\
+			3 & 2
+		\end{bmatrix}$, $\textbf{B} =
+		\begin{bmatrix}
+			0 & 4 \\
+			1 & 3
+		\end{bmatrix}$.
+	
+		$=
+		\begin{bmatrix}
+			2 \cdot 0 + 1 \cdot 1 & 2 \cdot 4 + 1 \cdot 3 \\
+			3 \cdot 0 + 2 \cdot 1 & 3 \cdot 4 + 2 \cdot 3 
+		\end{bmatrix} = 
+		\begin{bmatrix}
+			1 & 11 \\
+			2 & 18
+		\end{bmatrix}$
+	
+		\item $\textbf{A} = 
+		\begin{bmatrix}
+			1 & -1 \\
+			0 & 1 \\
+			2 & 3
+		\end{bmatrix}$, $\textbf{B} = 
+		\begin{bmatrix}
+			3 & -2 & -1 \\
+			1 & 0 & 2
+		\end{bmatrix}$.
+	
+		$ =
+		\begin{bmatrix}
+			1 \cdot 3 + (-1) \cdot 1 & 1 \cdot (-2) + (-1) \cdot 0 & 1 \cdot (-1) + (-1) \cdot 2 \\
+			0 \cdot 3 + 1 \cdot 1 & 0 \cdot (-2) + 1 \cdot 0 & 0 \cdot (-1) + 1 \cdot 2 \\
+			2 \cdot 3 + 3 \cdot 1 & 2 \cdot (-2) + 3 \cdot 0 & 2 \cdot (-1) + 3 \cdot 2
+		\end{bmatrix}$
+	
+		$ = 
+		\begin{bmatrix}
+			2 & -2 & -3 \\
+			1 & 0 & 2 \\
+			9 & -4 & 4
+		\end{bmatrix}$
+	
+		\item $\textbf{A} =
+		\begin{bmatrix}
+			4 & -3 \\
+			3 & -1 \\
+			0 & -2 \\
+			-1 & 5
+		\end{bmatrix}$, $\textbf{B} = 
+		\begin{bmatrix}
+			-1 & 3 & 2 & -2 \\
+			0 & -1 & 4 & -3
+		\end{bmatrix}$.
+	
+		$= 
+		\begin{bmatrix}
+			4 \cdot (-1) + (-3) \cdot 0 & 4 \cdot 3 + (-3) \cdot (-1) & 4 \cdot 2 + (-3) \cdot 4 & 4 \cdot (-2) + (-3) \cdot (-3) \\
+			3 \cdot (-1) + (-1) \cdot 0 & 3 \cdot 3 + (-1) \cdot (-1) & 3 \cdot 2 + (-1) \cdot 4 & 3 \cdot (-2) + (-1) \cdot (-3) \\
+			0 \cdot (-1) + (-2) \cdot 0 & 0 \cdot 3 + (-2) \cdot (-1) & 0 \cdot 2 + (-2) \cdot 4 & 0 \cdot (-2) + (-2) \cdot (-3) \\
+			(-1) \cdot (-1) + 5 \cdot 0 & (-1) \cdot 3 + 5 \cdot (-1) & (-1) \cdot 2 + 5 \cdot 4 & (-1) \cdot (-2) + 5 \cdot (-3)
+		\end{bmatrix}$
+	
+		$ = 
+		\begin{bmatrix}
+			-4 & 15 & -4 & 1 \\
+			-3 & 10 & 2 & -3 \\
+			0 & 2 & -8 & 6 \\
+			1 & -8 & 18 & -13
+		\end{bmatrix}$
+	\end{enumerate}
+
+	\item Find the product \textbf{AB}, where
+	
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item $\textbf{A} =
+		\begin{bmatrix}
+			1 & 0 & 1 \\
+			0 & -1 & -1 \\
+			-1 & 1 & 0
+		\end{bmatrix}$, $\textbf{B} = 
+		\begin{bmatrix}
+			0 & 1 & -1 \\
+			1 & -1 & 0 \\
+			-1 & 0 & 1
+		\end{bmatrix}$.
+	
+		$= 
+		\begin{bmatrix}
+			1 \cdot 0 + 0 \cdot 1 + 1 \cdot (-1) & 1 \cdot 1 + 0 \cdot (-1) + 1 \cdot 0 &1 \cdot (-1) + 0 \cdot 0 + 1 \cdot 1 \\
+			0 \cdot 0 + (-1) \cdot 1 + (-1) \cdot (-1) & 0 \cdot 1 + (-1) \cdot (-1) + (-1) \cdot 0 & 0 \cdot (-1) + (-1) \cdot 0 + (-1) \cdot 1\\
+			(-1) \cdot 0 + 1 \cdot 1 + 0 \cdot (-1) & (-1) \cdot 1 + 1 \cdot (-1) + 0 \cdot 0 & (-1) \cdot (-1) + 1 \cdot 0 + 0 \cdot 1
+		\end{bmatrix}$
+	
+		$ = 
+		\begin{bmatrix}
+			-1 & 1 & 0 \\
+			0 & 1 & -1 \\
+			1 & -2 &1
+		\end{bmatrix}$
+	
+		\item $\textbf{A} =
+		\begin{bmatrix}
+			0 & -1 \\
+			7 & 2 \\
+			-4 & -3
+		\end{bmatrix}$, $\textbf{B} = 
+		\begin{bmatrix}
+			4 & -1 & 2 & 3 & 0 \\
+			-2 & 0 & 3 & 4 & 1
+		\end{bmatrix}$.
+	
+		$= 
+		\begin{bmatrix}
+			0 \cdot 4 + (-1) \cdot (-2) & 0 \cdot (-1) + (-1) \cdot 0 & 0 \cdot 2 + (-1) \cdot 3 & 0 \cdot 3 + (-1) \cdot 4 & 0 \cdot 0 + (-1) \cdot 1 \\
+			7 \cdot 4 + 2 \cdot (-2) & 7 \cdot (-1) + 2 \cdot 0 & 7 \cdot 2 + 2 \cdot 3 & 7 \cdot 3 + 2 \cdot 4 & 7 \cdot 0 + 2 \cdot 1 \\
+			(-4) \cdot 4 + (-3) \cdot (-2) & (-4) \cdot (-1) + (-3) \cdot 0 & (-4) \cdot 2 + (-3) \cdot 3 & (-4) \cdot 3 + (-3) \cdot 4 & (-4) \cdot 0 + (-3) \cdot 1 
+		\end{bmatrix}$
+	
+		$=
+		\begin{bmatrix}
+			2 & 0 & -3 & -4 & -1 \\
+			24 & -7 & 20 & 31 & 2 \\
+			-10 & 4 & -17 & -24 & -3
+		\end{bmatrix}$
+	\end{enumerate}
+
+	\item Let \textbf{A} be an $m \times n$ matrix and let \textbf{0} be the $m \times n$ matrix that has all entries equal to zero. Show that $\textbf{A} = \textbf{0} + \textbf{A} = \textbf{A} + \textbf{0}$.
+	
+	Since the $(i, j)$th entry of $\textbf{0} + \textbf{A}$ is the sum of the $(i, j)$th entry of \textbf{0} (namely 0) and the $(i, j)$th entry of \textbf{A}, this entry is the same as the $(i, j)$th entry of \textbf{A}. Therefore by the definition of matrix equality, $\textbf{0} + \textbf{A} = \textbf{A}$ and $\textbf{A} + \textbf{0} = \textbf{A}$.
+	
+	\item Show that matrix addition is commutative; that is, show that if \textbf{A} and \textbf{B} are both $m \times n$ matrices, then $\textbf{A} + \textbf{B} = \textbf{B} + \textbf{A}$.
+	
+	The $(i, j)$th entry of $\textbf{A} + \textbf{B}$ is the same as the $(i, j)$th entry of $\textbf{B} + \textbf{A}$. It will result in the same sum, just the order of the numbers in the calculation will be swapped.
+	
+	\item Show that matrix addition is associative; that is, show that if \textbf{A}, \textbf{B}, and \textbf{C} are all $m \times n$ matrices, then $\textbf{A} + (\textbf{B} + \textbf{C}) = (\textbf{A} + \textbf{B}) + \textbf{C}$.
+		
+	We simply look at the $(i, j)$th entries of each side. The $(i, j)$th entry of the left-hand side is $a_{ij} + (b_{ij} + c_{ij})$. The $(i, j)$th entry of the right-hand side is $(a_{ij} + b_{ij}) + c_{ij}$. By the associativity law for real number addition, these are equal.
+	
+	\pagebreak
+	\item What do we know about the sizes of the matrices \textbf{A} and \textbf{B} if both of the products \textbf{AB} and \textbf{BA} are defined?
+	
+	In order for \textbf{AB} to be defined, the number of columns of \textbf{A} must be equal to the number of rows of \textbf{B}. In order for \textbf{BA} to be defined, the number of columns of \textbf{B} must be equal to the number of rows of \textbf{A}. Thus for some positive integers $m$ and $n$, it must be the case that \textbf{A} is an $m \times n$ matrix and \textbf{B} is an $n \times m$ matrix. Another way to say this is to say that \textbf{A} must have the same size as $\textbf{B}^t$.
+	
+	\item Let
+	
+	$\textbf{A} = 
+	\begin{bmatrix}
+		1 & 0 & 1 \\
+		1 & 1 & 0 \\
+		0 & 0 & 1
+	\end{bmatrix}$\quad and\quad $\textbf{B} = 
+	\begin{bmatrix}
+		0 & 1 & 1 \\
+		1 & 0 & 1 \\
+		1 & 0 & 1
+	\end{bmatrix}$.
+
+	Find
+	
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item $\textbf{A} \lor \textbf{B}$.
+		
+		$=
+		\begin{bmatrix}
+			1 \lor 0 & 0 \lor 1 & 1 \lor 1 \\
+			1 \lor 1 & 1 \lor 0 & 0 \lor 1 \\
+			0 \lor 1 & 0 \lor 0 & 1 \lor 1
+		\end{bmatrix} =
+		\begin{bmatrix}
+			1 & 1 & 1 \\
+			1 & 1 & 1 \\
+			1 & 0 & 1
+		\end{bmatrix}$
+		
+		\item $\textbf{A} \land \textbf{B}$.
+		
+		$=
+		\begin{bmatrix}
+			1 \land 0 & 0 \land 1 & 1 \land 1 \\
+			1 \land 1 & 1 \land 0 & 0 \land 1 \\
+			0 \land 1 & 0 \land 0 & 1 \land 1
+		\end{bmatrix} =
+		\begin{bmatrix}
+			0 & 0 & 1 \\
+			1 & 0 & 0 \\
+			0 & 0 & 1
+		\end{bmatrix}$
+		
+		\item $\textbf{A} \odot \textbf{B}$.
+		
+		$= 
+		\begin{bmatrix}
+			(1 \land 0) \lor (0 \land 1) \lor (1 \land 1) & (1 \land 1) \lor (0 \land 0) \lor (1 \land 0) & (1 \land 1) \lor (0 \land 1) \lor (1 \land 1) \\
+			(1 \land 0) \lor (1 \land 1) \lor (0 \land 1) & (1 \land 1) \lor (1 \land 0) \lor (0 \land 0) & (1 \land 1) \lor (1 \land 1) \lor (0 \land 1) \\
+			(0 \land 0) \lor (0 \land 1) \lor (1 \land 1) & (0 \land 1) \lor (0 \land 0) \lor (1 \land 0) & (0 \land 1) \lor (0 \land 1) \lor (1 \land 1)
+		\end{bmatrix}$
+	
+		$=
+		\begin{bmatrix}
+			1 & 1 & 1 \\
+			1 & 1 & 1 \\
+			1 & 0 & 1
+		\end{bmatrix}$
+	\end{enumerate}
+
+	\item Let
+	
+	$\textbf{A} = 
+	\begin{bmatrix}
+		1 & 0 & 0 \\
+		1 & 0 & 1 \\
+		0 & 1 & 0
+	\end{bmatrix}$.
+
+	Find
+	
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item $\textbf{A}^{[2]}$.
+		
+		$=
+		\begin{bmatrix}
+			1 & 0 & 0 \\
+			1 & 1 & 0 \\
+			1 & 0 & 1
+		\end{bmatrix}$
+		
+		\item $\textbf{A}^{[3]}$.
+		
+		$=
+		\begin{bmatrix}
+			1 & 0 & 0 \\
+			1 & 0 & 1 \\
+			1 & 1 & 0
+		\end{bmatrix}$
+	
+		\item $\textbf{A} \lor \textbf{A}^{[2]} \lor \textbf{A}^{[3]}$.
+		
+		$=
+		\begin{bmatrix}
+			1 & 0 & 0 \\
+			1 & 1 & 1 \\
+			1 & 1 & 1
+		\end{bmatrix}$
+	\end{enumerate}
+\end{enumerate}
+\end{document}
