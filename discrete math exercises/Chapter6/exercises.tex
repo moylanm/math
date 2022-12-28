@@ -203,6 +203,61 @@
 
 \section*{\textbf{6.2 The Pigeonhole Principle}}
 \begin{enumerate}[label=\textbf{\arabic*.}]
+	\item Show that in any set of six classes, each meeting regularly once a week on a particular day of the week, there must be two that meet on the same day, assuming that no classes are held on weekends.
+	
+	There are six classes: these are the pigeons. There are five days on which classes may meet (Monday through Friday): these are the pigeonholes. Each class must meet on a day (each pigeon must occupy a pigeonhole). By the pigeonhole principle at least one day must contain at least two classes.
+	
+	\item A drawer contains a dozen brown socks and a dozen black socks, all unmatched. A man takes socks out at random in the dark.
+	
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item How many socks must he take out to be sure that he has at least two socks of the same color?
+		
+		There are two colors: these are the pigeonholes. We want to know the least number of pigeons needed to insure that at least one of the pigeonholes contains two pigeons. By the pigeonhole principle the answer is 3. If three socks are taken from the drawer, at least two much have the same color. On the other hand two sock are not enough, because one might be brown and the other black.
+		
+		\item How many socks must he take out to be sure that he has at least two black socks?
+		
+		He needs to take out 14 socks in order to insure at least two black socks. If he does so, then at most 12 of them are brown, so at least two are black. On the other hand, if he removes 13 or fewer socks, then 12 of them could be brown, and he might not get his pair of black socks.
+	\end{enumerate}
+
+	\item Show that if there are 30 students in a class, then at least two have last names that begin with the same letter.
+	
+	There are 26 letters in the English alphabet (these are the pigeons) and 30 students in the class (these are the pigeonholes). By the pigeonhole principle, actually, there only need be 27 students in the class for there to be two students with last names the begin with the same letter.
+	
+	\item Undergraduate students at a college belong to one of four groups depending on the year in which they are expected to graduate. Each student must choose one of 21 different majors. How many students are needed to assure that there are two students expected to graduate in the same year who have the same major?
+	
+	In this question, the students are pigeons. The boxes or pigeonholes are less clear: since the question is asking about students expected to graduate in the same year with the same major, we think of a year-major pair as being a box. More formally, if $Y$ is the set of 4 years and $M$ is the set of 21 different majors, then $Y \times M$ is the set of boxes. This means that there are $4 \times 21 = 84$ boxes, and thus $84 + 1 = 85$ students that are needed to ensure that there are two in the same box.
+	
+	\item Show that among any group of five (not necessarily consecutive) integers, there are two with the same remainder when divided by 4.
+	
+	There are four possible remainders when an integer is divided by 4 (these are the pigeonholes here): 0, 1, 2, or 3. Therefore, by the pigeonhole principle at least two of the five given remainders (these are the pigeons) must be the same.
+	
+	\item Let $n$ be a positive integer. Show that in any set of $n$ consecutive integers there is exactly one divisible by $n$.
+	
+	Let the $n$ consecutive integers be denoted $x + 1, x + 2, \ldots, x + n$, where $x$ is some integer. We want to show that exactly one of these is divisible by $n$. There are $n$ possible remainders when an integer is divided by $n$, namely $0, 1, 2, \ldots, n - 1$. There are two possibilities for the remainders of our collection of $n$ numbers: either they cover all the possible remainders (in which case exactly one of our numbers has a remainder of 0 and is therefore divisible by $n$), or they do not. If they do not, then by the pigeonhole principle, since there are then fewer than $n$ pigeonholes (remainders) for $n$ pigeons (the numbers in our collection), at least one remainder must occur twice. In other words, it must be the case that $x + i$ and $x + j$ have the same remainder when divided by $n$ for some pair of numbers $i$ and $j$ with $0 < i < j \leq n$. Since $x + i$ and $x + j$ have the same remainder when divided by $n$, if we subtract $x + i$ from $x + j$, then we will get a number divisible by $n$. This means that $j - i$ is divisible by $n$. But this is impossible, since $j - i$ is a positive integer strictly less than $n$. Therefore the first possibility must hold, that exactly one of the numbers in our collection is divisible by $n$.
+	
+	\item What is the minimum number of students, each of whom come from one of the 50 states, who must be enrolled in a university to guarantee that there are at least 100 who come from the same state?
+	
+	The generalized pigeonhole principle applies here. The pigeons are the students, and the pigeonholes are the states, 50 in number. By the generalized pigeonhole principle if we want there to be at least 100 pigeons in at least one of the pigeonholes, then we need to have a total of $N$ pigeons so that $\lceil N / 50 \rceil \geq 100$. This will be the case as long as $N \geq 99 \cdot 50 + 1 = 4951$. Therefore we need at least 4951 students to guarantee that at least 100 come from a single state.
+	
+	\item Suppose that every student in a discrete mathematics class of 25 students is a freshman, a sophomore, or a junior.
+	
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item Show that there are at least nine freshmen, at least nine sophomores, or at least nine juniors in the class.
+		
+		If this statement were not true, then there would be at most 8 from each class standing, for a total of at most 24 students. This contradicts the fact that there are 25 students in the class.
+		
+		\item Show that there are either at least three freshmen, at least 19 sophomores, or at least five juniors in the class.
+		
+		If this statement were not true, then there would be at most 2 freshmen, at most 18 sophomores, and at most 4 juniors, for a total of at most 24 students. This contradicts the fact that there are 25 students in the class.
+	\end{enumerate}
+
+	\item Construct a sequence of 16 positive integers that has no increasing or decreasing subsequence of five terms.
+	
+	One way to do this is to have the sequence contain four groups of four numbers each, so that the numbers within each group are decreasing, and so that the numbers between groups are increasing. For example, we could take the sequence to be 4, 3, 2, 1; 8, 7, 6, 5; 12, 11, 10, 9; 16, 15, 14, 13. There can be no increasing subsequence of five terms, because any increasing subsequence can have only one element from each of the four groups. There can be no decreasing subsequence of five terms, because any decreasing subsequence cannot have elements from more than one group.
+\end{enumerate}
+
+\section*{\textbf{6.3 Permutations and Combinations}}
+\begin{enumerate}[label=\textbf{\arabic*.}]
 	\item 
 \end{enumerate}
 \end{document}
