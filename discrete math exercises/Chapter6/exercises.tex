@@ -258,6 +258,155 @@
 
 \section*{\textbf{6.3 Permutations and Combinations}}
 \begin{enumerate}[label=\textbf{\arabic*.}]
-	\item 
+	\item List all the permutations of $\{ a, b, c\}$.
+	
+	$a, b, c;\ a, c, b;\ b, a, c;\ b, c, a;\ c, a, b; \text{ and } c, b, a$
+	
+	\item How many different permutations are there of the set $\{ a, b, c, d, e, f, g \}$?
+	
+	$P(7, 7) = \frac{7!}{(7 - 7)!} = 7! = 5040$ different permutations.
+	
+	\item How many permutations of $\{ a, b, c, d, e, f, g \}$ end with $a$?
+	
+	If we want the permutation to end with $a$, then we may as well forget about the $a$, and just count the number of permutations of $\{ b, c, d, e, f, g \}$. Therefore the answer is $P(6, 6) = 6! = 720$.
+	
+	\item Find the value of each of these quantities.
+	
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item $P(6, 3) = \frac{6!}{(6 - 3)!} = 6 \cdot 5 \cdot 4 = 120$
+		\item $P(6, 5) = \frac{6!}{(6 - 5)!} = 6! = 720$
+		\item $P(8, 1) = \frac{8!}{(8 - 1)!} = 8$
+		\item $P(8, 5) = \frac{8!}{(8 - 5)!} = 8 \cdot 7 \cdot 6 \cdot 5 \cdot 4 = 6720$
+		\item $P(8, 8) = \frac{8!}{(8 - 8)!} = 8! = 40320$
+		\item $P(10, 9) = \frac{10!}{(10 - 9)!} = 10! = 3628800$
+	\end{enumerate}
+
+	\item Find the number of 5-permutations of a set with nine elements.
+	
+	$P(9, 5) = \frac{9!}{(9 - 5)!} = 9 \cdot 8 \cdot 7 \cdot 6 \cdot 5 = 15120$
+	
+	\item How many possibilities are there for the win, place, and show (first, second, and third) positions in a horse race with 12 horses if all orders of finish are possible?
+	
+	$P(12, 3) = \frac{12!}{(12 - 3)!} = 12 \cdot 11 \cdot 10 = 1320$
+	
+	\item There are six candidates for governor of a state. In how many different orders can the names of the candidates be printed on a ballot?
+	
+	$P(6, 6) = \frac{6!}{(6 - 6)!} = 6! = 720$
+	
+	\item How many bit strings of length 10 contain
+	
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item exactly four 1s?
+		
+		$C(10, 4) = \frac{10!}{4!(10 - 4)!} = 210$
+		
+		\item at most four 1s?
+		
+		$C(10, 4) + C(10, 3) + C(10, 2) + C(10, 1) + C(10, 0) = 210 + 120 + 45 + 10 + 1 = 386$
+		
+		\item at least four 1s?
+		
+		$C(10, 4) + C(10, 5) + \ldots + C(10, 10) = 210 + 252 + 210 + 120 + 45 + 10 + 1 = 848$
+		
+		\item an equal number of 0s and 1s?
+		
+		To have an equal number of 0s and 1s in this case means to have five 1s. Therefore the answer is $C(10, 5) = 252$.
+	\end{enumerate}
+
+	\item A group contains $n$ men and $n$ women. How many ways are there to arrange these people in a row if the men and women alternate?
+	
+	We assume that a row has a distinguished head. Consider the order in which the men appear relative to each other. There are $n$ men, and all of the $P(n, n) = n!$ arrangements is allowed. Similarly, there are $n!$ arrangements in which the women can appear. Now the men and women must alternate, and there are the same number of men and women; therefore there are exactly two possibilities: either the row starts with a man and ends with a woman ($MWMW \ldots MW$) or else it starts with a woman and ends with a man ($WMWM \ldots WM$). We have three tasks to perform, then: arrange the men among themselves, arrange the women among themselves, and decide which sex starts the row. By the product rule there $n! \cdot n! \cdot 2 = 2(n!)^2$ ways in which this can be done.
+	
+	\item In how many ways can a set of five letters be selected from the English alphabet?
+	
+	We assume that a combination is called for, not a permutation, since we are told to \emph{select a set}, not \emph{form an arrangement}. We need to choose 5 things from 26, so there are $C(26, 5) = \frac{26!}{5!(26 - 5)!} = 65780$ ways to do so.
+	
+	\item How many subsets with more than two elements does a set with 100 elements have?
+	
+	We know that there are $2^{100}$ subsets of a set with 100 elements. All of them have more than two elements except the empty set, the 100 subsets consisting of one element each, and the $C(100, 2) = 4950$ subsets with two elements. Therefore the answer is $2^{100} - 5051 \approx 1.3 \times 10^{30}$.
+	
+	\item A coin is flipped 10 times where each flip comes up either heads or tails. How many possible outcomes
+	
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item are there in total?
+		
+		Each flip can be either heads or tails, so there are $2^{10} = 1024$ possible outcomes. 
+		
+		\item contain exactly two heads?
+		
+		To specify an outcome that has exactly two heads, we simply need to choose the two flips that came up heads. There are $C(10, 2) = 45$ such outcomes.
+		
+		\item contain at most three tails?
+		
+		To contain at most three tails means to contain three tails, two tails, one tail, or no tails. Reasoning as in part (b), we see that there are $C(10, 3) + C(10, 2) + C(10, 1) + C(10, 0) = 120 + 45 + 10 + 1 = 176$ such outcomes.
+		
+		\item contain the same number of heads and tails?
+		
+		To have an equal number of heads and tails in this case means to have five heads. Therefore the answer is $C(10, 5) = 252$.
+	\end{enumerate}
+
+	\item How many permutations of the letters $ABCDEFG$ contain
+	
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item the string $BCD$?
+		
+		If $BCD$ is to be a substring, then we can think of that block of letters as one superletter, and the problem is to count permutations of five items---the letters $A, E, F, \text{ and } G$, and the superletter $BCD$. Therefore the answer is $P(5, 5) = 5! = 120$.
+		
+		\item the string $CFGA$?
+		
+		Reasoning as in part (a), we see that the answer is $P(4, 4) = 4! = 24$.
+		
+		\item the strings $BA$ and $GF$?
+		
+		As in part (a), we glue $BA$ into one item and glue $GF$ into one item. Therefore we need to permute five items, and there are $P(5, 5) = 5! = 120$ ways to do it.
+		
+		\item the strings $ABC$ and $DE$?
+		
+		This is similar to part (c). Glue $ABC$ into one item and glue $DE$ into one item, producing four items, so the answer is $P(4, 4) = 4! = 24$.
+		
+		\item the strings $ABC$ and $CDE$?
+		
+		If both $ABC$ and $CDE$ are substrings, then $ABCDE$ ahs to be a substring. So we are really just permuting three items: $ABCDE$, $F$, and $G$. Therefore the answer is $P(3, 3) = 3! = 6$.
+		
+		\item the strings $CBA$ and $BED$?
+		
+		There are no permutations with both of these substrings, since $B$ cannot be followed by both $A$ and $E$ at the same time.
+	\end{enumerate}
+
+	\item How many ways are there for eight men and five women to stand in a line so that no two women stand next to each other? [\emph{Hint:} First position the men and then consider possible positions for the women.]
+	
+	First position the men relative to each other. Since there are eight men, there are $P(8, 8)$ ways to do this. This creates nine slots where a woman (but not more than one woman) may stand: in front of the first man, between the first and second men, $\ldots$, between the seventh and eighth men, and behind the eighth man. We need to choose five of these positions, in order, for the first through fifth woman to occupy (order matters, because the women are distinct people). This can be done in $P(9, 5)$ ways. Therefore the answer is $P(8, 8) \cdot P(9, 5) = 8! \cdot 9! / 4! = 609638400$.
+	
+	\item How many ways are there for four men and five women to stand in a line so that
+	
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item all men stand together?
+		
+		One approach to this problem is to begin by considering the four men as a block and count the number of ways to arrange 6 objects: the five women and the block of four men. There are $P(6, 6) = 6!$ ways to arrange the women and the block of men. Then we choose the specific order of the 4 men within their block, which can be done in $P(4, 4) = 4!$ ways. And so the total number of arrangements of the nine people with the men all standing together is $6! \cdot 4! = 17280$.
+		
+		\item all women stand together?
+		
+		This is similar to (a). We begin by arranging the four men and the women considered as a block, which can be done in $5!$ ways. Then the women are arranged within their block in $5!$ ways, since there are 5 women. So the number of arrangements is $5! \cdot 5! = 14400$.
+	\end{enumerate}
+
+	\item The English alphabet contains 21 consonants and five vowels. How many strings of six lowercase letters of the English alphabet contain
+	
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item exactly one vowel?
+		
+		We need to choose the position for the vowel, and this can be done in 6 ways. Next we need to choose the vowel to use, and this can be done in 5 ways. Each of the other five positions in the string can contain any of the 21 consonants, so there are $21^5$ ways to fill the rest of the string. Therefore the answer is $6 \cdot 5 \cdot 21^5 = 122523030$.
+		
+		\item exactly two vowels?
+		
+		We need to choose the position for the vowels, and this can be done in $C(6, 2) = 15$ ways (we need to choose two positions out of six). We need to choose the two vowels ($5^2$ ways). Each of the other four positions in the string can contain any of the 21 consonants, so there are $21^4$ ways to fill the rest of the string. Therefore the answer is $15 \cdot 5^2 \cdot 21^4 = 72930375$.
+		
+		\item at least one vowel?
+		
+		The best way to do this is to count the number of strings with no vowels and subtract this from the total number of strings. We obtain $26^6 - 21^6 = 223149655$.
+		
+		\item at least two vowels?
+		
+		As in part (c), we will do this by subtracting from the total number of strings, the number of strings with no vowels and the number of strings with one vowel (this latter quantity having been computed in part (a)). We obtain $26^6 - 21^6 - 6 \cdot 5 \cdot 21^5 = 223149655 - 122523030 = 100626625$.
+	\end{enumerate}
 \end{enumerate}
 \end{document}
