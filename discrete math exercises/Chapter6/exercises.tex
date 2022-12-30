@@ -409,4 +409,81 @@
 		As in part (c), we will do this by subtracting from the total number of strings, the number of strings with no vowels and the number of strings with one vowel (this latter quantity having been computed in part (a)). We obtain $26^6 - 21^6 - 6 \cdot 5 \cdot 21^5 = 223149655 - 122523030 = 100626625$.
 	\end{enumerate}
 \end{enumerate}
+
+\section*{\textbf{6.4 Binomial Coefficients and Identities}}
+\begin{enumerate}[label=\textbf{\arabic*.}]
+	\item Find the expansion of $(x + y)^4$
+	
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item using combinational reasoning.
+		
+		When $(x + y)^4 = (x + y)(x + y)(x + y)(x + y)$ is expanded, all products of a term in the first sum, a term in the second sum, a term in the third sum, and a term in the fourth sum are added. Terms of the form $x^4,\ x^3y,\ x^2y^2,\ xy^3 \text{ and } y^4$ arise. To obtain a term of the form $x^4$, and $x$ must be chosen in each of the sums, and this can be done in only one way. Thus, the $x^4$ term in the product has a coefficient of 1. (We can think of this coefficient ad $\binom{4}{4}$.) To obtain a term of the form $x^3y$, an $x$ must be chosen in three of the four sums (and consequently a $y$ in the other sum). Hence, the number of such terms is the number of 3-combinations of four objects, namely $\binom{4}{3} = 4$. Similarly, the number of terms of the form $x^2y^2$ is the number of ways to pick two of the four sums to obtain $x$'s (and consequently take a $y$ from each of the other two factors). This can be done in $\binom{4}{2} = 6$ ways. By the same reasoning there are $\binom{4}{1} = 4$ ways to obtain the $xy^3$ terms, and only one way (which we can think of as $\binom{4}{0}$) to obtain a $y^4$ term. Consequently, the product is $x^4 + 4x^3y + 6x^2y^2 + 4xy^3 + y^4$.
+		
+		\item using the binomial theorem.
+		
+		The expansion is $\binom{4}{0}x^4 + \binom{4}{1}x^3y + \binom{4}{2}x^2y^2 + \binom{4}{3}xy^3 + \binom{4}{4}y^4 = x^4 + 4x^3y + 6x^2y^2 + 4xy^3 + y^4$. Note that it does not matter whether we think of the bottom of the binomial coefficient expression as corresponding to the exponent on $x$, as we did in part (a), or the exponent on $y$, as we do here.
+	\end{enumerate}
+
+	\item Find the expansion of $(x + y)^6$.
+	
+	$$(x + y)^6 = \sum_{i = 0}^{6} \binom{6}{i} x^{6 - i}y^i = x^6 + 6x^5y + 15x^4y^2 + 20x^3y^3 + 15x^2y^4 + 6xy^5 + y^6$$
+	
+	\item Find the coefficient of $x^5y^8$ in $(x + y)^{13}$.
+	
+	$$\binom{13}{8} = \frac{13!}{8!(13 - 8)!} = \frac{13!}{8!5!} = 1287$$
+	
+	\item How many terms are there in the expansion of $(x + y)^{100}$ after like terms are collected?
+	
+	There is one term for each $i$ from 0 to 100, so there are 101 terms.
+	
+	\item What is the coefficient of $x^9$ in $(2 - x)^{19}$?
+	
+	By the binomial theorem the term involving $x^9$ in the expansion of $(2 + (-x))^{19}$ is $\binom{19}{9}2^{10}(-x)^9$. Therefore the coefficient is $\binom{19}{9}2^{10}(-1)^9 = -2^{10}\binom{19}{9} = -94595072$.
+	
+	\item What is the coefficient of $x^{101}y^{99}$ in the expansion of $(2x - 3y)^{200}$?
+	
+	Using the binomial theorem, we see that the term involving $x^{101}$ in the expansion of $((2x) + (-3y))^{200}$ is $\binom{200}{99}(2x)^{101}(-3y)^{99}$. Therefore the coefficient is $\binom{200}{99}2^{101}(-3)^{99} = -2^{101}3^{99}C(200, 99)$.
+	
+	\item Use the binomial theorem to expand $(3x^4 - 2y^3)^5$ into a sum of terms of the form $cx^ay^b$, where $c$ is a real number and $a$ and $b$ are nonnegative integers.
+	
+	We can write this as $((3x^4) + (-2y^3))^5$. By the binomial theorem, this expands as
+	
+	$$\sum_{j = 0}^{5} \binom{5}{j} (3x^4)^{5 - j}(-2y^3)^j = 243x^{20} - 810x^{16}y^3 + 1080x^{12}y^6 - 720x^8y^9 + 240x^4y^{12} - 32y^{15}$$
+	
+	\item Use the binomial theorem to find the coefficient of $x^ay^b$ in the expansion of $(2x^3 - 4y^2)^6$, where
+	
+	By the binomial theorem, $(2x^3 - 4y^2)^7 = ((2x^3) + (-4y^2))^7 = \sum_{j = 0}^{7} \binom{7}{j} (2x^3)^{7 - j}(-4y^2)^j$. By distributing the exponentiation, we can further simplify this as $\sum_{j = 0}^{7} \binom{7}{j} 2^{7 - j}(-4)^jx^{3(7 - j)}y^{2j}$. Thus, when determining the coefficient of $x^ay^b$ for a given $a$ and $b$, we find the value of $j$, if it exists, for which $3(7 - j) = a$ and $2j = b$.
+	
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item $a = 9,\ b = 8$
+		
+		$\binom{7}{4} 2^{7 - 4}(-4)^4 = 71680$
+		
+		\item $a = 8,\ b = 9$
+		
+		If the exponent of $y$ is 9, then attempting to solve $2j = 9$ yields a non-integer. Consequently, the coefficient of $x^9y^9$ is 0.
+		
+		\item $a = 0,\ b = 14$
+		
+		$\binom{7}{2} 2^{7 - 7}(-4)^7 = -16384$
+		
+		\item $a = 12,\ b = 6$
+		
+		$\binom{7}{3} 2^{7 - 3}(-4)^3 = -35840$
+		
+		\item $a = 18,\ b = 2$
+		
+		$\binom{7}{1} 2^{7 - 1}(-4)^1 = -1792$
+	\end{enumerate}
+
+	\item Give a formula for the coefficient of $x^k$ in the expansion of $(x^2 - 1 / x)^{100}$, where $k$ is an integer.
+	
+	Let us apply the binomial theorem to the given binomial:
+	
+	$$(x^2 - x^{-1})^{100} = \sum_{j = 0}^{100} \binom{100}{j} (x^2)^{100 - j}(-x^{-1})^j$$
+	
+	$$\hspace{6.3cm} = \sum_{j = 0}^{100} \binom{100}{j} (-1)^jx^{200 - 2j - j} = \sum_{j = 0}^{100} \binom{100}{j} (-1)^jx^{200 - 3j}$$
+	
+	Thus the only nonzero coefficients are those of the form $200 - 3j$ where j is an integer between 0 and 100, inclusive, namely $200, 197, 194, \ldots, 2, -1, -4, \ldots, -100$. If we denote $200 - 3j$ by $k$, then we have $j = (200 - k) / 3$. This gives us our answer. The coefficient of $x^k$ is zero for $k$ not in the list just given (namely those values of $k$ between -100 and 200, inclusive, that are congruent to 2 modulo 3), and for those values of $k$ in the list, the coefficient is $(-1)^{(200 - k) / 3}\binom{100}{(200 - k) / 3}$.
+\end{enumerate}
 \end{document}
