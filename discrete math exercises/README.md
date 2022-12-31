@@ -9,4 +9,4 @@ Here are my attempts at completing some of the exercises in the book <em>Discret
 * Chapter 5 - Induction and Recursion
 * Chapter 6 - Counting
 
-<em>Disclaimer:</em> I had plenty of outside help.
+<em>Disclaimer:</em> I had plenty of outside help. Math is hard and I am not good at it.
