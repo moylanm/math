@@ -486,4 +486,99 @@
 	
 	Thus the only nonzero coefficients are those of the form $200 - 3j$ where j is an integer between 0 and 100, inclusive, namely $200, 197, 194, \ldots, 2, -1, -4, \ldots, -100$. If we denote $200 - 3j$ by $k$, then we have $j = (200 - k) / 3$. This gives us our answer. The coefficient of $x^k$ is zero for $k$ not in the list just given (namely those values of $k$ between -100 and 200, inclusive, that are congruent to 2 modulo 3), and for those values of $k$ in the list, the coefficient is $(-1)^{(200 - k) / 3}\binom{100}{(200 - k) / 3}$.
 \end{enumerate}
+
+\section*{\textbf{6.5 Generalized Permutations and Combinations}}
+\begin{enumerate}[label=\textbf{\arabic*.}]
+	\item In how many different ways can five elements be selected in order from a set with three elements when repetition is allowed?
+	
+	Since order is important here, and since repetition is allowed, this is simply an application of the product rule. So there are $3^5 = 243$ ways in which the 5 elements can be selected.
+	
+	\item How many strings of six letters are there?
+	
+	Since we are considering strings, order matters. The choice for each position in the string is from the set of 26 letters. Therefore, we see that there are $26^6 = 308915776$ strings.
+	
+	\item How many ways are there to assign three jobs to five employees if each employee can be given more than one job?
+	
+	For each job, we have to decide which employee gets that job. Therefore, by the multiplication principle there are $5^3 = 125$ ways in which the assignments can be made.
+	
+	\item How many ways are there to select three unordered elements from a set with five elements when repetition is allowed?
+	
+	This selection is to be an unordered one. We want to choose $r = 3$ items from a set with $n = 5$ elements. Theorem 2 from the book tells us that there are $C(5 + 3 - 1, 3) = C(7, 3) = 7 \cdot 6 \cdot 5 / (3 \cdot 2) = 35$ ways to do so.
+	
+	\item A bagel shop has onion bagels, poppy seed bagels, egg bagels, salty bagels, pumpernickel bagels, sesame seed bagels, raisin bagels, and plain bagels. How many ways are there to choose
+	
+	Let $b_1,\ b_2,\ \ldots,\ b_8$ be the number of bagels of the 8 types listed (in the order listed) that are selected. Oder does not matter.
+	
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item six bagels?
+		
+		If we want to choose 6 bagels, then we are asking for the number of nonnegative solutions to the equation $b_1 + b_2 + \ldots + b_8 = 6$. With $n = 8$ and $r = 6$ we get the answer $C(8 + 6 - 1, 6) = C(13, 6) = 1716$.
+		
+		\item a dozen bagels?
+		
+		This is the same as part (a), except that $r = 12$. Thus there are $C(8 + 12 - 1, 12) = C(19, 12) = C(19, 7) = 50388$ ways to make the selection.
+		
+		\item two dozen bagels?
+		
+		This is the same as part (a), except that $r = 24$. Thus there are $C(8 + 24 - 1, 24) = C(31, 24) = C(31, 7) = 2629575$ ways to make the selection.
+		
+		\item a dozen bagels with at least one of each kind?
+		
+		Here we want to solve the equation $b_1 + b_2 + \ldots + b_8 = 12$, subject to the constraint that each $b_i \geq 1$. Let $b'_i = b_i - 1$; then $b'_i$ represents the number of bagels of type $i$, in excess of the required 1, that are selected. If we substitute $b_i = b'_i + 1$ into the original equation, we obtain $(b'_1 + 1) + (b'_2 + 1) + \cdots + (b'_8 + 1) = 12$, which reduces to $b'_1 + b'_2 + \cdots + b'_8 = 4$. In other words, we are asking how many ways are there to choose the 4 extra bagels (in excess of the required 1 of each type) from among the 8 types, repetitions allowed. So the number of solutions is $C(8 + 4 - 1, 4) = C(11, 4) = 330$.
+		
+		\item a dozen bagels with at least three egg bagels and no more than two salty bagels?
+		
+		First let us ignore the restriction that there can be no more than 2 salty bagels (i.e., that $b_4 \leq 2$). We will take into account, however, the restriction that there must be at least 3 egg bagels (i.e., that $b_3 \geq 3$). Thus we want to count the number of solutions to the equation $b_1 + b_2 + \cdots + b_8 = 12$, subject to the condition that $b_i \geq 0$ for all $i$ and $b_3 \geq 3$. As in part (d), we use the trick of choosing the 3 egg bagels at the outset, leaving only 9 bagels free to be chosen; equivalently, we set $b'_3 = b_3 - 3$, to represent the extra egg bagels, above the required 3, that are chosen. Now Theorem 2 from the book applies to the number of solutions of $b_1 + b_2 + b'_3 + b_4 + \cdots + b_8 = 9$, so there are $C(8 + 9 - 1, 9) = C(16, 9) = C(16, 7) = 11440$ ways to make this selection.
+		
+		Next we need to worry about the restriction that $b_4 \leq 2$. We will impose this restriction by subtracting from our answer so far the number of ways to violate this restriction (while still obeying the restriction that $b_3 \geq 3$). The difference will be the desired answer. To violate the restriction means to have $b_4 \geq 3$. Thus we want to count the number of solutions to $b_1 + b_2 + \cdots + b_8 = 12$, with $b_3 \geq 3$ and $b_4 \geq 3$. Using the same technique as we have just used, this is equal to the number of nonnegative solutions to the equation $b_1 + b_2 + b'_3 +b'_4 + b_5 + \cdots + b_8 = 6$ (the 6 on the right being $12 - 3 - 3$). By Theorem 2 there are $C(8 + 6 - 1, 6) = C(13, 6) = 1716$ ways to make this selection. Therefore our final answer is $11440 - 1716 = 9724$.
+	\end{enumerate}
+
+	\item How many ways are there to choose eight coins from a piggy bank containing 100 identical pennies and 80 identical nickels?
+	
+	Since the coins are all identical, all that matters is the number fo each type of coin selected. We can select anywhere from 0 to 8 pennies (and the rest nickels); since there are nine numbers in this range, the answer is 9. (The number of pennies and nickels is irrelevant, as long as each is at least eight.)
+	
+	\item A book publisher has 3000 copies of a discrete mathematics book. How many ways are there to store these books in their three warehouses if the copies of the book are indistinguishable?
+	
+	Assuming that the warehouses are distinguishable, let $w_i$ be the number of books stored in the warehouse $i$. Then we are asked for the number of solutions to the equation $w_1 + w_2 + w_3 = 3000$. By Theorem 2 there are $C(3 + 3000 - 1, 3000) = C(3002, 3000) = C(3002, 2) = 4504501$ of them.
+	
+	\item How many solutions are there to the equation $$x_1 + x_2 + x_3 + x_4 + x_5 = 21,$$ where $x_i$, $i = 1, 2, 3, 4, 5$, is a nonnegative integer such that
+	
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item $x_1 \geq 1$?
+		
+		Let $x_1 = x'_1 + 1$; thus $x'_1$ is the value that $x_1$ has in excess of its required 1. Then the problem asks for the number of nonnegative solutions to $x'_1 + x_2 + x_3 + x_4 + x_5 = 20$. By Theorem 2 there are $C(5 + 20 - 1, 20) = C(24, 20) = C(24, 4) = 10626$ of them.
+		
+		\item $x_i \geq 2$ for $i = 1, 2, 3, 4, 5$?
+		
+		Substitute $x_i = x'_i + 2$ into the equation for each $i$; thus $x'_i$ is the value that $x_i$ has in excess of its required 2. Then the problem asks for the number of nonnegative solutions to $x'_1 + x'_2 + x'_3 + x'_4 + x'_5 = 11$. By Theorem 2 there are $C(5 + 11 - 1, 11) = C(15, 11) = C(15, 4) = 1365$ of them.
+		
+		\item $0 \leq x_1 \leq 10$?
+		
+		There are $C(5 + 21 - 1, 21) = C(25, 21) = C(25, 4) = 12650$ solutions with no restriction on $x_1$. The restriction on $x_1$ will be violated if $x_1 \geq 11$. Following the procedure in part (a), we find that there are $C(5 + 10 - 1, 10) = C(14, 10) = C(14, 4) = 1001$ solutions in which the restriction is violated. Therefore there are $12650 - 1001 = 11649$ solutions of the equation with its restriction.
+		
+		\item $0 \leq x_1 \leq 3$, $1 \leq x_2 < 4$, and $x_3 \geq 15$?
+		
+		First let us impose the restrictions that $x_3 \geq 15$ and $x_2 \geq 1$. Then the problem is equivalent to counting the number of solutions to $x_1 + x'_2 + x'_3 + x_4 + x_5 = 5$, subject to the constraints that $x_1 \leq 3$ and $x'_2 \leq 2$ (the latter coming from the original restriction $x_2 < 4$). Note that these two restrictions cannot be violated simultaneously. Thus if we count the number of solutions to $x_1 + x'_2 + x'_3 + x_4 + x_5 = 5$, subtract the number of its solutions in which $x_1 \geq 4$, and subtract the numbers of its solutions in which $x'_2 \geq 3$, then we will have the answer. By Theorem 2 there are $C(5 + 5 - 1, 5) = C(9, 5) = 126$ solutions of the unrestricted equation. Applying the first restriction reduces the equation to $x'_1 + x'_2 + x'_3 + x_4 + x_5 = 1$, which has $C(5 + 1 - 1, 1) = C(5, 1) = 5$ solutions. Applying the second restriction reduces the equation to $x_1 + x''_2 + x'_3 + x_4 + x_5 = 2$, which has $C(5 + 2 - 1, 2) = C(6, 2) = 15$ solutions. Therefore the answer is $126 - 5 - 15 = 106$.
+	\end{enumerate}
+
+	\item A Swedish tour guide has devised a clever way for his clients to recognize him. He owns 13 pairs of shoes of the same style, customized so that each pair has a unique color. How many ways are there for him to choose a left shoe and a right shoe from these 13 pairs
+	
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item without restrictions and which color is on which foot matters?
+		
+		One way to approach this is by the product rule: there are 13 choices for the left shoe and 13 choices for the right shoe, so there are $13 \cdot 13 = 169$ total ways.
+		
+		\item so that the colors of the left and right shoe are different and which color is on which foot matters?
+		
+		One way to work this problem is to think of the shoe selection as a permutation of the 13 different colors onto the 2 feet without repetition. This gives $P(13, 2) = 156$ ways.
+		
+		\item so that the colors of the left and right shoe are different but which color is on which foot does not matter?
+		
+		We can think of this as a combination: we choose two of the colors but are not concerned with the order, i.e., which foot wears which color shoe. So the number of ways is $C(13, 2) - 78$.
+		
+		\item without restrictions, but which color is on which foot does not matter?
+		
+		Following part (c), we can think of this as a combination, since which foot has which color does not matter. But since we're not restricted to choosing two different colors, it is a 2-combination from a set of 13 elements with repetition allowed. Thus the number of ways is $C(13 + 2 - 1, 2) = C(14, 2) = 91$.
+	\end{enumerate}
+\end{enumerate}
 \end{document}
