@@ -581,4 +581,49 @@
 		Following part (c), we can think of this as a combination, since which foot has which color does not matter. But since we're not restricted to choosing two different colors, it is a 2-combination from a set of 13 elements with repetition allowed. Thus the number of ways is $C(13 + 2 - 1, 2) = C(14, 2) = 91$.
 	\end{enumerate}
 \end{enumerate}
+
+\section*{\textbf{6.6 Generating Permutations and Combinations}}
+\begin{enumerate}[label=\textbf{\arabic*.}]
+	\item Place the permutations of $\{1, 2, 3, 4, 5\}$ in lexicographic order: 43521, 15432, 45321, 23451, 23514, 14532, 21345, 45213, 31452, 31542.
+	
+	Lexicographic order is the same as numerical order in this case, so the ordering from smallest to largest is 14532, 15432, 21345, 23451, 23514, 31452, 31542, 43521, 45213, 45321.
+	
+	\item The name of a file in a computer directory consists of three uppercase letters followed by a digit, where each letter is either A, B, or C, and each digit is either 1 or 2. List the name of these files in lexicographic order, where we order letters using the alphabetic order of letters.
+	
+	Our list will have $3 \cdot 3 \cdot 3 \cdot 2 = 54$ items in it. Here it is in lexicographic order: AAA1, AAA2, AAB1, AAB2, AAC1, AAC2, ABA1, ABA2, ABB1, ABB2, ABC1, ABC2, ACA1, ACA2, ACB1, ACB2, ACC1, ACC2, BAA1, BAA2, BAB1, BAB2, BAC1, BAC2, BBA1, BBA2, BBB1, BBB2, BBC1, BBC2, BCA1, BCA2, BCB1, BCB2, BCC1, BCC2, CAA1, CAA2, CAB1, CAB2, CAC1, CAC2, CBA1, CBA2, CBB1, CBB2, CBC1, CBC2, CCA1, CCA2, CCB1, CCB2, CCC1, CCC2.
+	
+	\item Find the next larger permutation in lexicographic order after each of these permutations.
+	
+	We use Algorithm 1 from the book. Our notation follows that algorithm, with $j$ being the largest subscript such that $a_j < a_{j + 1}$ and $k$ being the subscript of the smallest number to the right of $a_j$ that is larger than $a_j$.
+	
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item 1432
+		
+		Since $4 > 3 > 2$, we know that the 1 is our $a_j$. The smallest integer to the right of 1 and greater than 1 is 2, so $k = 4$. We interchange $a_j$ and $a_k$, giving the permutation 2431, and then we reverse the entire substring to the right of the position now occupied by the 2, giving the answer 2134.
+		
+		\item 54123
+		
+		The first integer from the right that is less than its right neighbor is the 2 in position 4. Therefore $j = 4$ here, and of course $k$ has to be 5. The next permutation is the one that we get by interchanging the fourth and fifth numbers, 54132. (Note that the last phase of the algorithm, reversing the end of the string, was vacuous this time---there was only one element to the right of position 4, so no reversing was necessary.)
+		
+		\item 12453
+		
+		Since $5 > 3$, we know that 4 is our $a_j$. The smallest integer to the right of 4 and greater than 4 is $a_k = 5$. We interchange $a_j$ and $a_k$, giving the permutation 12543, and then we reverse the entire substring to the right of the position now occupied by the 5, giving the answer 12534.
+		
+		\item 54231
+		
+		Since $3 > 1$, we know that the 2 is our $a_j$. The smallest integer to the right of 2 and greater than 2 is $a_k = 3$. We interchange $a_j$ and $a_k$, giving the permutation 45321, and then we reverse the entire substring to the right of the position now occupied by the 3, giving the answer 45312.
+		
+		\item 6714235
+		
+		The first integer from the right that is less than its right neighbor is the 3 in position 6. Therefore $j = 6$ here, and of course $k$ has to be 7. The next permutation is the one that we get by interchanging the sixth and seventh numbers, 6714253. As in part (b), no reversing was necessary.
+		
+		\item 31528764
+		
+		Since $8 > 7 > 6 > 4$, we know that the 2 is our $a_j$, so $j = 4$. The smallest integer to the right of 2 and greater than 2 is $a_8 = 4$. We interchange $a_4$ and $a_8$, giving the permutation 31548762, and then we reverse the entire substring to the right of the position now occupied by the 4, giving the answer 31542678.
+	\end{enumerate}
+
+	\item Use Algorithm 1 to generate the 24 permutations of the first four positive integers in lexicographic order.
+	
+	We begin with the permutation 1234. Then we apply Algorithm 1 23 times in succession, giving us the order 23 permutations in lexicographic order:, 1243, 1324, 1342, 1423, 1432, 2134, 2143, 2314, 2341, 2413, 2431, 3124, 3142, 3214, 3241, 3412, 3421, 4123, 4132, 4213, 4231, 4312, and 4321. The last permutation is the one entirely in decreasing order.
+\end{enumerate}
 \end{document}
