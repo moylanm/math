@@ -8,5 +8,6 @@ Here are my attempts at completing some of the exercises in the book <em>Discret
 * Chapter 4 - Number Theory and Cryptography
 * Chapter 5 - Induction and Recursion
 * Chapter 6 - Counting
+* Chapter 7 - Discrete Probability
 
 <em>Disclaimer:</em> I had plenty of outside help. Math is hard and I am not good at it.
