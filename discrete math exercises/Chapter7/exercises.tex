@@ -54,6 +54,80 @@
 
 \section*{\textbf{7.1 An Introduction to Discrete Probability}}
 \begin{enumerate}[label=\textbf{\arabic*.}]
-	\item 
+	\item What is the probability that a card selected at random from a standard deck of 52 cards is an ace?
+	
+	There are 52 equally likely cards to be selected, and 4 of them are aces. Therefore the probability is $4 / 52 = 1 / 13 \approx 7.7\%$.
+	
+	\item What is the probability that a fair die comes up six when it is rolled?
+	
+	Assuming it's a six sided die, the probability is $1 / 6 \approx 16.67\%$.
+	
+	\item What is the probability that a randomly selected integer chosen from the first 100 positive integers is odd?
+	
+	Among the first 100 positive integers there are exactly 50 odd ones. Therefore the probability is $50 / 100 = 1 / 2$.
+	
+	\item What is the probability that the sum of the numbers on two dice is even when they are rolled?
+	
+	One way to do this is to look at the 36 equally likely outcomes of the roll of two dice, which can represent by the set of ordered pairs $(i, j)$ with $1 \leq i, j \leq 6$. A better way is to argue as follows. Whatever the number of spots on the first die, the sum will be even if and only if the number of spots showing on the second die has the same parity (even or odd) as the first. Since there are 3 even faces (2, 4, and 6) and 3 odd faces (1, 3, and 5), the probability is $3 / 6 = 1 / 2$.
+	
+	\item What is the probability that when a coin is flipped six times in a row, it lands heads up every time?
+	
+	There are $2^6 = 64$ possible outcomes. Only one of those sequences represents the event under consideration, so the probability is $1 / 64 \approx 0.016$.
+	
+	\item What is the probability that a five-card poker hand does not contain the queen of hearts?
+	
+	There are $C(52, 5)$ possible poker hands, and we assume by symmetry that they are equally likely. In order to solve this problem, we need to compute the number of poker hands that do not contain the queen of hearts. Such a hand is simply an unordered selection from a deck with 51 cards in it (all cards except the queen of hearts), so there are $C(51, 5)$ such hands. Therefore the answer to the question is the ratio $$\frac{C(51, 5)}{C(52, 5)} = \frac{47}{52} \approx 90.4\%$$
+	
+	\item What is the probability that a five-card poker hand contains the two of diamonds, the three of spades, the six of hearts, the ten of clubs, and the king of hearts?
+	
+	This question completely specifies the poker hand, so there is only one hand satisfying the conditions. Since there are $C(52, 5)$ equally likely poker hands, the probability of drawing this one is $1 / C(52, 5)$, which is about 1 out of 2.5 million.
+	
+	\item What is the probability that a five-card poker hand contains at least one ace?
+	
+	Let us compute the probability that the hand contains no aces and then subtract from 1. A hand with no aces must be drawn from the 48 non-ace cards, so there are $C(48, 5)$ such hands. Therefore the probability of drawing such a hand is $C(48, 5) / C(52, 5)$, which works out to about $66\%$. Thus the probability of holding a hand with at least one ace is $1 - (C(48, 5) / C(52, 5))$, or about $34\%$.
+	
+	\item What is the probability that a five-card poker hand contains two pairs?
+	
+	We need to compute the number of ways to hold two pairs. To specify the hand we first choose the kinds (ranks) the pairs will be (such as kinds and fives); there are $C(13, 2) = 78$ ways to do this, since we need to choose 2 kinds from the 13 possible kinds. Then we need to decide which 2 cards of each of the kinds of the pairs we want to include. There are 4 cards of each kind (4 suits), so there are $C(4, 2) = 6$ ways to make each of these two choices. Finally, we need to decide which card to choose for the fifth card in the hand. We cannot choose any card in either of the 2 kinds that are already represented (we do not want to construct a full house by accident), so there are $52 - 8 = 44$ cards to choose from and hence $C(44, 1) = 44$ ways to make the choice. Putting this all together by the product rule, there are $78 \cdot 6 \cdot 6 \cdot 44 = 123552$ different hands classified as "two pairs."
+	
+	Since each hand is equally likely, and since there are $C(52, 5) = 2598960$ different hands, the probability of holding two pairs is $123552 / 2598960 = 198 / 4156 \approx 0.0475$.
+	
+	\item What is the probability that a five-card poker hand contains a straight, that is, five cards that have consecutive kinds? (Note that an ace can be considered either the lowest cards of an A-2-3-4-5 straight or the highest card of a 10-J-Q-K-A straight.)
+	
+	First we need to compute the number of ways to hold a straight. We can specify the hand by first choosing the starting (lowest) kind for the straight. Since the straight can start with any card from the set $\{A, 2, 3, 4, 5, 6, 7, 8, 9, 10\}$, there are $C(10, 1) = 10$ ways to do this. Then we need to decide which card of each of the kinds in the straight we want to include. There are 4 cards of each kind (4 suits), so there are $C(4, 1) = 4$ ways to make each of these 5 choices. Putting all this together by the product rule, there are $10 \cdot 4^5 = 10240$ different hands containing a straight.
+	
+	Since each hand is equally likely, and since there are $C(52, 5) = 2598960$ different hands, the probability of holding a hand containing a single straight is $10240 / 2598960 = 128 / 32487 \approx 0.00394$.
+	
+	\item What is the probability that a fair die never comes up an even number when it is rolled six times?
+	
+	There are 2 equally likely outcomes for the parity on the roll of a die---even and odd. Of the $2^6 = 64$ parity outcomes in the roll of a die 6 times, only one consists of 6 odd numbers. Therefore the probability is $1 / 64$.
+	
+	\item What is the probability that a positive integer not exceeding 100 selected at random is divisible by 5 or 7?
+	
+	We need to count the number of positive integers not exceeding 100 that are divisible by 5 or 7. We can see that there are $\lfloor 100 / 5 \rfloor = 20$ numbers in that range divisible by 5 and $\lfloor 100 / 7 \rfloor = 14$ divisible by 7. However, we have counted the numbers 35 and 70 twice, since they are divisible by both 5 and 7. Therefore there are $20 + 14 - 2 = 32$ such numbers. Now since there are 100 equally likely numbers in the set, the probability of choosing one of these 32 numbers is $32 / 100 = 8 / 25 = 0.32$.
+	
+	\item Find the probability of winning a lottery by selecting the correct six integers, where the order in which these integers are selected does not matter, from the positive integers not exceeding
+	
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		\item 50.
+		
+		$1 / C(50, 6) = 1 / 15890700 \approx 6.3 \times 10^{-8}$
+		
+		\item 52.
+		
+		$1 / C(52, 6) = 1 / 20358520 \approx 4.9 \times 10^{-8}$
+		
+		\item 56.
+		
+		$1 / C(56, 6) = 1 / 32468436 \approx 3.1 \times 10^{-8}$
+		
+		\item 60.
+		
+		$1 / C(60, 6) = 1 / 50063860 \approx 2.0 \times 10^{-8}$
+	\end{enumerate}
+
+	\item In a superlottery, players win a fortune if they choose the eight numbers selected by a computer from the positive integers not exceeding 100. What is the probability that a player wins this superlottery?
+	
+	There is only one winning choice of numbers, namely the same 8 numbers the computer chooses. Therefore the probability of winning is $1 / C(100, 8) \approx 1 / (1.86 \times 10^{11})$.
 \end{enumerate}
 \end{document}
